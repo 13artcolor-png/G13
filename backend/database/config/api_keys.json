@@ -1,0 +1,32 @@
+{
+    "keys": [
+        {
+            "id": "key_fibo1",
+            "name": "fibo1",
+            "key": "rqsty-sk-SXmn4UMmTpSHQ5TNHImJ1PliJi6YHuPNBTGLdzH/zaHC0Asp7anCSySHXilGn35PTUJNkIKzlYrdIZlHmloNsRWb7ObBTU2vklutBIc5xAI=",
+            "provider": "requesty",
+            "model": "anthropic/claude-sonnet-4-20250514"
+        },
+        {
+            "id": "key_fibo2",
+            "name": "fibo2",
+            "key": "rqsty-sk-mhmWdc5BTIOIfTUz/a1b8SlGnoizfYnUZWYzbCdi//ITssJ+ZZhUIbMtIlv1q62bsrZLjluPp8Tsj+7n/tUZBw7nAbwlOVc12LjjiT80wgM=",
+            "provider": "requesty",
+            "model": "anthropic/claude-sonnet-4-20250514"
+        },
+        {
+            "id": "key_fibo3",
+            "name": "fibo3",
+            "key": "rqsty-sk-AAIx14w6RlWoFfGwF//CXVkbcNFoC+Ta2Z5yLU1X7eJyIxfloAMvDSRGyViz0E5A6LoNs+dHXM3ZHktD3+qFcdnOWxbyJrrK07gKY6Ayfww=",
+            "provider": "xai",
+            "model": "grok-2"
+        },
+        {
+            "id": "key_strategist",
+            "name": "strategist",
+            "key": "rqsty-sk-D1vJngLyQx6PEb4fInyuxo299L+GUPH95f9en8wG/On4kF3pwrM3iTr+9XBxefLYCtOSJB/keorRgD8F5AoaMidDMLKAlhR1jBdSNIwJZQU=",
+            "provider": "requesty",
+            "model": "anthropic/claude-sonnet-4-20250514"
+        }
+    ]
+}

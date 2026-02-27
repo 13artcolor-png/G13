@@ -1,0 +1,23 @@
+{
+    "fibo1": {
+        "login": 278613,
+        "password": "@Sodomie123",
+        "server": "FusionMarkets-Demo",
+        "path": "C:/Program Files/MetaTrader 5/terminal64.exe",
+        "enabled": true
+    },
+    "fibo2": {
+        "login": 278614,
+        "password": "@Sodomie123",
+        "server": "FusionMarkets-Demo",
+        "path": "C:/Program Files/Eightcap Global MT5 Terminal/terminal64.exe",
+        "enabled": true
+    },
+    "fibo3": {
+        "login": 278615,
+        "password": "@Sodomie123",
+        "server": "FusionMarkets-Demo",
+        "path": "C:/Program Files/Fusion Markets MetaTrader 5/terminal64.exe",
+        "enabled": true
+    }
+}
