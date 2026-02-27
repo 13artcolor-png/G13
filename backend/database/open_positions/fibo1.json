@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "ticket": 264442898,
+    "symbol": "BTCUSD",
+    "type": "BUY",
+    "volume": 0.01,
+    "price_open": 65818.0,
+    "price_current": 65726.0,
+    "sl": 65141.01,
+    "tp": 67114.98,
+    "profit": -0.78,
+    "swap": 0.0,
+    "time": 1772241064,
+    "magic": 582324,
+    "comment": "G13_fibo1",
+    "synced_at": "2026-02-28T00:15:39.616183",
+    "agent_id": "fibo1"
+  },
+  {
+    "ticket": 264442932,
+    "symbol": "BTCUSD",
+    "type": "BUY",
+    "volume": 0.01,
+    "price_open": 65743.0,
+    "price_current": 65726.0,
+    "sl": 65073.69,
+    "tp": 67045.62,
+    "profit": -0.14,
+    "swap": 0.0,
+    "time": 1772241340,
+    "magic": 795462,
+    "comment": "G13_fibo1",
+    "synced_at": "2026-02-28T00:15:39.616188",
+    "agent_id": "fibo1"
+  }
+]

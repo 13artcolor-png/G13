@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "ticket": 264442907,
+    "symbol": "BTCUSD",
+    "type": "SELL",
+    "volume": 0.01,
+    "price_open": 65757.0,
+    "price_current": 65741.0,
+    "sl": 66415.58,
+    "tp": 64442.84,
+    "profit": 0.14,
+    "swap": 0.0,
+    "time": 1772241203,
+    "magic": 620098,
+    "comment": "G13_fibo3",
+    "synced_at": "2026-02-28T00:16:15.314213",
+    "agent_id": "fibo3"
+  }
+]

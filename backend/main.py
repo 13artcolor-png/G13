@@ -2,11 +2,9 @@
 G13 - Trading Bot Backend
 =========================
 Point d'entree principal du backend G13.
-
 Usage:
     uvicorn main:app --reload --port 8000
 """
-
 import sys
 from pathlib import Path
 
@@ -42,6 +40,32 @@ app.include_router(agents_router)
 app.include_router(trades_router)
 app.include_router(stats_router)
 app.include_router(compat_router)  # Routes compatibilite G12
+
+
+@app.on_event("startup")
+async def auto_resume_trading():
+    """
+    Auto-resume: si une session etait active avant le reload,
+    relancer la trading loop automatiquement.
+    """
+    try:
+        from actions.session import get_session_info
+        from core import get_trading_loop
+
+        session = get_session_info()
+        session_data = session.get("session", {})
+
+        if session_data.get("status") == "active":
+            loop = get_trading_loop()
+            if not loop.is_running:
+                loop.start()
+                print(f"[AutoResume] Trading loop relancee (session {session_data.get('id', '?')[:8]})")
+            else:
+                print(f"[AutoResume] Trading loop deja active")
+        else:
+            print(f"[AutoResume] Pas de session active, trading loop non demarree")
+    except Exception as e:
+        print(f"[AutoResume] Erreur: {e}")
 
 
 @app.get("/")
