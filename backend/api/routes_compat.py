@@ -294,7 +294,21 @@ async def get_session_performance():
 @router.post("/session/start")
 async def api_session_start():
     """Demarrer session (compatibilite G12)."""
-    return start_session()
+    # Recuperer balance MT5 pour la nouvelle session
+    total_balance = 0
+    for agent_id in ["fibo1", "fibo2", "fibo3"]:
+        try:
+            result = connect_mt5(agent_id)
+            if result["success"]:
+                account_info = result.get("account_info", {})
+                total_balance += account_info.get("balance", 0)
+                disconnect_mt5()
+        except:
+            pass
+
+    initial_balance = total_balance if total_balance > 0 else None
+    print(f"[Session Start] Balance MT5 capturee: {total_balance}")
+    return start_session(initial_balance=initial_balance)
 
 
 @router.get("/session/end")
@@ -694,21 +708,96 @@ async def get_strategist_logs(limit: int = 50):
 
 @router.get("/config/spread")
 async def get_spread_config():
-    """Config spread (compatibilite G12)."""
-    # G13 n'utilise pas de config spread separee
-    return {"tp_pct": 1.0, "sl_pct": 0.5}
+    """Config spread - lit depuis tpsl_config dans agents.json."""
+    try:
+        with open(CONFIG_PATH / "agents.json", "r") as f:
+            agents = json.load(f)
+
+        # Lire tpsl_config du premier agent (identique pour tous)
+        first_agent = next(iter(agents.values()), {})
+        tpsl = first_agent.get("tpsl_config", {})
+
+        return {
+            "tp_pct": tpsl.get("tp_pct", 0.3),
+            "sl_pct": tpsl.get("sl_pct", 0.5),
+            "max_spread_points": tpsl.get("max_spread_points", 50),
+            "trailing_start_pct": tpsl.get("trailing_start_pct", 0.2),
+            "trailing_distance_pct": tpsl.get("trailing_distance_pct", 0.1),
+            "break_even_pct": tpsl.get("break_even_pct", 0.15)
+        }
+    except:
+        return {
+            "tp_pct": 0.3,
+            "sl_pct": 0.5,
+            "max_spread_points": 50,
+            "trailing_start_pct": 0.2,
+            "trailing_distance_pct": 0.1,
+            "break_even_pct": 0.15
+        }
 
 
 @router.post("/config/spread")
 async def update_spread_config(config: Dict[str, Any]):
-    """Update spread config (compatibilite G12)."""
-    return {"success": True}
+    """Update spread/tpsl config - sauvegarde dans tpsl_config de chaque agent."""
+    try:
+        with open(CONFIG_PATH / "agents.json", "r") as f:
+            agents = json.load(f)
+
+        # Appliquer a TOUS les agents
+        for agent_id in agents:
+            if "tpsl_config" not in agents[agent_id]:
+                agents[agent_id]["tpsl_config"] = {}
+
+            tpsl = agents[agent_id]["tpsl_config"]
+
+            # Mettre a jour les champs fournis
+            if "tp_pct" in config:
+                tpsl["tp_pct"] = float(config["tp_pct"])
+            if "sl_pct" in config:
+                tpsl["sl_pct"] = float(config["sl_pct"])
+            if "max_spread_points" in config:
+                tpsl["max_spread_points"] = float(config["max_spread_points"])
+            if "trailing_start_pct" in config:
+                tpsl["trailing_start_pct"] = float(config["trailing_start_pct"])
+            if "trailing_distance_pct" in config:
+                tpsl["trailing_distance_pct"] = float(config["trailing_distance_pct"])
+            if "break_even_pct" in config:
+                tpsl["break_even_pct"] = float(config["break_even_pct"])
+
+        with open(CONFIG_PATH / "agents.json", "w") as f:
+            json.dump(agents, f, indent=4)
+
+        print(f"[Config] TPSL/Spread mis a jour: {config}")
+        return {"success": True}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
 
 
 @router.post("/config/risk")
 async def update_risk_config(config: Dict[str, Any]):
-    """Update risk config (compatibilite G12)."""
-    return {"success": True}
+    """Update risk config - sauvegarde dans chaque agent de agents.json."""
+    try:
+        with open(CONFIG_PATH / "agents.json", "r") as f:
+            agents = json.load(f)
+
+        # Appliquer a TOUS les agents
+        for agent_id in agents:
+            if "max_drawdown_pct" in config:
+                agents[agent_id]["max_drawdown_pct"] = float(config["max_drawdown_pct"])
+            if "max_daily_loss_pct" in config:
+                agents[agent_id]["max_daily_loss_pct"] = float(config["max_daily_loss_pct"])
+            if "max_positions" in config:
+                agents[agent_id]["max_positions"] = int(config["max_positions"])
+            if "urgency_pct" in config:
+                agents[agent_id]["urgency_pct"] = float(config["urgency_pct"])
+
+        with open(CONFIG_PATH / "agents.json", "w") as f:
+            json.dump(agents, f, indent=4)
+
+        print(f"[Config] Risk mis a jour: {config}")
+        return {"success": True}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
 
 
 # ===================== SESSION EXPORT =====================
