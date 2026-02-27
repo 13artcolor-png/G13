@@ -77,7 +77,9 @@ async def get_status():
     total_balance = 0
     total_equity = 0
 
-    # Recuperer balance/equity de chaque compte MT5 individuellement
+    # Recuperer balance/equity + positions LIVE de chaque compte MT5
+    live_positions = []  # Positions lues en direct depuis MT5 (P&L temps reel)
+
     for agent_id in ["fibo1", "fibo2", "fibo3"]:
         account_cfg = mt5_accounts.get(agent_id, {})
         accounts_with_balance[agent_id] = {
@@ -106,6 +108,14 @@ async def get_status():
                     # Recuperer price data une seule fois (depuis fibo1)
                     if agent_id == "fibo1" and price_data is None:
                         price_data = get_full_market_data("BTCUSD")
+
+                    # Lire positions LIVE depuis MT5 (P&L en temps reel)
+                    from actions.mt5.read_positions import read_positions
+                    pos_result = read_positions(agent_id)
+                    if pos_result["success"]:
+                        for pos in pos_result["positions"]:
+                            pos["agent_id"] = agent_id
+                        live_positions.extend(pos_result["positions"])
 
                     disconnect_mt5()
             except Exception as e:
@@ -212,15 +222,17 @@ async def get_status():
     # Verifier si au moins un MT5 est connecte
     any_mt5_connected = any(acc.get("connected") for acc in accounts_with_balance.values())
 
-    # Recuperer toutes les positions ouvertes depuis les fichiers JSON locaux
-    all_positions = []
-    for agent_id in ["fibo1", "fibo2", "fibo3"]:
-        try:
-            result = get_local_positions(agent_id)
-            positions = result.get("positions", [])
-            all_positions.extend(positions)
-        except Exception as e:
-            print(f"[Status] Erreur positions {agent_id}: {e}")
+    # Utiliser positions LIVE si disponibles, sinon fallback sur fichiers locaux
+    all_positions = live_positions if live_positions else []
+    if not all_positions:
+        # Fallback: fichiers locaux si MT5 non connecte
+        for agent_id in ["fibo1", "fibo2", "fibo3"]:
+            try:
+                result = get_local_positions(agent_id)
+                positions = result.get("positions", [])
+                all_positions.extend(positions)
+            except Exception as e:
+                print(f"[Status] Erreur positions {agent_id}: {e}")
 
     return {
         "trading_active": is_trading,
