@@ -1,0 +1,6 @@
+{
+    "max_drawdown_pct": 10,
+    "max_daily_loss_pct": 5,
+    "emergency_close_pct": 15,
+    "winner_never_loser": true
+}

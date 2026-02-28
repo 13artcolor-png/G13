@@ -1,0 +1,802 @@
+[
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.65,
+    "new_value": 0.7,
+    "timestamp": "2026-02-28T23:23:45.067284",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.3,
+    "new_value": 0.25,
+    "timestamp": "2026-02-28T23:23:45.067280",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.9,
+    "new_value": 3.4,
+    "timestamp": "2026-02-28T23:23:45.065031",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.7,
+    "new_value": 0.75,
+    "timestamp": "2026-02-28T23:23:45.062490",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.6,
+    "new_value": 0.65,
+    "timestamp": "2026-02-28T23:18:41.530238",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.35,
+    "new_value": 0.3,
+    "timestamp": "2026-02-28T23:18:41.530233",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.65,
+    "new_value": 0.7,
+    "timestamp": "2026-02-28T23:18:41.527585",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.55,
+    "new_value": 0.6,
+    "timestamp": "2026-02-28T23:13:30.936251",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.4,
+    "new_value": 0.35,
+    "timestamp": "2026-02-28T23:13:30.936246",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 2.8,
+    "new_value": 2.3,
+    "timestamp": "2026-02-28T23:13:30.933229",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.6,
+    "new_value": 0.65,
+    "timestamp": "2026-02-28T23:13:30.933223",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3,
+    "new_value": 2.5,
+    "timestamp": "2026-02-28T23:08:19.348853",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.45,
+    "new_value": 0.4,
+    "timestamp": "2026-02-28T23:08:19.348846",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.55,
+    "new_value": 0.6,
+    "timestamp": "2026-02-28T23:08:19.346040",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.5,
+    "new_value": 0.55,
+    "timestamp": "2026-02-28T23:03:05.770570",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.5,
+    "new_value": 0.45,
+    "timestamp": "2026-02-28T23:03:05.770564",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.3,
+    "new_value": 2.8,
+    "timestamp": "2026-02-28T23:03:05.767748",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.5,
+    "new_value": 0.55,
+    "timestamp": "2026-02-28T23:03:05.767739",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.9,
+    "new_value": 3.4,
+    "timestamp": "2026-02-28T22:57:52.238463",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 2.5,
+    "new_value": 2.0,
+    "timestamp": "2026-02-28T22:52:47.024196",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_COOLDOWN",
+    "field": "cooldown_seconds",
+    "old_value": 100,
+    "new_value": 130,
+    "timestamp": "2026-02-28T22:52:47.021561",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.0,
+    "new_value": 2.5,
+    "timestamp": "2026-02-28T22:42:42.076545",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 2.5,
+    "new_value": 3.0,
+    "timestamp": "2026-02-28T22:41:10.372434",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.95,
+    "new_value": 1.0,
+    "timestamp": "2026-02-28T22:41:10.369732",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.0,
+    "new_value": 2.5,
+    "timestamp": "2026-02-28T22:36:09.853030",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.9,
+    "new_value": 0.95,
+    "timestamp": "2026-02-28T22:36:09.850669",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "INCREASE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 2.5,
+    "new_value": 3.0,
+    "timestamp": "2026-02-28T22:31:06.304776",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.85,
+    "new_value": 0.9,
+    "timestamp": "2026-02-28T22:31:06.301434",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.0,
+    "new_value": 2.5,
+    "timestamp": "2026-02-28T22:25:58.147438",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.8,
+    "new_value": 0.85,
+    "timestamp": "2026-02-28T22:25:58.144956",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.04,
+    "new_value": 0.045,
+    "timestamp": "2026-02-28T22:15:47.744906",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.8,
+    "new_value": 3.3,
+    "timestamp": "2026-02-28T22:15:47.742044",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_COOLDOWN",
+    "field": "cooldown_seconds",
+    "old_value": 160,
+    "new_value": 130,
+    "timestamp": "2026-02-28T22:10:30.722905",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.95,
+    "new_value": 1.0,
+    "timestamp": "2026-02-28T22:10:30.722901",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.75,
+    "new_value": 0.8,
+    "timestamp": "2026-02-28T22:10:30.720458",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_COOLDOWN",
+    "field": "cooldown_seconds",
+    "old_value": 190,
+    "new_value": 160,
+    "timestamp": "2026-02-28T22:05:08.645798",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.9,
+    "new_value": 0.95,
+    "timestamp": "2026-02-28T22:05:08.645789",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_COOLDOWN",
+    "field": "cooldown_seconds",
+    "old_value": 220,
+    "new_value": 190,
+    "timestamp": "2026-02-28T21:59:57.194890",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.85,
+    "new_value": 0.9,
+    "timestamp": "2026-02-28T21:59:57.194883",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 2.5,
+    "new_value": 3.0,
+    "timestamp": "2026-02-28T21:54:49.999346",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.8,
+    "new_value": 0.85,
+    "timestamp": "2026-02-28T21:54:49.999338",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.0,
+    "new_value": 2.5,
+    "timestamp": "2026-02-28T21:49:48.577393",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.75,
+    "new_value": 0.8,
+    "timestamp": "2026-02-28T21:49:48.577386",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 2.5,
+    "new_value": 3.0,
+    "timestamp": "2026-02-28T21:45:43.318408",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.7,
+    "new_value": 0.75,
+    "timestamp": "2026-02-28T21:45:43.318395",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 4.3,
+    "new_value": 3.8,
+    "timestamp": "2026-02-28T21:45:43.313882",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.65,
+    "new_value": 0.7,
+    "timestamp": "2026-02-28T21:40:35.385337",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.0,
+    "new_value": 2.5,
+    "timestamp": "2026-02-28T21:35:32.757531",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.7,
+    "new_value": 0.75,
+    "timestamp": "2026-02-28T21:35:32.754007",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.5,
+    "new_value": 3.0,
+    "timestamp": "2026-02-28T21:30:24.501993",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.65,
+    "new_value": 0.7,
+    "timestamp": "2026-02-28T21:30:24.499562",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 4.0,
+    "new_value": 3.5,
+    "timestamp": "2026-02-28T21:25:13.898131",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.6,
+    "new_value": 0.65,
+    "timestamp": "2026-02-28T21:25:13.898123",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 4.5,
+    "new_value": 4.0,
+    "timestamp": "2026-02-28T21:19:56.301950",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.55,
+    "new_value": 0.6,
+    "timestamp": "2026-02-28T21:19:56.301943",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.6,
+    "new_value": 0.65,
+    "timestamp": "2026-02-28T21:19:56.299309",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.5,
+    "new_value": 0.55,
+    "timestamp": "2026-02-28T21:14:42.963044",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.55,
+    "new_value": 0.6,
+    "timestamp": "2026-02-28T21:14:42.960258",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "REDUCE_COOLDOWN",
+    "field": "cooldown_seconds",
+    "old_value": 250,
+    "new_value": 220,
+    "timestamp": "2026-02-28T21:13:17.834946",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 5,
+    "new_value": 4.5,
+    "timestamp": "2026-02-28T21:13:17.834922",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.035,
+    "new_value": 0.04,
+    "timestamp": "2026-02-28T21:08:08.430496",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.45,
+    "new_value": 0.5,
+    "timestamp": "2026-02-28T21:08:08.430490",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 4.4,
+    "new_value": 3.9000000000000004,
+    "timestamp": "2026-02-28T21:08:08.427462",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.03,
+    "new_value": 0.035,
+    "timestamp": "2026-02-28T21:03:00.040366",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.4,
+    "new_value": 0.45,
+    "timestamp": "2026-02-28T21:03:00.040360",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 4.9,
+    "new_value": 4.4,
+    "timestamp": "2026-02-28T21:03:00.038651",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "REDUCE_TOLERANCE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 4.8,
+    "new_value": 4.3,
+    "timestamp": "2026-02-28T21:03:00.036476",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.025,
+    "new_value": 0.03,
+    "timestamp": "2026-02-28T20:57:47.474525",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.02,
+    "new_value": 0.025,
+    "timestamp": "2026-02-28T20:56:02.665243",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.015,
+    "new_value": 0.02,
+    "timestamp": "2026-02-28T20:50:57.016360",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.01,
+    "new_value": 0.015,
+    "timestamp": "2026-02-28T20:45:47.618049",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.25,
+    "new_value": 0.2,
+    "timestamp": "2026-02-28T20:28:01.330604",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.25,
+    "new_value": 0.2,
+    "timestamp": "2026-02-28T20:28:01.328823",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.045,
+    "new_value": 0.05,
+    "timestamp": "2026-02-28T20:28:01.326733",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.25,
+    "new_value": 0.2,
+    "timestamp": "2026-02-28T20:28:01.326727",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.3,
+    "new_value": 0.25,
+    "timestamp": "2026-02-28T20:22:52.790727",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.3,
+    "new_value": 0.25,
+    "timestamp": "2026-02-28T20:22:52.789013",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.04,
+    "new_value": 0.045,
+    "timestamp": "2026-02-28T20:22:52.786769",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.3,
+    "new_value": 0.25,
+    "timestamp": "2026-02-28T20:22:52.786763",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.35,
+    "new_value": 0.3,
+    "timestamp": "2026-02-28T20:21:10.941775",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.35,
+    "new_value": 0.3,
+    "timestamp": "2026-02-28T20:21:10.939080",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.035,
+    "new_value": 0.04,
+    "timestamp": "2026-02-28T20:21:10.936217",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.35,
+    "new_value": 0.3,
+    "timestamp": "2026-02-28T20:21:10.936213",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.4,
+    "new_value": 0.35,
+    "timestamp": "2026-02-28T20:16:04.472531",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.4,
+    "new_value": 0.35,
+    "timestamp": "2026-02-28T20:16:04.470695",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.03,
+    "new_value": 0.035,
+    "timestamp": "2026-02-28T20:16:04.468605",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.4,
+    "new_value": 0.35,
+    "timestamp": "2026-02-28T20:16:04.468600",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.45,
+    "new_value": 0.4,
+    "timestamp": "2026-02-28T20:10:56.406097",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.045,
+    "new_value": 0.05,
+    "timestamp": "2026-02-28T20:10:56.404340",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.45,
+    "new_value": 0.4,
+    "timestamp": "2026-02-28T20:10:56.404336",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.025,
+    "new_value": 0.03,
+    "timestamp": "2026-02-28T20:10:56.402444",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.45,
+    "new_value": 0.4,
+    "timestamp": "2026-02-28T20:10:56.402440",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.5,
+    "new_value": 0.45,
+    "timestamp": "2026-02-28T20:05:53.603748",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.04,
+    "new_value": 0.045,
+    "timestamp": "2026-02-28T20:05:53.601949",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.5,
+    "new_value": 0.45,
+    "timestamp": "2026-02-28T20:05:53.601946",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.02,
+    "new_value": 0.025,
+    "timestamp": "2026-02-28T20:05:53.600009",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "RISK_MANAGEMENT",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.5,
+    "new_value": 0.45,
+    "timestamp": "2026-02-28T20:05:53.600004",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.35,
+    "new_value": 0.4,
+    "timestamp": "2026-02-28T20:00:45.756550",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "INCREASE_RISK",
+    "field": "position_size_pct",
+    "old_value": 0.035,
+    "new_value": 0.04,
+    "timestamp": "2026-02-28T20:00:45.754954",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "ADJUST_TPSL",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.5,
+    "new_value": 0.55,
+    "timestamp": "2026-02-28T20:00:45.754950",
+    "agent_id": "fibo2"
+  }
+]

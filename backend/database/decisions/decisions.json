@@ -1,0 +1,902 @@
+[
+  {
+    "agent_id": "fibo3",
+    "decision": "BUY",
+    "reason": "Prix dans zone de tol\u00e9rance du niveau Fibo 0.5 (2.00% < 2.5%), tendance bullish confirm\u00e9e par structure ICT (4 HL), momentum 5m positif (+0.25%) malgr",
+    "symbol": "BTCUSD",
+    "price": 66998.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:31:50.133498"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66984.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:31:40.943224"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat.",
+    "symbol": "BTCUSD",
+    "price": 66984.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:31:34.924935"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66993.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:31:18.448490"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat.",
+    "symbol": "BTCUSD",
+    "price": 66992.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:31:13.495111"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66977.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:30:55.049978"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat.",
+    "symbol": "BTCUSD",
+    "price": 66963.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:30:48.357403"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66960.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:30:31.195775"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 2.3% autour du niveau Fibonacci 0.236 et la tendance est haussi\u00e8re.",
+    "symbol": "BTCUSD",
+    "price": 66969.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:30:24.537126"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (2.00% < 2.5%), structure bullish mais momentum 1m negatif (-0.066%) suggere correction vers niveau cible $65",
+    "symbol": "BTCUSD",
+    "price": 66999.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:29:30.767274"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 67035.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:28:36.245829"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat malgr\u00e9 l'absence de pattern ICT.",
+    "symbol": "BTCUSD",
+    "price": 67080.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:28:29.129493"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat malgr\u00e9 l'absence de pattern ICT.",
+    "symbol": "BTCUSD",
+    "price": 67085.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:28:08.770608"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (2.06% < 2.5%), structure bullish mais momentum 1m negatif (-0.066%) suggere correction vers niveau cible $65",
+    "symbol": "BTCUSD",
+    "price": 67038.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:27:12.880504"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 67037.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:26:34.516405"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, favorisant un achat.",
+    "symbol": "BTCUSD",
+    "price": 67002.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:26:14.343081"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (2.08% < 2.5%), structure bullish mais recherche retracement vers niveau cible $65,687.50, sell stops detecte",
+    "symbol": "BTCUSD",
+    "price": 67051.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:24:42.146082"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 67052.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:24:34.003616"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie l'entr\u00e9e en position.",
+    "symbol": "BTCUSD",
+    "price": 67053.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:24:29.024609"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie une position d'achat malgr\u00e9 l'absence de pattern ICT.",
+    "symbol": "BTCUSD",
+    "price": 67097.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:22:36.117885"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "BUY",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.97% < 2.5%), tendance bullish confirm\u00e9e par structure ICT (4 HL), momentum positif 1m/5m, spread acceptabl",
+    "symbol": "BTCUSD",
+    "price": 66981.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:22:03.200611"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66972.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:21:55.772967"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible (0.236) et la tendance est haussi\u00e8re.",
+    "symbol": "BTCUSD",
+    "price": 66942.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:20:15.506228"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66949.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:19:57.914260"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "BUY",
+    "reason": "Prix dans zone de tol\u00e9rance du niveau Fibo 0.5 (1.89% < 2.5%), tendance bullish confirm\u00e9e par structure ICT (4 HL), momentum 5m positif (+0.255%) indi",
+    "symbol": "BTCUSD",
+    "price": 66929.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:19:41.522737"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat malgr\u00e9 l'absence de pattern institutionnel.",
+    "symbol": "BTCUSD",
+    "price": 66960.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:18:30.445780"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66916.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:17:43.861452"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.95% < 2.5%), structure bullish mais momentum faible (0.075% 1m), zone de liquidit\u00e9 SELL_STOPS proche \u00e0 661",
+    "symbol": "BTCUSD",
+    "price": 66966.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:17:12.001882"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat malgr\u00e9 l'absence de pattern institutionnel.",
+    "symbol": "BTCUSD",
+    "price": 66892.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:16:33.625212"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66927.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:15:49.352101"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "BUY",
+    "reason": "Prix dans zone de tol\u00e9rance du niveau Fibo 0.5 (1.88% < 2.5%), tendance bullish confirm\u00e9e par structure ICT (4 HL), momentum positif sur 1m et 5m, spr",
+    "symbol": "BTCUSD",
+    "price": 66921.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:14:53.931655"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est bullish, ce qui justifie un achat malgr\u00e9 l'absence de pattern ICT.",
+    "symbol": "BTCUSD",
+    "price": 66917.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:14:45.115318"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66884.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:13:48.182499"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e.",
+    "symbol": "BTCUSD",
+    "price": 66953.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:12:47.809354"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.86% < 2.5%), structure bullish mais recherche retracement vers niveau cible $65,687.50, zones liquidit\u00e9 se",
+    "symbol": "BTCUSD",
+    "price": 66908.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:12:30.318233"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible (0.236) et la tendance est haussi\u00e8re.",
+    "symbol": "BTCUSD",
+    "price": 66910.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:12:19.957021"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e \u00e0 l'achat.",
+    "symbol": "BTCUSD",
+    "price": 66886.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:12:00.812969"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Le prix est proche du niveau Fibonacci 0.382 et la tendance est haussi\u00e8re.",
+    "symbol": "BTCUSD",
+    "price": 66881.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:11:43.648153"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible (0.236) et la tendance est haussi\u00e8re, ce qui justifie un achat.",
+    "symbol": "BTCUSD",
+    "price": 66859.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:10:10.422217"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.89% < 2.5%), structure bullish mais sell stops detectes a 65565 (-1.91%) suggerent liquidite baissiere pro",
+    "symbol": "BTCUSD",
+    "price": 66839.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:09:54.157541"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66821.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:09:45.678053"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat.",
+    "symbol": "BTCUSD",
+    "price": 66813.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:08:08.470572"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66833.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:07:37.772488"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "BUY",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.88% < 3%), structure bullish confirm\u00e9e (4 HL), momentum positif 1m/5m, opportunit\u00e9 d'achat sur retracement",
+    "symbol": "BTCUSD",
+    "price": 66834.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:07:21.502055"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e \u00e0 l'achat.",
+    "symbol": "BTCUSD",
+    "price": 66836.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:06:15.652415"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66850.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:05:41.007972"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66856.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:05:20.113442"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "BUY",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.82% < 3%), tendance bullish confirm\u00e9e par structure ICT (4 HL), momentum positif 1m/5m, spread acceptable.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:04:59.568030"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:04:50.433755"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:04:44.552010"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:04:25.865848"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e \u00e0 l'achat malgr\u00e9 l'absence de pattern ICT.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:04:19.962112"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:04:01.936685"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci 0.236 et la tendance est haussi\u00e8re. Bien que je n'ai pas de pattern ICT, la structure de",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:03:56.652807"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e \u00e0 l'achat malgr\u00e9 l'absence de pattern ICT.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:03:38.716052"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:03:20.183642"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible (0.236) et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e \u00e0 l'achat.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:02:53.674238"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat malgr\u00e9 l'absence de pattern ICT.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:02:35.788460"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.82% < 2.0%), structure bullish mais zone de liquidit\u00e9 SELL_STOPS d\u00e9tect\u00e9e \u00e0 65565.00 (-1.77%) proche du ni",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:02:19.730466"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibonacci 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:02:06.103483"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible (0.236) et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e en position d'ach",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:02:00.601281"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans la zone de tol\u00e9rance du niveau Fibo 0.5 (1.82% de distance), structure bullish mais recherche de retracement vers le niveau cible $65,555. Z",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:01:44.658757"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibonacci 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:01:36.670977"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible (0.236) et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e en position d'ach",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:01:31.612345"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.82% < 2.0%), structure bullish mais zone de liquidit\u00e9 SELL_STOPS d\u00e9tect\u00e9e \u00e0 65565.00 (-1.77%) proche du ni",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:01:14.872789"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:00:42.690755"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.82% < 2.0%), structure bullish mais zone de liquidit\u00e9 SELL_STOPS d\u00e9tect\u00e9e \u00e0 65565.00 proche du niveau cibl",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:00:24.704035"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T23:00:13.833341"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.82% < 2.0%), structure bullish mais zone de liquidit\u00e9 SELL_STOPS d\u00e9tect\u00e9e \u00e0 65565.00 (-1.77%) proche du ni",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:59:57.579357"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:59:43.890579"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66747.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:59:25.123931"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat.",
+    "symbol": "BTCUSD",
+    "price": 66753.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:58:52.732681"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.76% < 2.0%), structure bullish mais niveau 0.5 agit comme resistance dans correction, zones liquidite SELL",
+    "symbol": "BTCUSD",
+    "price": 66706.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:57:29.029704"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibonacci 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66698.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:57:21.049669"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible (0.236) et la tendance est haussi\u00e8re, ce qui justifie une entr\u00e9e long.",
+    "symbol": "BTCUSD",
+    "price": 66671.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:56:33.775446"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66624.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:55:17.101055"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.61% de distance), tendance bullish mais momentum 1m negatif (-0.220%) suggere correction vers niveau cible",
+    "symbol": "BTCUSD",
+    "price": 66612.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:54:57.990859"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat malgr\u00e9 l'absence de pattern ICT.",
+    "symbol": "BTCUSD",
+    "price": 66575.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:54:06.456476"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66537.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:53:04.247588"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "BUY",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.57% < 2.5%), tendance bullish confirm\u00e9e par structure ICT (4 HL), momentum 5m positif (+0.167%) indique re",
+    "symbol": "BTCUSD",
+    "price": 66585.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:52:36.544519"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "BUY",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de 0.236 et la tendance est haussi\u00e8re, ce qui justifie un achat malgr\u00e9 l'absence de pattern institutionnel.",
+    "symbol": "BTCUSD",
+    "price": 66628.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:51:41.941378"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibonacci 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66710.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:50:41.106985"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.84% < 2.5%), tendance bullish mais momentum 1m negatif (-0.239%) suggere correction vers niveau cible $65,",
+    "symbol": "BTCUSD",
+    "price": 66760.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:50:06.369349"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "SELL",
+    "reason": "Bien que le prix soit dans la zone de tol\u00e9rance de 0.236 et que la tendance soit haussi\u00e8re, le pattern ICT \"THREE_DRIVE_TOP\" indique un \u00e9puisement hau",
+    "symbol": "BTCUSD",
+    "price": 66755.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:49:55.345560"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est proche du niveau Fibonacci cible, mais la structure de march\u00e9 indique un \u00e9puisement haussier avec un pattern Three Drive Top, sugg\u00e9rant un",
+    "symbol": "BTCUSD",
+    "price": 66761.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:49:35.701471"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est proche du niveau Fibonacci cible, mais la structure de march\u00e9 indique un potentiel retournement avec le pattern Three Drive Top, ce qui co",
+    "symbol": "BTCUSD",
+    "price": 66742.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:49:18.383994"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est dans la zone de tol\u00e9rance du niveau Fibonacci, mais la structure haussi\u00e8re est menac\u00e9e par un pattern ICT de retournement (Three Drive Top",
+    "symbol": "BTCUSD",
+    "price": 66780.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:49:01.570773"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est proche du niveau Fibonacci cible, mais la structure de march\u00e9 montre un pattern de retournement (Three Drive Top) et une recommandation IC",
+    "symbol": "BTCUSD",
+    "price": 66838.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:48:42.443486"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau Fibo 0.382, tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66833.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:48:23.325892"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Bien que le prix soit dans la zone de tol\u00e9rance de mon niveau Fibonacci cible, la structure de march\u00e9 indique un \u00e9puisement haussier avec un pattern \"",
+    "symbol": "BTCUSD",
+    "price": 66841.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:48:19.290835"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible, mais le pattern ICT (Three Drive Top) indique un \u00e9puisement haussier et un retour",
+    "symbol": "BTCUSD",
+    "price": 66788.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:48:01.181062"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "SELL",
+    "reason": "Prix dans zone tolerance niveau Fibo 0.5 (1.96% < 2.5%), pattern THREE_DRIVE_TOP confirme epuisement haussier malgre structure bullish, signal de reto",
+    "symbol": "BTCUSD",
+    "price": 66842.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:47:35.731671"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible, mais la structure de march\u00e9 montre un pattern de retournement (Three Drive Top) e",
+    "symbol": "BTCUSD",
+    "price": 66845.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:47:27.691549"
+  },
+  {
+    "agent_id": "fibo3",
+    "decision": "HOLD",
+    "reason": "Prix dans zone Fibo 0.5 mais pattern THREE_DRIVE_TOP indique \u00e9puisement haussier probable + d\u00e9j\u00e0 1/5 positions ouvertes. Attendre confirmation directi",
+    "symbol": "BTCUSD",
+    "price": 66899.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:47:12.900578"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est proche du niveau Fibonacci cible, mais la structure de march\u00e9 indique un \u00e9puisement haussier avec un pattern Three Drive Top, ce qui sugg\u00e8",
+    "symbol": "BTCUSD",
+    "price": 66905.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:47:05.205332"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible, mais la structure institutionnelle indique un \u00e9puisement haussier avec un pattern",
+    "symbol": "BTCUSD",
+    "price": 66869.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:46:47.235112"
+  },
+  {
+    "agent_id": "fibo2",
+    "decision": "BUY",
+    "reason": "Prix proche du niveau 0.382 et tendance bullish.",
+    "symbol": "BTCUSD",
+    "price": 66895.0,
+    "executed": true,
+    "timestamp": "2026-02-28T22:46:27.510579"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est proche du niveau Fibonacci cible, mais le pattern ICT (Three Drive Top) indique un possible retournement, ce qui contredit la tendance hau",
+    "symbol": "BTCUSD",
+    "price": 66904.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:46:23.365697"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est proche du niveau Fibonacci cible, mais la structure de march\u00e9 montre un pattern de retournement (Three Drive Top) qui indique un \u00e9puisemen",
+    "symbol": "BTCUSD",
+    "price": 66908.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:46:04.365689"
+  },
+  {
+    "agent_id": "fibo1",
+    "decision": "HOLD",
+    "reason": "Le prix est dans la zone de tol\u00e9rance de mon niveau Fibonacci cible, mais la structure de march\u00e9 indique un \u00e9puisement haussier avec un pattern Three ",
+    "symbol": "BTCUSD",
+    "price": 66944.0,
+    "executed": false,
+    "timestamp": "2026-02-28T22:45:47.845148"
+  }
+]

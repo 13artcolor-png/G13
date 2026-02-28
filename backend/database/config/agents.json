@@ -7,11 +7,11 @@
         "symbol": "BTCUSD",
         "timeframe": "M5",
         "fibo_level": "0.236",
-        "fibo_tolerance_pct": 3.5,
-        "cooldown_seconds": 180,
+        "fibo_tolerance_pct": 2.3,
+        "cooldown_seconds": 100,
         "decision_interval": 10,
         "signal_timeframe": "M1",
-        "position_size_pct": 0.01,
+        "position_size_pct": 0.05,
         "min_winrate_pct": 20,
         "max_drawdown_pct": 10,
         "max_positions": 5,
@@ -19,13 +19,19 @@
         "ia_adjust_enabled": true,
         "min_hold_seconds": 300,
         "tpsl_config": {
-            "tp_pct": 0.55,
+            "tp_pct": 0.75,
             "sl_pct": 0.5,
             "trailing_start_pct": 0.2,
             "trailing_distance_pct": 0.1,
             "break_even_pct": 0.15,
-            "max_spread_points": 50
-        }
+            "max_spread_points": 50.0,
+            "spread_check_enabled": true,
+            "trailing_enabled": true,
+            "break_even_enabled": true
+        },
+        "killzone_enabled": false,
+        "killzone_start": "08:00",
+        "killzone_end": "22:00"
     },
     "fibo2": {
         "name": "FIBO2",
@@ -35,11 +41,11 @@
         "symbol": "BTCUSD",
         "timeframe": "M5",
         "fibo_level": "0.382",
-        "fibo_tolerance_pct": 3.5,
-        "cooldown_seconds": 120,
+        "fibo_tolerance_pct": 3.4,
+        "cooldown_seconds": 110,
         "decision_interval": 10,
         "signal_timeframe": "M5",
-        "position_size_pct": 0.03,
+        "position_size_pct": 0.05,
         "min_winrate_pct": 20,
         "max_drawdown_pct": 10,
         "max_positions": 5,
@@ -47,13 +53,19 @@
         "ia_adjust_enabled": true,
         "min_hold_seconds": 300,
         "tpsl_config": {
-            "tp_pct": 0.3,
+            "tp_pct": 0.5,
             "sl_pct": 0.5,
             "trailing_start_pct": 0.2,
             "trailing_distance_pct": 0.1,
             "break_even_pct": 0.15,
-            "max_spread_points": 50
-        }
+            "max_spread_points": 50.0,
+            "spread_check_enabled": true,
+            "trailing_enabled": true,
+            "break_even_enabled": true
+        },
+        "killzone_enabled": false,
+        "killzone_start": "08:00",
+        "killzone_end": "22:00"
     },
     "fibo3": {
         "name": "FIBO3",
@@ -63,11 +75,11 @@
         "symbol": "BTCUSD",
         "timeframe": "M5",
         "fibo_level": "0.5",
-        "fibo_tolerance_pct": 3.5,
-        "cooldown_seconds": 300,
+        "fibo_tolerance_pct": 2.5,
+        "cooldown_seconds": 130,
         "decision_interval": 10,
         "signal_timeframe": "M1",
-        "position_size_pct": 0.01,
+        "position_size_pct": 0.05,
         "min_winrate_pct": 20,
         "max_drawdown_pct": 10,
         "max_positions": 5,
@@ -75,12 +87,18 @@
         "ia_adjust_enabled": true,
         "min_hold_seconds": 300,
         "tpsl_config": {
-            "tp_pct": 0.3,
-            "sl_pct": 0.5,
+            "tp_pct": 0.7,
+            "sl_pct": 0.25,
             "trailing_start_pct": 0.2,
             "trailing_distance_pct": 0.1,
             "break_even_pct": 0.15,
-            "max_spread_points": 50
-        }
+            "max_spread_points": 50.0,
+            "spread_check_enabled": true,
+            "trailing_enabled": true,
+            "break_even_enabled": true
+        },
+        "killzone_enabled": false,
+        "killzone_start": "08:00",
+        "killzone_end": "22:00"
     }
 }

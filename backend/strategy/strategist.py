@@ -216,30 +216,133 @@ class Strategist:
             "fibo3": self.analyze("fibo3")
         }
 
+    def analyze_with_ai(self) -> Optional[Dict]:
+        """
+        Analyse avancee via IA. Fallback sur regles si pas de cle API ou erreur.
+
+        Returns:
+            dict: {
+                "source": "ai" ou "rules",
+                "format": "exact_values" ou "types",
+                "analysis": str,
+                "trend_analysis": str,
+                "agents": {agent_id: {stats, evaluation, suggestions}},
+                "adjustments": List[dict] (format exact_values),
+                "suggestions": List[dict] (format types / fallback regles),
+                "suggestions_by_agent": dict
+            }
+        """
+        from strategy.strategist_ai import analyze_with_ai as ai_analyze, has_ai_key
+
+        # Toujours calculer l'analyse regles (base)
+        rules_analysis = self.get_all_agents_analysis()
+
+        # Tenter l'analyse IA si cle disponible
+        if has_ai_key():
+            ai_result = ai_analyze()
+            if ai_result:
+                fmt = ai_result.get("format", "types")
+
+                if fmt == "exact_values":
+                    # Nouveau format: valeurs exactes par agent
+                    return {
+                        "source": "ai",
+                        "format": "exact_values",
+                        "analysis": ai_result.get("analysis", ""),
+                        "trend_analysis": ai_result.get("trend_analysis", ""),
+                        "agents": rules_analysis,
+                        "adjustments": ai_result.get("adjustments", []),
+                        "suggestions": [],
+                        "suggestions_by_agent": {}
+                    }
+
+                elif ai_result.get("suggestions"):
+                    # Ancien format: types de suggestions
+                    ai_suggestions_by_agent = {}
+                    for s in ai_result["suggestions"]:
+                        aid = s.get("agent_id", "")
+                        if aid not in ai_suggestions_by_agent:
+                            ai_suggestions_by_agent[aid] = []
+                        ai_suggestions_by_agent[aid].append(s)
+
+                    return {
+                        "source": "ai",
+                        "format": "types",
+                        "analysis": ai_result.get("analysis", ""),
+                        "trend_analysis": ai_result.get("trend_analysis", ""),
+                        "agents": rules_analysis,
+                        "adjustments": [],
+                        "suggestions": ai_result["suggestions"],
+                        "suggestions_by_agent": ai_suggestions_by_agent
+                    }
+
+        # Fallback: regles if/else
+        all_suggestions = []
+        for agent_id, data in rules_analysis.items():
+            for s in data.get("suggestions", []):
+                s["agent_id"] = agent_id
+                all_suggestions.append(s)
+
+        return {
+            "source": "rules",
+            "format": "types",
+            "analysis": "",
+            "trend_analysis": "",
+            "agents": rules_analysis,
+            "adjustments": [],
+            "suggestions": all_suggestions,
+            "suggestions_by_agent": {}
+        }
+
     def get_quick_summary(self) -> Dict:
         """Resume rapide pour le dashboard."""
         all_stats = self.get_all_agents_analysis()
 
         total_trades = 0
         total_profit = 0
+        total_wins = 0
         best_agent = None
         best_winrate = 0
+        worst_agent = None
+        worst_winrate = 100
+        prev_profit = 0  # Pour calculer la tendance
 
         for agent_id, data in all_stats.items():
             stats = data.get("stats", {})
-            total_trades += stats.get("total_trades", 0)
+            trades = stats.get("total_trades", 0)
+            total_trades += trades
             total_profit += stats.get("total_profit", 0)
+            total_wins += stats.get("wins", 0)
 
             wr = stats.get("winrate", 0)
-            if wr > best_winrate:
-                best_winrate = wr
-                best_agent = agent_id
+            if trades > 0:
+                if wr > best_winrate:
+                    best_winrate = wr
+                    best_agent = agent_id
+                if wr < worst_winrate:
+                    worst_winrate = wr
+                    worst_agent = agent_id
+
+        # Win rate global
+        recent_win_rate = round(total_wins / total_trades * 100, 1) if total_trades > 0 else 0
+
+        # Tendance basee sur profit total (positif = hausse)
+        trend = "up" if total_profit >= 0 else "down"
+
+        # Status: ok si assez de trades
+        has_data = total_trades >= self.MIN_TRADES_FOR_ANALYSIS
+        status = "ok" if has_data else "insufficient_data"
 
         return {
+            "status": status,
             "total_trades": total_trades,
             "total_profit": round(total_profit, 2),
+            "recent_win_rate": recent_win_rate,
             "best_agent": best_agent,
             "best_winrate": best_winrate,
+            "worst_agent": worst_agent,
+            "worst_winrate": worst_winrate,
+            "trend": trend,
             "updated_at": datetime.now().isoformat()
         }
 

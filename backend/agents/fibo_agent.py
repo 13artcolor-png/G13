@@ -68,10 +68,12 @@ class FiboAgent(BaseAgent):
 
         # Verifier le spread max AVANT d'appeler l'IA (economiser des tokens)
         tpsl = self.config.get("tpsl_config", {})
-        max_spread = tpsl.get("max_spread_points", 50)
-        spread_points = market_data.get("spread_points", spread)
-        if spread_points > max_spread:
-            return None
+        spread_check_on = tpsl.get("spread_check_enabled", True)
+        if spread_check_on:
+            max_spread = tpsl.get("max_spread_points", 50)
+            spread_points = market_data.get("spread_points", spread)
+            if spread_points > max_spread:
+                return None
 
         # Analyse institutionnelle sur les bougies
         institutional = None

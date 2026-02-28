@@ -34,6 +34,79 @@ router = APIRouter(prefix="/api", tags=["Compatibilite G12"])
 DATABASE_PATH = Path(__file__).parent.parent / "database"
 CONFIG_PATH = DATABASE_PATH / "config"
 
+
+def _get_active_killzones() -> dict:
+    """
+    Determine quelles sessions de marche (killzones) sont actives
+    en fonction de l'heure UTC actuelle.
+
+    Horaires UTC standards:
+    - ASIE (Tokyo):    00:00 - 09:00 UTC
+    - LONDON:          07:00 - 16:00 UTC
+    - KILLZONE (overlap LDN/NY): 12:00 - 15:00 UTC
+    - NEW YORK:        13:00 - 22:00 UTC
+    """
+    from datetime import datetime, timezone
+    now_utc = datetime.now(timezone.utc)
+    h = now_utc.hour
+    weekday = now_utc.weekday()  # 0=lundi ... 6=dimanche
+
+    # Marches fermes le weekend (samedi + dimanche)
+    is_weekend = weekday >= 5
+
+    return {
+        "asia":    {"active": not is_weekend and 0 <= h < 9,   "hours": "00:00-09:00 UTC"},
+        "london":  {"active": not is_weekend and 7 <= h < 16,  "hours": "07:00-16:00 UTC"},
+        "overlap": {"active": not is_weekend and 12 <= h < 15, "hours": "12:00-15:00 UTC"},
+        "usa":     {"active": not is_weekend and 13 <= h < 22, "hours": "13:00-22:00 UTC"},
+        "is_weekend": is_weekend,
+    }
+
+
+def _build_frontend_stats(all_stats: dict) -> dict:
+    """
+    Transforme les stats backend en format attendu par le frontend.
+    Backend: wins, losses, winrate, avg_win
+    Frontend: winning_trades, losing_trades, win_rate, avg_profit, + totaux agreges
+    """
+    agents = {}
+    total_trades = 0
+    total_wins = 0
+    total_losses = 0
+    total_profit = 0.0
+
+    for agent_id in ["fibo1", "fibo2", "fibo3"]:
+        s = all_stats.get(agent_id, {})
+        trades = s.get("total_trades", 0)
+        wins = s.get("wins", 0)
+        losses = s.get("losses", 0)
+        profit = s.get("total_profit", 0)
+
+        agents[agent_id] = {
+            "total_trades": trades,
+            "winning_trades": wins,
+            "losing_trades": losses,
+            "win_rate": s.get("winrate", 0),
+            "total_profit": round(profit, 2),
+            "avg_profit": s.get("avg_win", 0),
+        }
+
+        total_trades += trades
+        total_wins += wins
+        total_losses += losses
+        total_profit += profit
+
+    global_winrate = round((total_wins / total_trades * 100), 2) if total_trades > 0 else 0
+
+    return {
+        "agents": agents,
+        "total_trades": total_trades,
+        "total_wins": total_wins,
+        "total_losses": total_losses,
+        "win_rate": global_winrate,
+        "total_profit": round(total_profit, 2),
+    }
+
 # ===================== SESSION =====================
 
 @router.get("/status")
@@ -71,7 +144,8 @@ async def get_status():
     session_id = session_data.get("id", "")
     session_with_name = {
         **session_data,
-        "name": session_id[:8] if session_id else "--"
+        "name": session_id[:8] if session_id else "--",
+        "sessions": _get_active_killzones()
     }
 
     # Recuperer donnees de marche et balances des comptes
@@ -251,6 +325,16 @@ async def get_status():
         "volatility_pct": volatility
     }
 
+    # Ajouter label volatilite dans session (pour badge frontend)
+    if volatility >= 2.0:
+        session_with_name["volatility"] = "ultra"
+    elif volatility >= 1.0:
+        session_with_name["volatility"] = "high"
+    elif volatility >= 0.5:
+        session_with_name["volatility"] = "medium"
+    else:
+        session_with_name["volatility"] = "low"
+
     # Verifier si au moins un MT5 est connecte
     any_mt5_connected = any(acc.get("connected") for acc in accounts_with_balance.values())
 
@@ -284,11 +368,15 @@ async def get_status():
             agent_id: {
                 "enabled": cfg.get("enabled", False),
                 "name": cfg.get("name", agent_id),
-                "stats": all_stats.get(agent_id, {})
+                "stats": all_stats.get(agent_id, {}),
+                # Champs attendus par le frontend (cartes agents)
+                "session_pnl": all_stats.get(agent_id, {}).get("total_profit", 0),
+                "session_trades": all_stats.get(agent_id, {}).get("total_trades", 0),
             }
             for agent_id, cfg in agents_config.items()
         },
-        "stats": all_stats,
+        # Stats structurees pour le tableau "Stat Session" du frontend
+        "stats": _build_frontend_stats(all_stats),
         "account": {
             "balance": total_balance or session_data.get("balance_start") or 0,
             "equity": total_equity or session_data.get("balance_start") or 0,
@@ -305,8 +393,31 @@ async def get_status():
 
 @router.get("/session")
 async def get_session():
-    """Info session (compatibilite G12)."""
-    return get_session_info()
+    """Info session enrichie (ID, debut, trades_count, total_pnl, killzones)."""
+    info = get_session_info()
+    session_data = info.get("session") or {}
+    is_active = info.get("is_active", False)
+
+    # Calculer trades_count et total_pnl depuis les stats
+    all_stats = get_all_stats()
+    trades_count = sum(s.get("total_trades", 0) for s in all_stats.values())
+    total_pnl = sum(s.get("total_profit", 0) for s in all_stats.values())
+
+    # Killzones basees sur l'heure UTC actuelle
+    killzones = _get_active_killzones()
+
+    # Format plat attendu par le frontend
+    return {
+        "active": is_active,
+        "id": session_data.get("id"),
+        "start_time": session_data.get("start_time"),
+        "balance_start": session_data.get("balance_start"),
+        "status": session_data.get("status", "stopped"),
+        "trades_count": trades_count,
+        "total_pnl": round(total_pnl, 2),
+        "killzones": killzones,
+        "duration_seconds": info.get("duration_seconds")
+    }
 
 
 @router.get("/session/performance")
@@ -369,19 +480,40 @@ async def api_session_end():
 async def api_session_sync():
     """Sync session avec MT5 (compatibilite G12)."""
     results = {}
+    total_new_trades = 0
+    total_pnl = 0.0
+
     for agent_id in ["fibo1", "fibo2", "fibo3"]:
         try:
             connect_result = connect_mt5(agent_id)
             if connect_result["success"]:
+                pos_result = sync_positions(agent_id)
+                closed_result = sync_closed_trades(agent_id)
                 results[agent_id] = {
-                    "positions": sync_positions(agent_id),
-                    "closed": sync_closed_trades(agent_id)
+                    "positions": pos_result,
+                    "closed": closed_result
                 }
+                # Agreeger pour le frontend
+                total_new_trades += closed_result.get("new_trades", 0)
                 disconnect_mt5()
         except Exception as e:
             results[agent_id] = {"error": str(e)}
 
-    return {"success": True, "results": results}
+    # Calculer P&L total depuis les closed_trades locaux
+    for agent_id in ["fibo1", "fibo2", "fibo3"]:
+        try:
+            local = get_local_closed_trades(agent_id)
+            for t in local.get("trades", []):
+                total_pnl += t.get("profit", 0)
+        except Exception:
+            pass
+
+    return {
+        "success": True,
+        "results": results,
+        "new_trades": total_new_trades,
+        "total_synced_pnl": round(total_pnl, 2)
+    }
 
 
 # ===================== TRADING =====================
@@ -504,13 +636,37 @@ async def toggle_agent(agent_id: str, enabled: bool):
 
 @router.get("/config/all")
 async def get_all_config():
-    """Toutes les configs (compatibilite G12)."""
+    """Toutes les configs (agents + risque global)."""
+    result = {"agents": {}, "risk": {}, "spread": {}}
     try:
         with open(CONFIG_PATH / "agents.json", "r") as f:
-            agents = json.load(f)
-        return {"agents": agents}
+            result["agents"] = json.load(f)
     except:
-        return {"agents": {}}
+        pass
+    try:
+        risk_file = CONFIG_PATH / "risk_config.json"
+        if risk_file.exists():
+            with open(risk_file, "r") as f:
+                result["risk"] = json.load(f)
+    except:
+        pass
+    # Spread/Trailing/BE: lire depuis tpsl_config du premier agent (TP/SL sont par agent)
+    try:
+        first_agent = next(iter(result["agents"].values()), {})
+        tpsl = first_agent.get("tpsl_config", {})
+        if tpsl:
+            result["spread"] = {
+                "max_spread_points": tpsl.get("max_spread_points", 50),
+                "spread_check_enabled": tpsl.get("spread_check_enabled", True),
+                "trailing_start_pct": tpsl.get("trailing_start_pct", 0.2),
+                "trailing_distance_pct": tpsl.get("trailing_distance_pct", 0.1),
+                "trailing_enabled": tpsl.get("trailing_enabled", True),
+                "break_even_pct": tpsl.get("break_even_pct", 0.15),
+                "break_even_enabled": tpsl.get("break_even_enabled", True),
+            }
+    except:
+        pass
+    return result
 
 
 @router.get("/config/agent/{agent_id}")
@@ -526,12 +682,20 @@ async def get_agent_config(agent_id: str):
 
 @router.post("/config/agent/{agent_id}")
 async def update_agent_config(agent_id: str, config: Dict[str, Any]):
-    """Mettre a jour config agent (compatibilite G12)."""
+    """Mettre a jour config agent avec deep merge pour tpsl_config."""
     try:
         with open(CONFIG_PATH / "agents.json", "r") as f:
             configs = json.load(f)
 
         if agent_id in configs:
+            # Deep merge pour tpsl_config (ne pas ecraser les cles non envoyees)
+            if "tpsl_config" in config and isinstance(config["tpsl_config"], dict):
+                existing_tpsl = configs[agent_id].get("tpsl_config", {})
+                existing_tpsl.update(config["tpsl_config"])
+                configs[agent_id]["tpsl_config"] = existing_tpsl
+                del config["tpsl_config"]
+
+            # Shallow merge pour le reste des cles
             configs[agent_id].update(config)
 
             with open(CONFIG_PATH / "agents.json", "w") as f:
@@ -612,35 +776,80 @@ async def test_account(agent_id: str):
 @router.get("/trades")
 async def get_trades(agent: str = None, limit: int = 100):
     """Liste des trades (compatibilite G12)."""
-    if agent:
-        result = get_local_closed_trades(agent, limit=limit)
-        return result.get("trades", [])
+    agents_to_query = [agent] if agent and agent != "all" else ["fibo1", "fibo2", "fibo3"]
 
-    # Tous les agents
     all_trades = []
-    for agent_id in ["fibo1", "fibo2", "fibo3"]:
+    for agent_id in agents_to_query:
         result = get_local_closed_trades(agent_id, limit=limit)
         all_trades.extend(result.get("trades", []))
 
-    # Trier par temps
+    # Trier par temps de fermeture (plus recent en premier)
     all_trades.sort(key=lambda x: x.get("time", 0), reverse=True)
-    return all_trades[:limit]
+    raw = all_trades[:limit]
+
+    # Transformer en format attendu par le frontend
+    trades = []
+    for t in raw:
+        # Direction originale = inverse du closing deal type
+        close_type = t.get("type", "")
+        if close_type == "SELL":
+            direction = "BUY"
+        elif close_type == "BUY":
+            direction = "SELL"
+        else:
+            direction = close_type
+
+        # Convertir timestamp unix en ISO
+        close_time = t.get("time", 0)
+        timestamp = datetime.fromtimestamp(close_time).isoformat() if close_time else None
+
+        trades.append({
+            "ticket": t.get("position_id", t.get("ticket", 0)),
+            "agent_id": t.get("agent_id", ""),
+            "symbol": t.get("symbol", ""),
+            "direction": direction,
+            "volume": t.get("volume", 0),
+            "entry_price": t.get("open_price", 0),
+            "exit_price": t.get("price", 0),
+            "profit": t.get("profit", 0),
+            "profit_eur": t.get("profit", 0),
+            "timestamp": timestamp,
+            "close_reason": t.get("comment", ""),
+        })
+
+    return {"trades": trades}
 
 
 @router.post("/positions/validate")
-async def validate_positions():
-    """Valider positions (compatibilite G12)."""
-    from actions.sync import validate_positions
+async def api_validate_positions():
+    """Valider positions et nettoyer les fantomes."""
+    from actions.sync import validate_positions as do_validate
+    from actions.sync import auto_fix_positions
 
     results = {}
     for agent_id in ["fibo1", "fibo2", "fibo3"]:
         try:
             connect_result = connect_mt5(agent_id)
             if connect_result["success"]:
-                results[agent_id] = validate_positions(agent_id)
+                validation = do_validate(agent_id)
+                removed = 0
+                # Si positions fantomes detectees, nettoyer en re-syncant depuis MT5
+                extra = validation.get("extra_locally", [])
+                if extra:
+                    auto_fix_positions(agent_id)
+                    removed = len(extra)
                 disconnect_mt5()
+                results[agent_id] = {
+                    "valid": validation.get("valid", False),
+                    "removed": removed,
+                    "message": validation.get("message", "")
+                }
+            else:
+                results[agent_id] = {"valid": False, "removed": 0, "message": "MT5 non connecte"}
         except Exception as e:
-            results[agent_id] = {"error": str(e)}
+            results[agent_id] = {"valid": False, "removed": 0, "error": str(e)}
+
+    return {"success": True, "results": results}
 
 
 # ===================== KEYS API =====================
@@ -706,130 +915,382 @@ async def get_strategist_insights():
 
 @router.get("/strategist/analyze")
 async def strategist_analyze():
-    """Analyse du Strategist (compatibilite G12)."""
+    """Analyse enrichie du Strategist - IA si cle disponible, sinon regles."""
     strategist = get_strategist()
-    return strategist.get_all_agents_analysis()
+
+    # Utiliser analyze_with_ai() qui gere le fallback automatiquement
+    ai_result = strategist.analyze_with_ai()
+    source = ai_result.get("source", "rules")
+    raw = ai_result.get("agents", strategist.get_all_agents_analysis())
+
+    # Construire le format attendu par le frontend
+    by_agent = {}
+    total_trades = 0
+    total_wins = 0
+    total_losses = 0
+    total_profit = 0.0
+    total_win_amount = 0.0
+    total_loss_amount = 0.0
+    max_win = 0.0
+    max_loss = 0.0
+    any_data = False
+
+    for agent_id, data in raw.items():
+        stats = data.get("stats", {})
+        evaluation = data.get("evaluation", "insufficient_data")
+
+        trades = stats.get("total_trades", 0)
+        if trades > 0:
+            any_data = True
+
+        total_trades += trades
+        total_wins += stats.get("wins", 0)
+        total_losses += stats.get("losses", 0)
+        total_profit += stats.get("total_profit", 0)
+
+        avg_w = stats.get("avg_win", 0)
+        avg_l = stats.get("avg_loss", 0)
+        wins_count = stats.get("wins", 0)
+        losses_count = stats.get("losses", 0)
+        total_win_amount += avg_w * wins_count
+        total_loss_amount += abs(avg_l) * losses_count
+
+        best = stats.get("best_trade", 0)
+        worst = stats.get("worst_trade", 0)
+        if best > max_win:
+            max_win = best
+        if worst < max_loss:
+            max_loss = worst
+
+        by_agent[agent_id] = {
+            "total_trades": trades,
+            "win_rate": stats.get("winrate", 0),
+            "profit_factor": stats.get("profit_factor", 0),
+            "total_profit": stats.get("total_profit", 0),
+            "evaluation": evaluation
+        }
+
+    if not any_data:
+        return {
+            "status": "insufficient_data",
+            "message": f"Besoin de {strategist.MIN_TRADES_FOR_ANALYSIS} trades minimum"
+        }
+
+    # Suggestions : format exact_values (nouveau) ou types (ancien)
+    all_suggestions = []
+    fmt = ai_result.get("format", "types")
+
+    if fmt == "exact_values":
+        # Nouveau format : afficher les valeurs exactes
+        for adj in ai_result.get("adjustments", []):
+            changes = adj.get("changes", {})
+            changes_str = ", ".join(f"{k}: {v}" for k, v in changes.items())
+            all_suggestions.append({
+                "priority": adj.get("priority", "medium"),
+                "category": "EXACT_VALUES",
+                "suggestion": f"{adj.get('agent_id', '').upper()}: {changes_str}",
+                "reason": adj.get("reason", ""),
+                "agent_id": adj.get("agent_id", ""),
+                "changes": changes
+            })
+    else:
+        # Ancien format : types de suggestions
+        for s in ai_result.get("suggestions", []):
+            all_suggestions.append({
+                "priority": s.get("priority", "medium"),
+                "category": s.get("type", s.get("category", "")),
+                "suggestion": s.get("reason", s.get("message", s.get("suggestion", ""))),
+                "reason": s.get("suggested_action", s.get("reason", "")),
+                "agent_id": s.get("agent_id", "")
+            })
+
+    # Stats globales
+    global_winrate = round(total_wins / total_trades * 100, 1) if total_trades > 0 else 0
+    total_loss_abs = total_loss_amount if total_loss_amount > 0 else 1
+    global_pf = round(total_win_amount / total_loss_abs, 2)
+    avg_win = round(total_win_amount / total_wins, 2) if total_wins > 0 else 0
+    avg_loss = round(-total_loss_amount / total_losses, 2) if total_losses > 0 else 0
+
+    return {
+        "status": "ok",
+        "source": source,
+        "ai_analysis": ai_result.get("analysis", ""),
+        "trend_analysis": ai_result.get("trend_analysis", ""),
+        "suggestions": all_suggestions,
+        "by_agent": by_agent,
+        "global": {
+            "total_trades": total_trades,
+            "win_rate": global_winrate,
+            "profit_factor": global_pf,
+            "total_profit": round(total_profit, 2),
+            "avg_win": avg_win,
+            "avg_loss": avg_loss,
+            "max_win": round(max_win, 2),
+            "max_loss": round(max_loss, 2)
+        }
+    }
 
 
 @router.post("/strategist/execute")
 async def strategist_execute():
-    """Executer suggestions Strategist (compatibilite G12)."""
+    """Executer suggestions Strategist (valeurs exactes IA ou regles fallback)."""
     from strategy import get_ia_adjust
+    from actions.mt5 import connect_mt5, disconnect_mt5, modify_trade_sl_tp
 
     strategist = get_strategist()
     ia_adjust = get_ia_adjust()
 
+    # Charger configs agents
+    agents_cfg = {}
+    try:
+        with open(CONFIG_PATH / "agents.json", "r") as f:
+            agents_cfg = json.load(f)
+    except Exception:
+        pass
+
+    # Lancer l'analyse IA/regles
+    ai_result = strategist.analyze_with_ai()
+    fmt = ai_result.get("format", "types")
+
     results = {}
-    for agent_id in ["fibo1", "fibo2", "fibo3"]:
-        analysis = strategist.analyze(agent_id)
-        suggestions = analysis.get("suggestions", [])
+    executed_count = 0
+    all_mt5_mods = {}
 
-        if suggestions:
-            result = ia_adjust.auto_adjust(agent_id, suggestions)
+    if fmt == "exact_values":
+        # Nouveau format : valeurs exactes
+        for adj in ai_result.get("adjustments", []):
+            agent_id = adj.get("agent_id", "")
+            if agent_id not in ("fibo1", "fibo2", "fibo3"):
+                continue
+            if not agents_cfg.get(agent_id, {}).get("ia_adjust_enabled", False):
+                continue
+
+            result = ia_adjust.apply_exact_values(
+                agent_id, adj.get("changes", {}), adj.get("reason", "")
+            )
             results[agent_id] = result
+            executed_count += len(result.get("adjustments", []))
 
-    return {"success": True, "results": results}
+            if result.get("mt5_modifications"):
+                all_mt5_mods[agent_id] = result["mt5_modifications"]
+    else:
+        # Ancien format : regles
+        for agent_id in ["fibo1", "fibo2", "fibo3"]:
+            if not agents_cfg.get(agent_id, {}).get("ia_adjust_enabled", False):
+                continue
+
+            analysis = strategist.analyze(agent_id)
+            suggestions = analysis.get("suggestions", [])
+
+            if suggestions:
+                result = ia_adjust.auto_adjust(agent_id, suggestions)
+                results[agent_id] = result
+                executed_count += len(result.get("adjustments", []))
+
+                if result.get("mt5_modifications"):
+                    all_mt5_mods[agent_id] = result["mt5_modifications"]
+
+    # Appliquer les modifications MT5 (SL/TP positions ouvertes)
+    mt5_results = {}
+    for agent_id, mods in all_mt5_mods.items():
+        try:
+            conn = connect_mt5(agent_id)
+            if conn.get("success"):
+                modified = 0
+                for mod in mods:
+                    ticket = mod.get("ticket")
+                    if not ticket:
+                        continue
+                    mod_result = modify_trade_sl_tp(
+                        ticket=ticket,
+                        new_sl=mod.get("new_sl"),
+                        new_tp=mod.get("new_tp"),
+                        symbol=mod.get("symbol")
+                    )
+                    if mod_result.get("success") and mod_result.get("changed"):
+                        modified += 1
+                disconnect_mt5()
+                mt5_results[agent_id] = f"{modified} position(s) modifiee(s)"
+            else:
+                mt5_results[agent_id] = "connexion MT5 echouee"
+        except Exception as e:
+            mt5_results[agent_id] = f"erreur: {e}"
+            try:
+                disconnect_mt5()
+            except Exception:
+                pass
+
+    return {
+        "success": True,
+        "results": results,
+        "executed_count": executed_count,
+        "mt5_modifications": mt5_results
+    }
 
 
 @router.get("/strategist/logs")
 async def get_strategist_logs(limit: int = 50):
-    """Logs du Strategist (compatibilite G12)."""
+    """Logs du Strategist - transformes au format attendu par le frontend."""
     from strategy import get_ia_adjust
     ia_adjust = get_ia_adjust()
-    return ia_adjust.get_recent_adjustments(limit=limit)
+    raw_logs = ia_adjust.get_recent_adjustments(limit=limit)
+
+    # Transformer au format frontend (type, timestamp, reason, details)
+    TYPE_LABELS = {
+        "REDUCE_TOLERANCE": "Tolerance reduite",
+        "INCREASE_TOLERANCE": "Tolerance augmentee",
+        "INCREASE_COOLDOWN": "Cooldown augmente",
+        "REDUCE_COOLDOWN": "Cooldown reduit",
+        "ADJUST_TPSL": "TP/SL ajuste",
+        "RISK_MANAGEMENT": "Gestion du risque",
+        "INCREASE_RISK": "Risque augmente",
+        "MANUAL_ADJUST": "Ajustement manuel",
+        "EXACT_VALUE": "Valeur exacte IA",
+    }
+
+    logs = []
+    for log in raw_logs:
+        action_type = log.get("type", "")
+        agent = log.get("agent_id", "")
+        field = log.get("field", "")
+        old_val = log.get("old_value")
+        new_val = log.get("new_value")
+        label = TYPE_LABELS.get(action_type, action_type)
+
+        logs.append({
+            "type": "ACTION_EXECUTED",
+            "timestamp": log.get("timestamp"),
+            "reason": f"{label} - Agent {agent.upper()}: {field} ({old_val} -> {new_val})",
+            "details": {
+                "action": action_type,
+                "agent": agent,
+                "field": field,
+                "old_value": old_val,
+                "new_value": new_val
+            }
+        })
+
+    return {"logs": logs}
 
 
 # ===================== CONFIG SPREAD/RISK =====================
 
 @router.get("/config/spread")
 async def get_spread_config():
-    """Config spread - lit depuis tpsl_config dans agents.json."""
+    """Config spread (sans TP/SL qui sont maintenant par agent)."""
     try:
         with open(CONFIG_PATH / "agents.json", "r") as f:
             agents = json.load(f)
 
-        # Lire tpsl_config du premier agent (identique pour tous)
         first_agent = next(iter(agents.values()), {})
         tpsl = first_agent.get("tpsl_config", {})
 
         return {
-            "tp_pct": tpsl.get("tp_pct", 0.3),
-            "sl_pct": tpsl.get("sl_pct", 0.5),
             "max_spread_points": tpsl.get("max_spread_points", 50),
+            "spread_check_enabled": tpsl.get("spread_check_enabled", True),
             "trailing_start_pct": tpsl.get("trailing_start_pct", 0.2),
             "trailing_distance_pct": tpsl.get("trailing_distance_pct", 0.1),
-            "break_even_pct": tpsl.get("break_even_pct", 0.15)
+            "trailing_enabled": tpsl.get("trailing_enabled", True),
+            "break_even_pct": tpsl.get("break_even_pct", 0.15),
+            "break_even_enabled": tpsl.get("break_even_enabled", True)
         }
     except:
         return {
-            "tp_pct": 0.3,
-            "sl_pct": 0.5,
             "max_spread_points": 50,
+            "spread_check_enabled": True,
             "trailing_start_pct": 0.2,
             "trailing_distance_pct": 0.1,
-            "break_even_pct": 0.15
+            "trailing_enabled": True,
+            "break_even_pct": 0.15,
+            "break_even_enabled": True
         }
 
 
 @router.post("/config/spread")
 async def update_spread_config(config: Dict[str, Any]):
-    """Update spread/tpsl config - sauvegarde dans tpsl_config de chaque agent."""
+    """Update spread/trailing/break-even config (global, applique a tous les agents). TP/SL sont par agent."""
     try:
         with open(CONFIG_PATH / "agents.json", "r") as f:
             agents = json.load(f)
 
-        # Appliquer a TOUS les agents
+        # Appliquer a TOUS les agents (spread, trailing, break-even sont globaux)
         for agent_id in agents:
             if "tpsl_config" not in agents[agent_id]:
                 agents[agent_id]["tpsl_config"] = {}
 
             tpsl = agents[agent_id]["tpsl_config"]
 
-            # Mettre a jour les champs fournis
-            if "tp_pct" in config:
-                tpsl["tp_pct"] = float(config["tp_pct"])
-            if "sl_pct" in config:
-                tpsl["sl_pct"] = float(config["sl_pct"])
+            # Spread
             if "max_spread_points" in config:
                 tpsl["max_spread_points"] = float(config["max_spread_points"])
+            if "spread_check_enabled" in config:
+                tpsl["spread_check_enabled"] = bool(config["spread_check_enabled"])
+            # Trailing
             if "trailing_start_pct" in config:
                 tpsl["trailing_start_pct"] = float(config["trailing_start_pct"])
             if "trailing_distance_pct" in config:
                 tpsl["trailing_distance_pct"] = float(config["trailing_distance_pct"])
+            if "trailing_enabled" in config:
+                tpsl["trailing_enabled"] = bool(config["trailing_enabled"])
+            # Break Even
             if "break_even_pct" in config:
                 tpsl["break_even_pct"] = float(config["break_even_pct"])
+            if "break_even_enabled" in config:
+                tpsl["break_even_enabled"] = bool(config["break_even_enabled"])
 
         with open(CONFIG_PATH / "agents.json", "w") as f:
             json.dump(agents, f, indent=4)
 
-        print(f"[Config] TPSL/Spread mis a jour: {config}")
+        print(f"[Config] Spread/Trailing/BE mis a jour: {config}")
         return {"success": True}
     except Exception as e:
         return {"success": False, "error": str(e)}
 
 
+@router.get("/config/risk")
+async def get_risk_config():
+    """Retourne la config risque globale depuis risk_config.json."""
+    try:
+        risk_file = CONFIG_PATH / "risk_config.json"
+        if risk_file.exists():
+            with open(risk_file, "r") as f:
+                return json.load(f)
+        return {
+            "max_drawdown_pct": 10,
+            "max_daily_loss_pct": 5,
+            "emergency_close_pct": 15,
+            "winner_never_loser": True
+        }
+    except:
+        return {}
+
+
 @router.post("/config/risk")
 async def update_risk_config(config: Dict[str, Any]):
-    """Update risk config - sauvegarde dans chaque agent de agents.json."""
+    """Update risk config GLOBAL - sauvegarde dans risk_config.json (pas agents.json)."""
     try:
-        with open(CONFIG_PATH / "agents.json", "r") as f:
-            agents = json.load(f)
+        risk_file = CONFIG_PATH / "risk_config.json"
 
-        # Appliquer a TOUS les agents
-        for agent_id in agents:
-            if "max_drawdown_pct" in config:
-                agents[agent_id]["max_drawdown_pct"] = float(config["max_drawdown_pct"])
-            if "max_daily_loss_pct" in config:
-                agents[agent_id]["max_daily_loss_pct"] = float(config["max_daily_loss_pct"])
-            if "max_positions" in config:
-                agents[agent_id]["max_positions"] = int(config["max_positions"])
-            if "urgency_pct" in config:
-                agents[agent_id]["urgency_pct"] = float(config["urgency_pct"])
+        # Charger config existante
+        current = {}
+        if risk_file.exists():
+            with open(risk_file, "r") as f:
+                current = json.load(f)
 
-        with open(CONFIG_PATH / "agents.json", "w") as f:
-            json.dump(agents, f, indent=4)
+        # Mettre a jour les champs recus
+        if "max_drawdown_pct" in config:
+            current["max_drawdown_pct"] = float(config["max_drawdown_pct"])
+        if "max_daily_loss_pct" in config:
+            current["max_daily_loss_pct"] = float(config["max_daily_loss_pct"])
+        if "emergency_close_pct" in config:
+            current["emergency_close_pct"] = float(config["emergency_close_pct"])
+        if "winner_never_loser" in config:
+            current["winner_never_loser"] = bool(config["winner_never_loser"])
 
-        print(f"[Config] Risk mis a jour: {config}")
+        with open(risk_file, "w") as f:
+            json.dump(current, f, indent=4)
+
+        print(f"[Config] Risk GLOBAL mis a jour: {current}")
         return {"success": True}
     except Exception as e:
         return {"success": False, "error": str(e)}

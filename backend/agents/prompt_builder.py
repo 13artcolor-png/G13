@@ -28,17 +28,20 @@ def build_system_prompt(agent_id: str, config: Dict) -> str:
     description = config.get("description", "")
     fibo_level = config.get("fibo_level", "0.236")
 
+    tolerance = config.get("fibo_tolerance_pct", 2.0)
+
     return f"""Tu es {name}, un agent de trading IA specialise BTCUSD.
 {description}
 
 TON NIVEAU FIBONACCI CIBLE: {fibo_level}
+TOLERANCE: {tolerance}% autour du niveau cible (si le prix est a moins de {tolerance}% du niveau, considere qu'il est PROCHE)
 
-REGLES STRICTES:
+REGLES:
 1. Reponds UNIQUEMENT par: ACTION: BUY | RAISON: ... ou ACTION: SELL | RAISON: ... ou ACTION: HOLD | RAISON: ...
-2. Ne trade que si tu as une conviction forte (confiance >70%)
-3. HOLD si le contexte est ambigu ou contradictoire
-4. Utilise l'analyse institutionnelle (ICT/SMC) pour confirmer tes decisions
-5. Respecte toujours le sens de la structure de marche
+2. Si le prix est dans la zone de tolerance de ton niveau Fibo -> cherche un signal d'entree
+3. L'analyse institutionnelle (ICT/SMC) est un BONUS, pas une obligation. Un pattern ICT renforce le signal mais son absence ne doit PAS empecher un trade si le niveau Fibo et la tendance sont alignes
+4. Respecte le sens de la structure de marche (BUY en tendance haussiere, SELL en tendance baissiere)
+5. HOLD uniquement si le prix est LOIN de ton niveau cible (>{tolerance}%) OU si la tendance contredit clairement le signal
 
 FORMAT DE REPONSE (OBLIGATOIRE):
 ACTION: [BUY/SELL/HOLD] | RAISON: [explication courte et precise]"""
@@ -71,12 +74,19 @@ def build_opener_prompt(market_data: Dict, config: Dict,
     momentum_1m = market_data.get("momentum_1m", 0)
 
     target_level = config.get("fibo_level", "0.236")
+    tolerance_pct = config.get("fibo_tolerance_pct", 2.0)
     max_positions = config.get("max_positions", 5)
     tpsl = config.get("tpsl_config", {})
+
+    # Calculer la distance au niveau cible
+    target_price = fibo_levels.get(target_level, 0) if fibo_levels else 0
+    distance_pct = abs(price - target_price) / target_price * 100 if target_price and price else 999
+    in_zone = distance_pct <= tolerance_pct
 
     # Section Fibonacci
     fibo_section = ""
     if fibo_levels:
+        zone_status = f"DANS LA ZONE (distance: {distance_pct:.2f}%, tolerance: {tolerance_pct}%)" if in_zone else f"HORS ZONE (distance: {distance_pct:.2f}%, tolerance: {tolerance_pct}%)"
         fibo_section = f"""
 NIVEAUX FIBONACCI (100 bougies):
 - Swing High: ${high:,.2f}
@@ -86,7 +96,8 @@ NIVEAUX FIBONACCI (100 bougies):
 - 0.5: ${fibo_levels.get('0.5', 0):,.2f}
 - 0.618: ${fibo_levels.get('0.618', 0):,.2f}
 - 0.786: ${fibo_levels.get('0.786', 0):,.2f}
-NIVEAU CIBLE: {target_level}"""
+NIVEAU CIBLE: {target_level} (${target_price:,.2f})
+DISTANCE: {distance_pct:.2f}% | TOLERANCE: {tolerance_pct}% | STATUS: {zone_status}"""
 
     # Section institutionnelle
     inst_section = ""
@@ -155,10 +166,16 @@ CONFIG TP/SL:
 
 === TA MISSION ===
 Analyse le contexte ci-dessus. Decide: BUY, SELL, ou HOLD.
-- Si le prix est proche de ton niveau Fibo cible ({target_level}) ET que l'analyse institutionnelle confirme -> Trade
-- Si la structure de marche contredit le signal Fibonacci -> HOLD
-- Si le spread est trop eleve ou la volatilite trop faible -> HOLD
-- Si tu as deja {open_positions_count}/{max_positions} positions -> HOLD (sauf conviction tres forte)
+
+QUAND TRADER:
+- Le prix est dans la zone de tolerance de ton niveau Fibo cible ({target_level}) ET la tendance/structure est favorable -> BUY ou SELL selon la tendance
+- Un pattern ICT/SMC confirme le signal -> renforce la conviction (mais n'est PAS obligatoire)
+
+QUAND HOLD:
+- Le prix est LOIN de ton niveau Fibo cible (bien au-dela de la tolerance)
+- La structure de marche contredit clairement le signal Fibonacci
+- Le spread depasse le max autorise
+- Tu as deja {open_positions_count}/{max_positions} positions ouvertes
 
 FORMAT: ACTION: [BUY/SELL/HOLD] | RAISON: [explication courte]"""
 

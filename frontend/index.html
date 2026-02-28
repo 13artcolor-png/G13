@@ -1472,6 +1472,20 @@
                                         onchange="saveAgentConfig('fibo1')">
                                 </div>
                                 <div class="config-row">
+                                    <label style="font-size: 18px;">Take Profit (%) <span class="tooltip-icon"
+                                            title="Take Profit en % du capital. Ex: 0.3 = 0.3% du capital.">?</span></label>
+                                    <input type="number" id="cfg-fibo1-tp_pct" step="0.05" value="0.3"
+                                        style="width: 120px; padding: 10px; font-size: 18px;"
+                                        onchange="saveAgentConfig('fibo1')">
+                                </div>
+                                <div class="config-row">
+                                    <label style="font-size: 18px;">Stop Loss (%) <span class="tooltip-icon"
+                                            title="Stop Loss en % du capital. Ex: 0.5 = 0.5% du capital.">?</span></label>
+                                    <input type="number" id="cfg-fibo1-sl_pct" step="0.05" value="0.5"
+                                        style="width: 120px; padding: 10px; font-size: 18px;"
+                                        onchange="saveAgentConfig('fibo1')">
+                                </div>
+                                <div class="config-row">
                                     <label style="font-size: 18px;">WR Min / DD Max <span class="tooltip-icon"
                                             title="Win Rate min et Drawdown max pour auto-stop.">?</span></label>
                                     <span
@@ -1511,6 +1525,28 @@
                                 <div class="config-row" style="display: none;">
                                     <input type="number" id="cfg-fibo1-min_trades_for_eval" value="10"
                                         onchange="saveAgentConfig('fibo1')">
+                                </div>
+                                <!-- Killzone FIBO1 -->
+                                <div style="border-top: 1px solid var(--border); margin: 8px 0; padding-top: 8px;">
+                                    <div class="config-row">
+                                        <label style="font-size: 18px;">Killzone</label>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <select id="cfg-fibo1-killzone_enabled"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo1')">
+                                                <option value="false">Off</option>
+                                                <option value="true">On</option>
+                                            </select>
+                                            <input type="time" id="cfg-fibo1-killzone_start" value="08:00"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo1')">
+                                            <span style="font-size: 18px; color: var(--text-secondary);">-</span>
+                                            <input type="time" id="cfg-fibo1-killzone_end" value="22:00"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo1')">
+                                            <span style="font-size: 14px; color: var(--text-secondary);">UTC</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div style="border-top: 1px solid var(--border); margin: 8px 0; padding-top: 8px;">
                                     <div class="config-row">
@@ -1704,6 +1740,20 @@
                                         onchange="saveAgentConfig('fibo2')">
                                 </div>
                                 <div class="config-row">
+                                    <label style="font-size: 18px;">Take Profit (%) <span class="tooltip-icon"
+                                            title="Take Profit en % du capital. Ex: 0.3 = 0.3% du capital.">?</span></label>
+                                    <input type="number" id="cfg-fibo2-tp_pct" step="0.05" value="0.3"
+                                        style="width: 120px; padding: 10px; font-size: 18px;"
+                                        onchange="saveAgentConfig('fibo2')">
+                                </div>
+                                <div class="config-row">
+                                    <label style="font-size: 18px;">Stop Loss (%) <span class="tooltip-icon"
+                                            title="Stop Loss en % du capital. Ex: 0.5 = 0.5% du capital.">?</span></label>
+                                    <input type="number" id="cfg-fibo2-sl_pct" step="0.05" value="0.5"
+                                        style="width: 120px; padding: 10px; font-size: 18px;"
+                                        onchange="saveAgentConfig('fibo2')">
+                                </div>
+                                <div class="config-row">
                                     <label style="font-size: 18px;">WR Min / DD Max <span class="tooltip-icon"
                                             title="Win Rate min et Drawdown max pour auto-stop.">?</span></label>
                                     <span
@@ -1743,6 +1793,28 @@
                                 <div class="config-row" style="display: none;">
                                     <input type="number" id="cfg-fibo2-min_trades_for_eval" value="10"
                                         onchange="saveAgentConfig('fibo2')">
+                                </div>
+                                <!-- Killzone FIBO2 -->
+                                <div style="border-top: 1px solid var(--border); margin: 8px 0; padding-top: 8px;">
+                                    <div class="config-row">
+                                        <label style="font-size: 18px;">Killzone</label>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <select id="cfg-fibo2-killzone_enabled"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo2')">
+                                                <option value="false">Off</option>
+                                                <option value="true">On</option>
+                                            </select>
+                                            <input type="time" id="cfg-fibo2-killzone_start" value="08:00"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo2')">
+                                            <span style="font-size: 18px; color: var(--text-secondary);">-</span>
+                                            <input type="time" id="cfg-fibo2-killzone_end" value="22:00"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo2')">
+                                            <span style="font-size: 14px; color: var(--text-secondary);">UTC</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div style="border-top: 1px solid var(--border); margin: 8px 0; padding-top: 8px;">
                                     <div class="config-row">
@@ -1936,6 +2008,20 @@
                                         onchange="saveAgentConfig('fibo3')">
                                 </div>
                                 <div class="config-row">
+                                    <label style="font-size: 18px;">Take Profit (%) <span class="tooltip-icon"
+                                            title="Take Profit en % du capital. Ex: 0.3 = 0.3% du capital.">?</span></label>
+                                    <input type="number" id="cfg-fibo3-tp_pct" step="0.05" value="0.3"
+                                        style="width: 120px; padding: 10px; font-size: 18px;"
+                                        onchange="saveAgentConfig('fibo3')">
+                                </div>
+                                <div class="config-row">
+                                    <label style="font-size: 18px;">Stop Loss (%) <span class="tooltip-icon"
+                                            title="Stop Loss en % du capital. Ex: 0.5 = 0.5% du capital.">?</span></label>
+                                    <input type="number" id="cfg-fibo3-sl_pct" step="0.05" value="0.5"
+                                        style="width: 120px; padding: 10px; font-size: 18px;"
+                                        onchange="saveAgentConfig('fibo3')">
+                                </div>
+                                <div class="config-row">
                                     <label style="font-size: 18px;">WR Min / DD Max <span class="tooltip-icon"
                                             title="Win Rate min et Drawdown max pour auto-stop.">?</span></label>
                                     <span
@@ -1975,6 +2061,28 @@
                                 <div class="config-row" style="display: none;">
                                     <input type="number" id="cfg-fibo3-min_trades_for_eval" value="10"
                                         onchange="saveAgentConfig('fibo3')">
+                                </div>
+                                <!-- Killzone FIBO3 -->
+                                <div style="border-top: 1px solid var(--border); margin: 8px 0; padding-top: 8px;">
+                                    <div class="config-row">
+                                        <label style="font-size: 18px;">Killzone</label>
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <select id="cfg-fibo3-killzone_enabled"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo3')">
+                                                <option value="false">Off</option>
+                                                <option value="true">On</option>
+                                            </select>
+                                            <input type="time" id="cfg-fibo3-killzone_start" value="08:00"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo3')">
+                                            <span style="font-size: 18px; color: var(--text-secondary);">-</span>
+                                            <input type="time" id="cfg-fibo3-killzone_end" value="22:00"
+                                                style="padding: 8px; font-size: 18px; border-radius: 8px; background: var(--surface); color: var(--text); border: 1px solid var(--border);"
+                                                onchange="saveAgentConfig('fibo3')">
+                                            <span style="font-size: 14px; color: var(--text-secondary);">UTC</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div style="border-top: 1px solid var(--border); margin: 8px 0; padding-top: 8px;">
                                     <div class="config-row">
@@ -2082,31 +2190,28 @@
                             Risque</div>
                         <div class="config-row" style="margin-bottom: 8px;">
                             <label style="font-size: 18px;">Max Drawdown <span class="tooltip-icon"
-                                    title="Perte max avant arret automatique">?</span></label>
+                                    title="Perte max avant arret automatique des nouveaux trades">?</span></label>
                             <input type="number" id="cfg-risk-max_drawdown_pct" step="1" value="10"
                                 style="width: 100px; font-size: 18px;" onchange="saveRiskConfig()">
                             <span style="font-size: 18px; color: var(--text-secondary);">%</span>
                         </div>
                         <div class="config-row" style="margin-bottom: 8px;">
-                            <label style="font-size: 18px;">Perte Jour Max</label>
+                            <label style="font-size: 18px;">Perte Jour Max <span class="tooltip-icon"
+                                    title="Perte journaliere max avant arret du trading pour la journee">?</span></label>
                             <input type="number" id="cfg-risk-max_daily_loss_pct" step="1" value="5"
                                 style="width: 100px; font-size: 18px;" onchange="saveRiskConfig()">
                             <span style="font-size: 18px; color: var(--text-secondary);">%</span>
                         </div>
                         <div class="config-row" style="margin-bottom: 8px;">
-                            <label style="font-size: 18px;">Max Positions</label>
-                            <input type="number" id="cfg-risk-max_positions_total" step="1" value="3"
-                                style="width: 100px; font-size: 18px;" onchange="saveRiskConfig()">
-                        </div>
-                        <div class="config-row" style="margin-bottom: 8px;">
-                            <label style="font-size: 18px;">Urgence</label>
+                            <label style="font-size: 18px;">Urgence <span class="tooltip-icon"
+                                    title="Fermeture IMMEDIATE de toutes les positions si perte depasse ce seuil">?</span></label>
                             <input type="number" id="cfg-risk-emergency_close_pct" step="1" value="15"
                                 style="width: 100px; font-size: 18px;" onchange="saveRiskConfig()">
                             <span style="font-size: 18px; color: var(--text-secondary);">%</span>
                         </div>
                         <div class="config-row" style="margin-bottom: 8px;">
                             <label style="font-size: 18px;">Winner Never Loser <span class="tooltip-icon"
-                                    title="Ne jamais laisser un trade gagnant devenir perdant">?</span></label>
+                                    title="Des qu'un trade est en profit, le SL passe a break-even pour ne jamais perdre">?</span></label>
                             <label class="toggle" style="transform: scale(0.85);">
                                 <input type="checkbox" id="cfg-risk-winner_never_loser" checked
                                     onchange="saveRiskConfig()">
@@ -2118,23 +2223,11 @@
                             onclick="saveRiskConfig()">Appliquer</button>
                     </div>
 
-                    <!-- 2. TP/SL -->
+                    <!-- 2. SPREAD -->
                     <div class="card"
                         style="border-left: 4px solid var(--accent-purple); padding: 16px; display: flex; flex-direction: column;">
                         <div class="card-title"
-                            style="color: var(--accent-purple); font-size: 18px; margin-bottom: 12px;">TP/SL (% Capital)
-                        </div>
-                        <div class="config-row" style="margin-bottom: 8px;">
-                            <label style="font-size: 18px;">Take Profit</label>
-                            <input type="number" id="cfg-spread-tp_pct" step="0.05" value="0.3"
-                                style="width: 80px; font-size: 18px;" onchange="saveSpreadConfig()">
-                            <span style="font-size: 18px; color: var(--text-secondary);">%</span>
-                        </div>
-                        <div class="config-row" style="margin-bottom: 8px;">
-                            <label style="font-size: 18px;">Stop Loss</label>
-                            <input type="number" id="cfg-spread-sl_pct" step="0.05" value="0.5"
-                                style="width: 80px; font-size: 18px;" onchange="saveSpreadConfig()">
-                            <span style="font-size: 18px; color: var(--text-secondary);">%</span>
+                            style="color: var(--accent-purple); font-size: 18px; margin-bottom: 12px;">Spread
                         </div>
                         <div class="config-row" style="margin-bottom: 8px;">
                             <label style="font-size: 18px;">Max Spread <span class="tooltip-icon"
@@ -2225,7 +2318,7 @@
                         </div>
                         <div style="flex-grow: 1;"></div>
                         <button class="btn btn-success" style="width: 100%; font-size: 18px; padding: 8px;"
-                            onclick="saveTrailingConfig()">Appliquer</button>
+                            onclick="saveSpreadConfig()">Appliquer</button>
                     </div>
 
                     <!-- 4. SESSION -->
@@ -2289,7 +2382,7 @@
                         <div class="card-title"
                             style="color: var(--accent-orange); font-size: 18px; margin-bottom: 8px;">Strategist IA
                         </div>
-                        <!-- API Selector -->
+                        <!-- API Selector (pour future IA Strategist) -->
                         <div style="margin-bottom: 10px;">
                             <select id="api-strategist-key" class="api-key-select" data-agent="strategist"
                                 onchange="showApiKeyPreview('strategist')"
@@ -2335,19 +2428,18 @@
                         <div class="card-title" style="font-size: 18px; margin-bottom: 12px;">Actions Rapides</div>
                         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
                             <button class="btn btn-secondary" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="loadAllConfigs()">Recharger Configs</button>
+                                onclick="loadAllConfigs()">Recharger Configs <span title="Relit les configs depuis le serveur et met a jour l'affichage" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
                             <button class="btn btn-secondary" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="resetToDefaults()">Reset Defaut</button>
-                            <button class="btn btn-success" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="saveAllConfigs()">Sauvegarder TOUT</button>
+                                onclick="resetToDefaults()">Reset Defaut <span title="Remet tous les reglages a leurs valeurs d'origine et sauvegarde" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
                             <button class="btn btn-danger" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="exportConfig()">Exporter JSON</button>
-                            <button class="btn btn-secondary" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="exportSessionLog()">Exporter Logs</button>
+                                onclick="exportLogsAndSettings()">Exporter Logs et Reglages <span title="Telecharge un fichier JSON avec tous les trades, performances et reglages" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
+                            <button class="btn btn-success" style="font-size: 18px; padding: 10px 16px;"
+                                onclick="document.getElementById('import-json-input').click()">Importer Reglages <span title="Charge les reglages depuis un fichier JSON exporte precedemment" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
+                            <input type="file" id="import-json-input" accept=".json" style="display:none;" onchange="importSettings(this)">
                             <button class="btn btn-primary" style="font-size: 18px; padding: 10px 16px; background: #6366f1;"
-                                onclick="syncMT5Trades()">Sync MT5</button>
+                                onclick="syncMT5Trades()">Sync MT5 <span title="Synchronise les positions et trades fermes depuis MetaTrader 5" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
                             <button class="btn btn-warning" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="validatePositions()">Valider Positions</button>
+                                onclick="validatePositions()">Valider Positions <span title="Verifie que les positions affichees existent dans MT5, supprime les fantomes" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
                         </div>
                     </div>
                 </div>
@@ -2568,7 +2660,10 @@
                 ctx.fillText(`${numPoints} pts`, marginLeft + chartWidth, canvas.height - 2);
             }
 
-            // Ajouter un point aux graphiques
+            // Intervalle minimum entre deux points (en ms) - aligne sur le backend (60s)
+            const CHART_POINT_INTERVAL_MS = 55000;
+
+            // Ajouter ou mettre a jour un point aux graphiques
             function updateAgentChartData(agentId, closedPnl, openPnl) {
                 const data = agentCharts[agentId];
 
@@ -2577,12 +2672,33 @@
                     data.sessionStart = new Date();
                 }
 
-                data.closed.push(closedPnl);
-                data.open.push(closedPnl + openPnl); // Open = closed + unrealized
-                data.timestamps.push(new Date());
+                const now = new Date();
+                const totalPnl = closedPnl + openPnl;
 
-                // Limiter a 500 points max pour le detail (se contracte automatiquement)
-                if (data.closed.length > 500) {
+                // Si le dernier point date de moins de 55s, mettre a jour au lieu d'ajouter
+                if (data.timestamps.length > 0) {
+                    const lastTimestamp = data.timestamps[data.timestamps.length - 1];
+                    const elapsed = now - lastTimestamp;
+
+                    if (elapsed < CHART_POINT_INTERVAL_MS) {
+                        // Mettre a jour le dernier point (valeurs temps reel)
+                        data.closed[data.closed.length - 1] = closedPnl;
+                        data.open[data.open.length - 1] = totalPnl;
+                    } else {
+                        // Nouveau point (60s+ depuis le dernier)
+                        data.closed.push(closedPnl);
+                        data.open.push(totalPnl);
+                        data.timestamps.push(now);
+                    }
+                } else {
+                    // Premier point
+                    data.closed.push(closedPnl);
+                    data.open.push(totalPnl);
+                    data.timestamps.push(now);
+                }
+
+                // Limiter a 2000 points (aligne sur le backend, ~33h a 60s)
+                if (data.closed.length > 2000) {
                     data.closed.shift();
                     data.open.shift();
                     data.timestamps.shift();
@@ -3562,6 +3678,22 @@
                     document.getElementById('session-volatility').textContent = '--';
                 }
 
+                // Carte Session Laboratoire - mise a jour temps reel depuis /api/status
+                if (data.session && data.session.id) {
+                    document.getElementById('current-session-id').textContent = data.session.id;
+                    if (data.session.start_time) {
+                        const dt = new Date(data.session.start_time);
+                        document.getElementById('session-start-time').textContent = dt.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) + ' ' + dt.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                    }
+                }
+                if (data.stats) {
+                    document.getElementById('session-trades-count').textContent = data.stats.total_trades || 0;
+                    const pnl = data.stats.total_profit || 0;
+                    const pnlEl = document.getElementById('session-pnl-value');
+                    pnlEl.textContent = `${pnl >= 0 ? '+' : ''}${pnl.toFixed(2)} EUR`;
+                    pnlEl.style.color = pnl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+                }
+
                 // Price
                 if (data.price) {
                     const price = data.price.price;
@@ -3902,7 +4034,7 @@
                     let timeStr = '--';
                     if (d.timestamp) {
                         const dt = new Date(d.timestamp);
-                        timeStr = dt.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                        timeStr = dt.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) + ' ' + dt.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
                     }
 
                     return `
@@ -4206,10 +4338,26 @@
                     if (config.agents) {
                         for (const [agentId, agentConfig] of Object.entries(config.agents)) {
                             for (const [key, value] of Object.entries(agentConfig)) {
+                                // Aplatir tpsl_config pour remplir cfg-{agentId}-tp_pct, sl_pct
+                                if (key === 'tpsl_config' && typeof value === 'object' && value !== null) {
+                                    for (const [subKey, subValue] of Object.entries(value)) {
+                                        const subInput = document.getElementById(`cfg-${agentId}-${subKey}`);
+                                        if (subInput) {
+                                            if (subInput.type === 'checkbox') {
+                                                subInput.checked = subValue;
+                                            } else {
+                                                subInput.value = subValue;
+                                            }
+                                        }
+                                    }
+                                    continue;
+                                }
                                 const input = document.getElementById(`cfg-${agentId}-${key}`);
                                 if (input) {
                                     if (input.type === 'checkbox') {
                                         input.checked = value;
+                                    } else if (input.tagName === 'SELECT') {
+                                        input.value = String(value);
                                     } else {
                                         input.value = value;
                                     }
@@ -4256,20 +4404,31 @@
             async function saveAgentConfig(agentId) {
                 const config = {};
                 const prefix = `cfg-${agentId}-`;
+                // Cles qui appartiennent a tpsl_config (pas au top-level)
+                const tpslKeys = ['tp_pct', 'sl_pct'];
 
                 document.querySelectorAll(`[id^="${prefix}"]`).forEach(input => {
                     const key = input.id.replace(prefix, '');
+                    let value;
                     if (input.type === 'checkbox') {
-                        config[key] = input.checked;
+                        value = input.checked;
                     } else if (input.tagName === 'SELECT') {
-                        // Convertir "true"/"false" en boolean pour les selects booleens
-                        if (input.value === 'true') config[key] = true;
-                        else if (input.value === 'false') config[key] = false;
-                        else config[key] = input.value;
+                        if (input.value === 'true') value = true;
+                        else if (input.value === 'false') value = false;
+                        else value = input.value;
+                    } else if (input.type === 'time') {
+                        value = input.value; // Garder "HH:MM" en string
                     } else {
-                        // Pour les inputs numeriques
                         const numVal = parseFloat(input.value);
-                        config[key] = isNaN(numVal) ? input.value : numVal;
+                        value = isNaN(numVal) ? input.value : numVal;
+                    }
+
+                    // Envelopper tp_pct/sl_pct dans tpsl_config
+                    if (tpslKeys.includes(key)) {
+                        if (!config.tpsl_config) config.tpsl_config = {};
+                        config.tpsl_config[key] = value;
+                    } else {
+                        config[key] = value;
                     }
                 });
 
@@ -4363,25 +4522,17 @@
                 }
             }
 
-            // Sauvegarder tout
-            async function saveAllConfigs() {
-                await saveAgentConfig('fibo1');
-                await saveAgentConfig('fibo2');
-                await saveAgentConfig('fibo3');
-                await saveRiskConfig();
-                await saveSpreadConfig();
-                showNotification('Toutes les configurations sauvegardees!', 'success');
-            }
-
-            // Reset valeurs par defaut
-            function resetToDefaults() {
+            // Reset valeurs par defaut + sauvegarde
+            async function resetToDefaults() {
                 if (!confirm('Remettre toutes les valeurs par defaut?')) return;
 
-                // Momentum defaults
+                // FIBO1 defaults
                 document.getElementById('cfg-fibo1-decision_interval').value = 10;
                 document.getElementById('cfg-fibo1-signal_timeframe').value = 'M5';
                 document.getElementById('cfg-fibo1-min_fibo1_pct').value = 0.05;
                 document.getElementById('cfg-fibo1-position_size_pct').value = 0.01;
+                document.getElementById('cfg-fibo1-tp_pct').value = 0.3;
+                document.getElementById('cfg-fibo1-sl_pct').value = 0.5;
                 document.getElementById('cfg-fibo1-tp_spread_multiplier').value = 3;
                 document.getElementById('cfg-fibo1-sl_spread_multiplier').value = 2;
                 document.getElementById('cfg-fibo1-cooldown_seconds').value = 60;
@@ -4389,25 +4540,35 @@
                 document.getElementById('cfg-fibo1-max_drawdown_pct').value = 5;
                 document.getElementById('cfg-fibo1-min_winrate_pct').value = 20;
                 document.getElementById('cfg-fibo1-min_trades_for_eval').value = 10;
+                document.getElementById('cfg-fibo1-killzone_enabled').value = 'false';
+                document.getElementById('cfg-fibo1-killzone_start').value = '08:00';
+                document.getElementById('cfg-fibo1-killzone_end').value = '22:00';
 
-                // Fibo defaults
+                // FIBO2 defaults
                 document.getElementById('cfg-fibo2-decision_interval').value = 10;
                 document.getElementById('cfg-fibo2-signal_timeframe').value = 'M15';
                 document.getElementById('cfg-fibo2-fibo_level').value = '0.618';
                 document.getElementById('cfg-fibo2-fibo_tolerance_pct').value = 0.3;
                 document.getElementById('cfg-fibo2-position_size_pct').value = 0.01;
+                document.getElementById('cfg-fibo2-tp_pct').value = 0.3;
+                document.getElementById('cfg-fibo2-sl_pct').value = 0.5;
                 document.getElementById('cfg-fibo2-cooldown_seconds').value = 120;
                 document.getElementById('cfg-fibo2-max_positions').value = 1;
                 document.getElementById('cfg-fibo2-max_drawdown_pct').value = 5;
                 document.getElementById('cfg-fibo2-min_winrate_pct').value = 20;
                 document.getElementById('cfg-fibo2-min_trades_for_eval').value = 10;
+                document.getElementById('cfg-fibo2-killzone_enabled').value = 'false';
+                document.getElementById('cfg-fibo2-killzone_start').value = '08:00';
+                document.getElementById('cfg-fibo2-killzone_end').value = '22:00';
 
-                // Liquidation defaults
+                // FIBO3 defaults
                 document.getElementById('cfg-fibo3-decision_interval').value = 10;
                 document.getElementById('cfg-fibo3-signal_timeframe').value = 'M1';
                 document.getElementById('cfg-fibo3-min_fibo3_usd').value = 1000000;
                 document.getElementById('cfg-fibo3-funding_rate_threshold').value = 0.01;
                 document.getElementById('cfg-fibo3-position_size_pct').value = 0.01;
+                document.getElementById('cfg-fibo3-tp_pct').value = 0.3;
+                document.getElementById('cfg-fibo3-sl_pct').value = 0.5;
                 document.getElementById('cfg-fibo3-tp_spread_multiplier').value = 4;
                 document.getElementById('cfg-fibo3-sl_spread_multiplier').value = 2;
                 document.getElementById('cfg-fibo3-cooldown_seconds').value = 30;
@@ -4415,68 +4576,226 @@
                 document.getElementById('cfg-fibo3-max_drawdown_pct').value = 5;
                 document.getElementById('cfg-fibo3-min_winrate_pct').value = 20;
                 document.getElementById('cfg-fibo3-min_trades_for_eval').value = 10;
+                document.getElementById('cfg-fibo3-killzone_enabled').value = 'false';
+                document.getElementById('cfg-fibo3-killzone_start').value = '08:00';
+                document.getElementById('cfg-fibo3-killzone_end').value = '22:00';
 
                 // Risk defaults
                 document.getElementById('cfg-risk-max_drawdown_pct').value = 10;
                 document.getElementById('cfg-risk-max_daily_loss_pct').value = 5;
-                document.getElementById('cfg-risk-max_positions_total').value = 3;
                 document.getElementById('cfg-risk-emergency_close_pct').value = 15;
                 document.getElementById('cfg-risk-winner_never_loser').checked = true;
 
-                // TP/SL % defaults (Strategie Exponentielle)
+                // Spread defaults (TP/SL maintenant par agent)
                 document.getElementById('cfg-spread-spread_check_enabled').checked = true;
                 document.getElementById('cfg-spread-trailing_enabled').checked = true;
                 document.getElementById('cfg-spread-break_even_enabled').checked = true;
                 document.getElementById('cfg-spread-max_spread_points').value = 2000;
-                document.getElementById('cfg-spread-tp_pct').value = 0.3;
-                document.getElementById('cfg-spread-sl_pct').value = 0.5;
                 document.getElementById('cfg-spread-trailing_start_pct').value = 0.2;
                 document.getElementById('cfg-spread-trailing_distance_pct').value = 0.1;
                 document.getElementById('cfg-spread-break_even_pct').value = 0.15;
 
-                showNotification('Valeurs par defaut restaurees', 'success');
+                // Sauvegarder au backend
+                await saveAgentConfig('fibo1');
+                await saveAgentConfig('fibo2');
+                await saveAgentConfig('fibo3');
+                await saveRiskConfig();
+                await saveSpreadConfig();
+
+                showNotification('Valeurs par defaut restaurees et sauvegardees', 'success');
             }
 
-            // Exporter config JSON
-            function exportConfig() {
-                const config = {
-                    agents: {
-                        fibo1: {},
-                        fibo2: {},
-                        fibo3: {}
-                    },
-                    risk: {},
-                    spread: {}
-                };
+            // Importer reglages depuis un fichier JSON exporte
+            async function importSettings(fileInput) {
+                const file = fileInput.files[0];
+                if (!file) return;
 
-                // Collecter toutes les valeurs
-                ['fibo1', 'fibo2', 'fibo3'].forEach(agentId => {
-                    document.querySelectorAll(`[id^="cfg-${agentId}-"]`).forEach(input => {
-                        const key = input.id.replace(`cfg-${agentId}-`, '');
-                        config.agents[agentId][key] = input.type === 'checkbox' ? input.checked : parseFloat(input.value);
+                try {
+                    const text = await file.text();
+                    const data = JSON.parse(text);
+
+                    // Accepter le format d'export (settings dans un objet)
+                    const settings = data.settings || data;
+
+                    if (!settings.agents && !settings.risk && !settings.spread) {
+                        showNotification('Fichier invalide: pas de section agents, risk ou spread', 'error');
+                        fileInput.value = '';
+                        return;
+                    }
+
+                    if (!confirm('Importer ces reglages? Les valeurs actuelles seront ecrasees.')) {
+                        fileInput.value = '';
+                        return;
+                    }
+
+                    // Appliquer les reglages agents
+                    if (settings.agents) {
+                        for (const [agentId, agentConfig] of Object.entries(settings.agents)) {
+                            for (const [key, value] of Object.entries(agentConfig)) {
+                                const input = document.getElementById(`cfg-${agentId}-${key}`);
+                                if (input) {
+                                    if (input.type === 'checkbox') {
+                                        input.checked = value;
+                                    } else {
+                                        input.value = value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Appliquer les reglages risk
+                    if (settings.risk) {
+                        for (const [key, value] of Object.entries(settings.risk)) {
+                            const input = document.getElementById(`cfg-risk-${key}`);
+                            if (input) {
+                                if (input.type === 'checkbox') {
+                                    input.checked = value;
+                                } else {
+                                    input.value = value;
+                                }
+                            }
+                        }
+                    }
+
+                    // Appliquer les reglages spread
+                    if (settings.spread) {
+                        for (const [key, value] of Object.entries(settings.spread)) {
+                            const input = document.getElementById(`cfg-spread-${key}`);
+                            if (input) {
+                                if (input.type === 'checkbox') {
+                                    input.checked = value;
+                                } else {
+                                    input.value = value;
+                                }
+                            }
+                        }
+                    }
+
+                    // Sauvegarder au backend
+                    await saveAgentConfig('fibo1');
+                    await saveAgentConfig('fibo2');
+                    await saveAgentConfig('fibo3');
+                    await saveRiskConfig();
+                    await saveSpreadConfig();
+
+                    showNotification('Reglages importes et sauvegardes!', 'success');
+                } catch (error) {
+                    showNotification('Erreur import: ' + error.message, 'error');
+                }
+
+                // Reset le file input pour pouvoir reimporter le meme fichier
+                fileInput.value = '';
+            }
+
+            // Exporter logs de session + reglages en un seul fichier
+            async function exportLogsAndSettings() {
+                try {
+                    // Recuperer les donnees de session (trades, stats, logs)
+                    const sessionResponse = await fetch(`${API_URL}/api/session/export`);
+                    const sessionData = await sessionResponse.json();
+
+                    // Collecter les reglages depuis les inputs du dashboard
+                    const settings = {
+                        agents: { fibo1: {}, fibo2: {}, fibo3: {} },
+                        risk: {},
+                        spread: {}
+                    };
+
+                    ['fibo1', 'fibo2', 'fibo3'].forEach(agentId => {
+                        document.querySelectorAll(`[id^="cfg-${agentId}-"]`).forEach(input => {
+                            const key = input.id.replace(`cfg-${agentId}-`, '');
+                            settings.agents[agentId][key] = input.type === 'checkbox' ? input.checked : parseFloat(input.value);
+                        });
                     });
-                });
 
-                document.querySelectorAll('[id^="cfg-risk-"]').forEach(input => {
-                    const key = input.id.replace('cfg-risk-', '');
-                    config.risk[key] = input.type === 'checkbox' ? input.checked : parseFloat(input.value);
-                });
+                    document.querySelectorAll('[id^="cfg-risk-"]').forEach(input => {
+                        const key = input.id.replace('cfg-risk-', '');
+                        settings.risk[key] = input.type === 'checkbox' ? input.checked : parseFloat(input.value);
+                    });
 
-                document.querySelectorAll('[id^="cfg-spread-"]').forEach(input => {
-                    const key = input.id.replace('cfg-spread-', '');
-                    config.spread[key] = parseFloat(input.value);
-                });
+                    document.querySelectorAll('[id^="cfg-spread-"]').forEach(input => {
+                        const key = input.id.replace('cfg-spread-', '');
+                        settings.spread[key] = input.type === 'checkbox' ? input.checked : parseFloat(input.value);
+                    });
 
-                // Telecharger JSON
-                const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `g11_config_${new Date().toISOString().slice(0, 10)}.json`;
-                a.click();
-                URL.revokeObjectURL(url);
+                    // Ranger les trades par agent
+                    const allTrades = sessionData.trades || [];
+                    const tradesByAgent = { fibo1: [], fibo2: [], fibo3: [], other: [] };
+                    allTrades.forEach(t => {
+                        const aid = t.agent_id || '';
+                        if (tradesByAgent[aid]) {
+                            tradesByAgent[aid].push(t);
+                        } else {
+                            tradesByAgent.other.push(t);
+                        }
+                    });
 
-                showNotification('Configuration exportee!', 'success');
+                    // Calculer le resume de performance par agent
+                    function calcAgentPerf(trades) {
+                        if (!trades.length) return { total_trades: 0, wins: 0, losses: 0, winrate: 0, total_pnl: 0, avg_win: 0, avg_loss: 0, profit_factor: 0, best: 0, worst: 0 };
+                        const profits = trades.map(t => t.profit || 0);
+                        const wins = profits.filter(p => p > 0);
+                        const losses = profits.filter(p => p < 0);
+                        const totalWins = wins.reduce((a, b) => a + b, 0);
+                        const totalLosses = Math.abs(losses.reduce((a, b) => a + b, 0));
+                        return {
+                            total_trades: trades.length,
+                            wins: wins.length,
+                            losses: losses.length,
+                            winrate: parseFloat((wins.length / trades.length * 100).toFixed(1)),
+                            total_pnl: parseFloat(profits.reduce((a, b) => a + b, 0).toFixed(2)),
+                            avg_win: wins.length ? parseFloat((totalWins / wins.length).toFixed(2)) : 0,
+                            avg_loss: losses.length ? parseFloat((losses.reduce((a, b) => a + b, 0) / losses.length).toFixed(2)) : 0,
+                            profit_factor: totalLosses > 0 ? parseFloat((totalWins / totalLosses).toFixed(2)) : 0,
+                            best: profits.length ? parseFloat(Math.max(...profits).toFixed(2)) : 0,
+                            worst: profits.length ? parseFloat(Math.min(...profits).toFixed(2)) : 0
+                        };
+                    }
+
+                    const perfFibo1 = calcAgentPerf(tradesByAgent.fibo1);
+                    const perfFibo2 = calcAgentPerf(tradesByAgent.fibo2);
+                    const perfFibo3 = calcAgentPerf(tradesByAgent.fibo3);
+                    const perfGlobal = calcAgentPerf(allTrades);
+
+                    const performanceSummary = {
+                        global: perfGlobal,
+                        fibo1: perfFibo1,
+                        fibo2: perfFibo2,
+                        fibo3: perfFibo3
+                    };
+
+                    // Combiner tout dans un seul export
+                    const exportData = {
+                        exported_at: new Date().toISOString(),
+                        performance_summary: performanceSummary,
+                        settings: settings,
+                        session: sessionData.session || {},
+                        trades_by_agent: {
+                            fibo1: tradesByAgent.fibo1,
+                            fibo2: tradesByAgent.fibo2,
+                            fibo3: tradesByAgent.fibo3
+                        }
+                    };
+
+                    // Ajouter les trades non attribues s'il y en a
+                    if (tradesByAgent.other.length > 0) {
+                        exportData.trades_by_agent.other = tradesByAgent.other;
+                    }
+
+                    // Telecharger
+                    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `g13_export_${new Date().toISOString().slice(0, 10)}.json`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    showNotification(`Export OK: ${allTrades.length} trades (F1:${tradesByAgent.fibo1.length} F2:${tradesByAgent.fibo2.length} F3:${tradesByAgent.fibo3.length}) + reglages`, 'success');
+                } catch (error) {
+                    showNotification('Erreur export: ' + error.message, 'error');
+                }
             }
 
             // ================================================================
@@ -5069,15 +5388,19 @@
 
             // Executer les suggestions du Strategist
             async function executeStrategistSuggestions() {
-                if (!confirm('Appliquer automatiquement les corrections?\n\nCeci va:\n- Augmenter les seuils des agents sous-performants\n- Ajuster les TP/SL si profit factor trop bas\n- Desactiver les agents a 0% win rate')) return;
+                if (!confirm('Appliquer automatiquement les corrections du Strategist IA?\n\nCeci va:\n- Ajuster les parametres des agents (valeurs exactes)\n- Modifier les SL/TP des positions ouvertes sur MT5')) return;
 
                 try {
                     const response = await fetch(`${API_URL}/api/strategist/execute`, { method: 'POST' });
                     const result = await response.json();
 
                     if (result.executed_count > 0) {
-                        showNotification(`${result.executed_count} corrections appliquees!`, 'success');
-                        // Rafraichir les logs pour voir les actions
+                        let msg = `${result.executed_count} corrections appliquees!`;
+                        if (result.mt5_modifications && Object.keys(result.mt5_modifications).length > 0) {
+                            const mt5Details = Object.entries(result.mt5_modifications).map(([a, r]) => `${a}: ${r}`).join(', ');
+                            msg += ` | MT5: ${mt5Details}`;
+                        }
+                        showNotification(msg, 'success');
                         await refreshStrategistLogs();
                     } else {
                         showNotification('Aucune correction necessaire ou applicable', 'info');
@@ -5101,6 +5424,24 @@
                         suggestionsEl.innerHTML = analysis.suggestions.map(s => {
                             const priorityColor = s.priority === 'critical' ? 'var(--accent-red)' :
                                 s.priority === 'high' ? 'var(--accent-orange)' : 'var(--accent-blue)';
+
+                            // Nouveau format : valeurs exactes
+                            if (s.changes && typeof s.changes === 'object') {
+                                const changesHtml = Object.entries(s.changes).map(([param, value]) =>
+                                    `<span style="color: var(--accent-purple);">${param}</span> = <span style="color: var(--accent-green); font-weight: 600;">${value}</span>`
+                                ).join(', ');
+                                return `
+                                <div style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 8px;">
+                                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 6px;">
+                                        <span style="background: ${priorityColor}; color: white; padding: 2px 8px; border-radius: 4px; font-size: 18px; text-transform: uppercase;">${s.priority}</span>
+                                        <span style="color: var(--accent-cyan); font-size: 18px; font-weight: 600;">[${(s.agent_id || '').toUpperCase()}]</span>
+                                    </div>
+                                    <div style="font-size: 18px; color: var(--text-primary); margin-bottom: 4px;">${changesHtml}</div>
+                                    <div style="font-size: 18px; color: var(--text-secondary);">${s.reason || ''}</div>
+                                </div>`;
+                            }
+
+                            // Ancien format : types de suggestions
                             return `
                             <div style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 8px;">
                                 <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 6px;">
@@ -5118,21 +5459,31 @@
                         suggestionsEl.innerHTML = `<div style="color: var(--accent-green); text-align: center; padding: 20px;">Aucune suggestion - tout semble optimal!</div>`;
                     }
 
-                    // ========== SECTION 1: Rapport d'analyse (patterns, performance) ==========
+                    // ========== SECTION 1: Rapport d'analyse ==========
                     let analysisHtml = '';
 
-                    // Patterns detectes
-                    if (analysis.patterns && analysis.patterns.length > 0) {
-                        analysisHtml += `<div style="font-size: 18px; color: var(--accent-orange); margin-bottom: 10px; font-weight: 600;">Patterns detectes</div>`;
-                        analysis.patterns.forEach(p => {
-                            const severityColor = p.severity === 'critical' ? 'var(--accent-red)' : 'var(--accent-orange)';
-                            analysisHtml += `
-                            <div style="padding: 10px; background: rgba(0,0,0,0.2); border-radius: 6px; margin-bottom: 8px;">
-                                <span style="color: ${severityColor}; font-weight: 600;">[${p.type}]</span>
-                                <span style="color: var(--text-primary); margin-left: 8px;">${p.description}</span>
-                            </div>
-                        `;
-                        });
+                    // Badge source (IA ou Regles)
+                    const isAI = analysis.source === 'ai';
+                    const badgeColor = isAI ? 'var(--accent-purple)' : 'var(--accent-blue)';
+                    const badgeLabel = isAI ? 'ANALYSE IA' : 'ANALYSE REGLES';
+                    analysisHtml += `<div style="margin-bottom: 12px;">
+                        <span style="background: ${badgeColor}; color: white; padding: 4px 12px; border-radius: 4px; font-size: 18px; font-weight: 600;">${badgeLabel}</span>
+                    </div>`;
+
+                    // Resume IA (si disponible)
+                    if (analysis.ai_analysis) {
+                        analysisHtml += `<div style="padding: 14px; background: rgba(139,92,246,0.15); border-left: 3px solid var(--accent-purple); border-radius: 0 8px 8px 0; margin-bottom: 14px;">
+                            <div style="font-size: 18px; color: var(--accent-purple); font-weight: 600; margin-bottom: 6px;">Resume IA</div>
+                            <div style="font-size: 18px; color: var(--text-primary); line-height: 1.5;">${analysis.ai_analysis}</div>
+                        </div>`;
+                    }
+
+                    // Tendance IA (si disponible)
+                    if (analysis.trend_analysis) {
+                        analysisHtml += `<div style="padding: 14px; background: rgba(59,130,246,0.15); border-left: 3px solid var(--accent-blue); border-radius: 0 8px 8px 0; margin-bottom: 14px;">
+                            <div style="font-size: 18px; color: var(--accent-blue); font-weight: 600; margin-bottom: 6px;">Tendance</div>
+                            <div style="font-size: 18px; color: var(--text-primary); line-height: 1.5;">${analysis.trend_analysis}</div>
+                        </div>`;
                     }
 
                     // Stats par agent
@@ -5235,15 +5586,7 @@
                                 if (log.details) {
                                     if (log.type === 'ACTION_EXECUTED') {
                                         const d = log.details;
-                                        if (d.action === 'AUGMENTER_SEUILS') {
-                                            detailsStr = `<span style="color: var(--accent-purple); font-weight: 600;">Agent ${d.agent}</span>: Seuils augmentes automatiquement`;
-                                        } else if (d.action === 'AJUSTER_TPSL') {
-                                            detailsStr = `TP: ${d.old_tp}% → ${d.new_tp}% | SL: ${d.old_sl}% → ${d.new_sl}%`;
-                                        } else if (d.action === 'DESACTIVER_AGENT') {
-                                            detailsStr = `<span style="color: var(--accent-red); font-weight: 600;">Agent ${d.agent} DESACTIVE</span>`;
-                                        } else {
-                                            detailsStr = `Action: ${d.action}`;
-                                        }
+                                        detailsStr = `<span style="color: var(--accent-purple); font-weight: 600;">Agent ${(d.agent || '').toUpperCase()}</span>: ${d.field || d.action} <span style="color: var(--accent-red);">${d.old_value}</span> → <span style="color: var(--accent-green);">${d.new_value}</span>`;
                                     } else if (log.type === 'ANALYSE_COMPLETE') {
                                         detailsStr = `Trades analysés: ${log.details.total_trades} | Win Rate: ${log.details.win_rate}% | Profit Factor: ${log.details.profit_factor} | Suggestions générées: ${log.details.suggestions_count}`;
                                     } else if (log.type === 'SUGGESTION') {
@@ -5301,7 +5644,7 @@
                         // Formater l'heure de debut
                         if (session.start_time) {
                             const dt = new Date(session.start_time);
-                            document.getElementById('session-start-time').textContent = dt.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                            document.getElementById('session-start-time').textContent = dt.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) + ' ' + dt.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
                         } else {
                             document.getElementById('session-start-time').textContent = '--';
                         }
@@ -5318,9 +5661,22 @@
                         document.getElementById('session-pnl-value').textContent = '0.00 EUR';
                         document.getElementById('session-pnl-value').style.color = 'var(--text-secondary)';
                     }
+
+                    // Mettre a jour les killzones depuis /api/session
+                    if (session.killzones) {
+                        Object.keys(session.killzones).forEach(key => {
+                            const kzEl = document.getElementById(`kz-${key}`);
+                            if (kzEl) {
+                                if (session.killzones[key].active) {
+                                    kzEl.classList.add('active');
+                                } else {
+                                    kzEl.classList.remove('active');
+                                }
+                            }
+                        });
+                    }
                 } catch (error) {
                     console.error('Erreur chargement session:', error);
-                    // En cas d'erreur, afficher "Erreur"
                     document.getElementById('current-session-id').textContent = 'Erreur';
                 }
             }
@@ -5387,25 +5743,6 @@
                 } finally {
                     btn.disabled = false;
                     btn.textContent = originalText;
-                }
-            }
-
-            async function exportSessionLog() {
-                try {
-                    const response = await fetch(`${API_URL}/api/session/export`);
-                    const data = await response.json();
-
-                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `g11_session_${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.json`;
-                    a.click();
-                    URL.revokeObjectURL(url);
-
-                    showNotification('Logs de session exportes!', 'success');
-                } catch (error) {
-                    showNotification('Erreur export: ' + error.message, 'error');
                 }
             }
 
