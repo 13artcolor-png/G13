@@ -40,10 +40,13 @@ def read_history(
     """
     try:
         # Default date range: last 30 days
+        # IMPORTANT: to_date doit inclure un buffer car le serveur MT5
+        # peut utiliser un fuseau horaire en avance sur l'heure locale.
+        # Sans ce buffer, les deals recents sont invisibles.
         if to_date is None:
-            to_date = datetime.now()
+            to_date = datetime.now() + timedelta(days=1)
         if from_date is None:
-            from_date = to_date - timedelta(days=30)
+            from_date = datetime.now() - timedelta(days=30)
         
         # Get deals from MT5
         if symbol:
