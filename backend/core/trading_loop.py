@@ -28,6 +28,7 @@ from actions.mt5 import connect_mt5, disconnect_mt5, read_positions, open_trade,
 from actions.mt5.market_data import calculate_momentum, calculate_volatility
 from actions.sync import sync_positions, sync_closed_trades
 from actions.session import get_session_info, is_session_active
+from actions.session.session_tickets import save_ticket
 from actions.stats import calculate_stats
 from strategy import get_strategist, get_ia_adjust
 from agents import create_agent
@@ -217,7 +218,7 @@ class TradingLoop:
         can_trade = False
 
         try:
-            # Sync positions et trades fermes
+            # Sync positions + verification tickets fermes (TICKET-BASED)
             sync_positions(agent_id)
             sync_closed_trades(agent_id)
 
@@ -432,7 +433,18 @@ class TradingLoop:
             )
 
             if trade_result["success"]:
-                print(f"[TradingLoop] Trade ouvert: {agent_id} {signal['direction']}")
+                ticket = trade_result.get("ticket")
+                print(f"[TradingLoop] Trade ouvert: {agent_id} {signal['direction']} ticket #{ticket}")
+
+                # Enregistrer le ticket dans session_tickets.json
+                if ticket:
+                    save_ticket(
+                        agent_id=agent_id,
+                        ticket=ticket,
+                        symbol=signal.get("symbol", "BTCUSD"),
+                        direction=signal["direction"]
+                    )
+
                 if agent_id in self.agents:
                     self.agents[agent_id].mark_trade_executed()
                 sync_positions(agent_id)

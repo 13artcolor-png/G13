@@ -57,16 +57,25 @@ def end_session(final_balance: float = None) -> dict:
         if final_balance and session.get("balance_start"):
             profit = final_balance - session["balance_start"]
         
+        # Archiver la session AVANT de la marquer comme terminee
+        try:
+            from actions.session.session_history import archive_session
+            archive_result = archive_session()
+            if archive_result["success"]:
+                print(f"[Session] Session archivee: {archive_result['file_path']}")
+        except Exception as archive_err:
+            print(f"[Session] Erreur archivage (non bloquant): {archive_err}")
+
         # Update session
         session["status"] = "stopped"
         session["end_time"] = datetime.now().isoformat()
         session["balance_end"] = final_balance
         session["profit"] = profit
-        
+
         # Write to file
         with open(SESSION_FILE, "w") as f:
             json.dump(session, f, indent=2)
-        
+
         return {
             "success": True,
             "message": f"Session {session['id']} ended",

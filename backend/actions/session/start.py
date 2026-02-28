@@ -15,12 +15,72 @@ DATABASE_PATH = Path(__file__).parent.parent.parent / "database"
 SESSION_FILE = DATABASE_PATH / "session.json"
 
 
+def _archive_previous_session():
+    """
+    Archive la session precedente si elle contient des donnees.
+    Verifie qu'il y a eu au moins 1 trade ou 1 decision avant d'archiver
+    (pas d'archivage pour les sessions vides).
+    """
+    try:
+        # Verifier si une session existe
+        session = get_session_raw()
+        if not session.get("id"):
+            return
+
+        # Verifier s'il y a des donnees a archiver (au moins 1 trade ou 1 decision)
+        has_data = False
+
+        for agent_id in ["fibo1", "fibo2", "fibo3"]:
+            trades_file = DATABASE_PATH / "closed_trades" / f"{agent_id}.json"
+            if trades_file.exists():
+                with open(trades_file, "r") as f:
+                    trades = json.load(f)
+                if trades:
+                    has_data = True
+                    break
+
+        if not has_data:
+            decisions_file = DATABASE_PATH / "decisions" / "decisions.json"
+            if decisions_file.exists():
+                with open(decisions_file, "r") as f:
+                    decisions = json.load(f)
+                if decisions:
+                    has_data = True
+
+        if not has_data:
+            tickets_file = DATABASE_PATH / "session_tickets.json"
+            if tickets_file.exists():
+                with open(tickets_file, "r") as f:
+                    tickets = json.load(f)
+                if tickets:
+                    has_data = True
+
+        if not has_data:
+            print("[Session] Session precedente vide, pas d'archivage")
+            return
+
+        # Archiver
+        from actions.session.session_history import archive_session
+        result = archive_session()
+        if result["success"]:
+            print(f"[Session] Session precedente archivee: {result['file_path']}")
+        else:
+            print(f"[Session] ERREUR archivage: {result['message']}")
+
+    except Exception as e:
+        print(f"[Session] Erreur verification archivage: {e}")
+
+
 def _reset_all_data():
     """
     Reset ALL historical data for a fresh session.
-    Clears: closed_trades, stats, open_positions, decisions, logs.
-    Preserves: config/ (agents.json, api_keys.json, etc.)
+    ETAPE 1: Archiver la session precedente (si elle a des donnees)
+    ETAPE 2: Clear closed_trades, stats, open_positions, decisions, logs
+    Preserves: config/ (agents.json, api_keys.json, etc.) et history/
     """
+    # ARCHIVER la session precedente AVANT de tout effacer
+    _archive_previous_session()
+
     folders_to_clear = [
         "closed_trades",
         "stats",
@@ -61,6 +121,10 @@ def _reset_all_data():
                 else:
                     # decisions, logs: delete file
                     f.unlink()
+
+    # Reset les tickets de session
+    from actions.session.session_tickets import clear_session_tickets
+    clear_session_tickets()
 
     # Reset l'historique de performance des graphiques
     history_file = DATABASE_PATH / "performance_history.json"
