@@ -62,6 +62,13 @@ def _reset_all_data():
                     # decisions, logs: delete file
                     f.unlink()
 
+    # Reset l'historique de performance des graphiques
+    history_file = DATABASE_PATH / "performance_history.json"
+    if history_file.exists():
+        with open(history_file, "w") as fh:
+            json.dump({}, fh)
+        print(f"[Session] Performance history reset")
+
     print(f"[Session] All data reset for new session")
 
 

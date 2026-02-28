@@ -43,6 +43,18 @@ class IAdjust:
     COOLDOWN_MIN = 60         # Minimum cooldown (secondes)
     COOLDOWN_MAX = 600        # Maximum cooldown (secondes)
 
+    TP_STEP = 0.05            # Pas d'ajustement TP (%)
+    TP_MIN = 0.1              # Minimum TP (%)
+    TP_MAX = 1.0              # Maximum TP (%)
+
+    SL_STEP = 0.05            # Pas d'ajustement SL (%)
+    SL_MIN = 0.2              # Minimum SL (%)
+    SL_MAX = 2.0              # Maximum SL (%)
+
+    POSITION_SIZE_STEP = 0.005  # Pas d'ajustement position size
+    POSITION_SIZE_MIN = 0.005   # Minimum position size
+    POSITION_SIZE_MAX = 0.05    # Maximum position size
+
     MIN_TRADES_BEFORE_ADJUST = 5  # Trades minimum avant ajustement
     # ==================================
 
@@ -124,6 +136,18 @@ class IAdjust:
         elif suggestion_type == "REDUCE_COOLDOWN":
             return self._reduce_cooldown(config)
 
+        # AJUSTEMENT 5: Ajuster TP/SL (profit factor < 1)
+        elif suggestion_type == "ADJUST_TPSL":
+            return self._adjust_tpsl(config)
+
+        # AJUSTEMENT 6: Risque trop eleve (perte moy > 2x gain moy)
+        elif suggestion_type == "RISK_MANAGEMENT":
+            return self._reduce_sl(config)
+
+        # AJUSTEMENT 7: Augmenter le risque (performance excellente)
+        elif suggestion_type == "INCREASE_RISK":
+            return self._increase_position_size(config)
+
         return None
 
     def _reduce_tolerance(self, config: Dict) -> Optional[Dict]:
@@ -193,6 +217,64 @@ class IAdjust:
         return {
             "type": "REDUCE_COOLDOWN",
             "field": "cooldown_seconds",
+            "old_value": current,
+            "new_value": new_value,
+            "timestamp": datetime.now().isoformat()
+        }
+
+    def _adjust_tpsl(self, config: Dict) -> Optional[Dict]:
+        """Augmente TP quand profit factor < 1 (les gains sont trop petits vs les pertes)."""
+        tpsl = config.get("tpsl_config", {})
+        current_tp = tpsl.get("tp_pct", 0.3)
+        new_tp = min(self.TP_MAX, round(current_tp + self.TP_STEP, 3))
+
+        if new_tp == current_tp:
+            return None
+
+        tpsl["tp_pct"] = new_tp
+        config["tpsl_config"] = tpsl
+
+        return {
+            "type": "ADJUST_TPSL",
+            "field": "tpsl_config.tp_pct",
+            "old_value": current_tp,
+            "new_value": new_tp,
+            "timestamp": datetime.now().isoformat()
+        }
+
+    def _reduce_sl(self, config: Dict) -> Optional[Dict]:
+        """Reduit SL quand perte moyenne > 2x gain moyen."""
+        tpsl = config.get("tpsl_config", {})
+        current_sl = tpsl.get("sl_pct", 0.5)
+        new_sl = max(self.SL_MIN, round(current_sl - self.SL_STEP, 3))
+
+        if new_sl == current_sl:
+            return None
+
+        tpsl["sl_pct"] = new_sl
+        config["tpsl_config"] = tpsl
+
+        return {
+            "type": "RISK_MANAGEMENT",
+            "field": "tpsl_config.sl_pct",
+            "old_value": current_sl,
+            "new_value": new_sl,
+            "timestamp": datetime.now().isoformat()
+        }
+
+    def _increase_position_size(self, config: Dict) -> Optional[Dict]:
+        """Augmente position size quand performance excellente (WR > 70%, 20+ trades)."""
+        current = config.get("position_size_pct", 0.01)
+        new_value = min(self.POSITION_SIZE_MAX, round(current + self.POSITION_SIZE_STEP, 4))
+
+        if new_value == current:
+            return None
+
+        config["position_size_pct"] = new_value
+
+        return {
+            "type": "INCREASE_RISK",
+            "field": "position_size_pct",
             "old_value": current,
             "new_value": new_value,
             "timestamp": datetime.now().isoformat()

@@ -5,7 +5,7 @@ Routes pour compatibilite avec le frontend G12.
 Mappe les anciennes routes vers les nouvelles.
 """
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 from typing import Optional, Dict, List, Any
 import json
@@ -16,6 +16,7 @@ from actions.session import start_session, end_session, get_session_info
 from actions.stats import get_stats, get_all_stats, calculate_stats
 from actions.sync import sync_positions, sync_closed_trades, get_local_positions, get_local_closed_trades
 from actions.mt5 import connect_mt5, disconnect_mt5, close_all_positions, get_full_market_data
+from actions.decisions import get_recent_decisions
 from strategy import get_strategist
 
 # Import optionnel des modules data (peuvent echouer si requests non installe)
@@ -46,7 +47,9 @@ async def get_status():
     trading_loop = get_trading_loop()
 
     session_data = session.get("session", {})
-    is_trading = session_data.get("status") == "active"
+    # is_trading = VRAI etat de la trading loop (pas le status session)
+    # Garantit que G13 demarre ARRETE meme si session.json dit "active"
+    is_trading = trading_loop.is_running
 
     # Charger configs agents
     agents_config = {}
@@ -77,8 +80,11 @@ async def get_status():
     total_balance = 0
     total_equity = 0
 
-    # Recuperer balance/equity + positions LIVE de chaque compte MT5
-    live_positions = []  # Positions lues en direct depuis MT5 (P&L temps reel)
+    # TOUJOURS lire MT5 pour afficher balances/positions/P&L en temps reel
+    # (meme quand la trading loop est arretee - on veut voir les positions ouvertes)
+    live_positions = []
+    connected_agents = set()  # Agents qui ont reussi a se connecter a MT5
+    from actions.mt5.read_positions import read_positions
 
     for agent_id in ["fibo1", "fibo2", "fibo3"]:
         account_cfg = mt5_accounts.get(agent_id, {})
@@ -90,36 +96,62 @@ async def get_status():
             "connected": False
         }
 
-        if is_trading:
-            try:
-                connect_result = connect_mt5(agent_id)
-                if connect_result["success"]:
-                    account_info = connect_result.get("account_info", {})
-                    balance = account_info.get("balance", 0)
-                    equity = account_info.get("equity", balance)
+        connected = False
+        try:
+            connect_result = connect_mt5(agent_id)
+            if not connect_result["success"]:
+                continue
+            connected = True
+            connected_agents.add(agent_id)
 
-                    accounts_with_balance[agent_id]["balance"] = balance
-                    accounts_with_balance[agent_id]["equity"] = equity
-                    accounts_with_balance[agent_id]["connected"] = True
+            account_info = connect_result.get("account_info", {})
+            balance = account_info.get("balance", 0)
+            equity = account_info.get("equity", balance)
 
-                    total_balance += balance
-                    total_equity += equity
+            accounts_with_balance[agent_id]["balance"] = balance
+            accounts_with_balance[agent_id]["equity"] = equity
+            accounts_with_balance[agent_id]["connected"] = True
 
-                    # Recuperer price data une seule fois (depuis fibo1)
-                    if agent_id == "fibo1" and price_data is None:
-                        price_data = get_full_market_data("BTCUSD")
+            total_balance += balance
+            total_equity += equity
 
-                    # Lire positions LIVE depuis MT5 (P&L en temps reel)
-                    from actions.mt5.read_positions import read_positions
-                    pos_result = read_positions(agent_id)
-                    if pos_result["success"]:
-                        for pos in pos_result["positions"]:
-                            pos["agent_id"] = agent_id
-                        live_positions.extend(pos_result["positions"])
+            # Lire positions LIVE depuis MT5 (P&L en temps reel)
+            pos_result = read_positions(agent_id)
+            if pos_result["success"] and pos_result["positions"]:
+                for pos in pos_result["positions"]:
+                    pos["agent_id"] = agent_id
+                live_positions.extend(pos_result["positions"])
+            elif pos_result["success"] and pos_result["count"] == 0:
+                # MT5 confirme 0 positions => nettoyer fichier local perime
+                local_file = DATABASE_PATH / "open_positions" / f"{agent_id}.json"
+                if local_file.exists():
+                    try:
+                        with open(local_file, "r") as lf:
+                            old = json.load(lf)
+                        if old:  # Fichier non vide = donnees perimes
+                            with open(local_file, "w") as lf:
+                                json.dump([], lf, indent=2)
+                    except:
+                        pass
 
+            # Recuperer price data une seule fois (depuis fibo1)
+            if agent_id == "fibo1" and price_data is None:
+                try:
+                    price_data = get_full_market_data("BTCUSD")
+                except Exception as e:
+                    print(f"[Status] Erreur market data: {e}")
+
+        except Exception as e:
+            print(f"[Status] EXCEPTION {agent_id}: {e}")
+            import traceback
+            traceback.print_exc()
+        finally:
+            # TOUJOURS liberer le lock MT5 si connecte
+            if connected:
+                try:
                     disconnect_mt5()
-            except Exception as e:
-                print(f"[Status] Erreur compte {agent_id}: {e}")
+                except:
+                    pass
 
     # Recuperer donnees Binance Futures
     futures_data = None
@@ -222,17 +254,20 @@ async def get_status():
     # Verifier si au moins un MT5 est connecte
     any_mt5_connected = any(acc.get("connected") for acc in accounts_with_balance.values())
 
-    # Utiliser positions LIVE si disponibles, sinon fallback sur fichiers locaux
-    all_positions = live_positions if live_positions else []
-    if not all_positions:
-        # Fallback: fichiers locaux si MT5 non connecte
-        for agent_id in ["fibo1", "fibo2", "fibo3"]:
-            try:
-                result = get_local_positions(agent_id)
-                positions = result.get("positions", [])
-                all_positions.extend(positions)
-            except Exception as e:
-                print(f"[Status] Erreur positions {agent_id}: {e}")
+    # Positions: MT5 live = source de verite pour les agents connectes
+    # Fallback fichiers locaux UNIQUEMENT pour agents non connectes
+    all_positions = list(live_positions)
+    for agent_id in ["fibo1", "fibo2", "fibo3"]:
+        if agent_id in connected_agents:
+            # Agent connecte a MT5 => MT5 fait foi (meme si 0 positions)
+            continue
+        # Agent non connecte => fallback fichiers locaux
+        try:
+            result = get_local_positions(agent_id)
+            positions = result.get("positions", [])
+            all_positions.extend(positions)
+        except Exception as e:
+            print(f"[Status] Erreur positions {agent_id}: {e}")
 
     return {
         "trading_active": is_trading,
@@ -263,7 +298,8 @@ async def get_status():
         "futures": futures_data,
         "sentiment": sentiment_data,
         "analysis": analysis_data,
-        "positions": all_positions
+        "positions": all_positions,
+        "decisions": get_recent_decisions(10)
     }
 
 
@@ -275,18 +311,29 @@ async def get_session():
 
 @router.get("/session/performance")
 async def get_session_performance():
-    """Performance de la session (compatibilite G12)."""
+    """Performance de la session avec historique pour graphiques."""
     all_stats = get_all_stats()
     session = get_session_info()
 
     total_trades = sum(s.get("total_trades", 0) for s in all_stats.values())
     total_profit = sum(s.get("total_profit", 0) for s in all_stats.values())
 
+    # Charger l'historique de performance pour les graphiques
+    performance = {}
+    history_file = DATABASE_PATH / "performance_history.json"
+    if history_file.exists():
+        try:
+            with open(history_file, "r") as f:
+                performance = json.load(f)
+        except Exception as e:
+            print(f"[Performance] Erreur lecture historique: {e}")
+
     return {
         "session_id": session.get("session", {}).get("id"),
         "total_trades": total_trades,
         "total_profit": round(total_profit, 2),
-        "by_agent": all_stats
+        "by_agent": all_stats,
+        "performance": performance
     }
 
 
@@ -595,8 +642,6 @@ async def validate_positions():
         except Exception as e:
             results[agent_id] = {"error": str(e)}
 
-    return results
-
 
 # ===================== KEYS API =====================
 
@@ -634,28 +679,18 @@ async def update_keys_selections(selections: Dict[str, str]):
 
 
 @router.post("/keys")
-async def manage_keys(action: str = None, key_data: Dict[str, Any] = None):
-    """Gerer les cles API (compatibilite G12)."""
+async def manage_keys(request: Request):
+    """Gerer les cles API - accepte le tableau complet depuis le frontend."""
     try:
-        with open(CONFIG_PATH / "api_keys.json", "r") as f:
-            data = json.load(f)
+        body = await request.json()
 
-        keys = data.get("keys", [])
+        # Le frontend envoie {"keys": [...]} - ecriture directe
+        if "keys" in body:
+            with open(CONFIG_PATH / "api_keys.json", "w") as f:
+                json.dump({"keys": body["keys"]}, f, indent=4)
+            return {"success": True}
 
-        if action == "add" and key_data:
-            keys.append(key_data)
-        elif action == "update" and key_data:
-            for i, k in enumerate(keys):
-                if k.get("id") == key_data.get("id"):
-                    keys[i] = key_data
-                    break
-        elif action == "delete" and key_data:
-            keys = [k for k in keys if k.get("id") != key_data.get("id")]
-
-        with open(CONFIG_PATH / "api_keys.json", "w") as f:
-            json.dump({"keys": keys}, f, indent=4)
-
-        return {"success": True}
+        return {"success": False, "error": "Format invalide: 'keys' manquant"}
     except Exception as e:
         return {"success": False, "error": str(e)}
 

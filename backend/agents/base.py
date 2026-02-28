@@ -65,11 +65,46 @@ class BaseAgent(ABC):
         """Verifie si l'agent est active."""
         return self.config.get("enabled", False)
 
+    def get_open_positions_count(self) -> int:
+        """
+        Compte les positions ouvertes de cet agent.
+        Lit depuis database/open_positions/{agent_id}.json
+        """
+        try:
+            pos_file = DATABASE_PATH / "open_positions" / f"{self.agent_id}.json"
+            if not pos_file.exists():
+                return 0
+
+            with open(pos_file, "r") as f:
+                positions = json.load(f)
+
+            # Filtrer les positions de cet agent (comment contient G13_agentid)
+            agent_positions = [
+                p for p in positions
+                if f"G13_{self.agent_id}" in p.get("comment", "")
+            ]
+            return len(agent_positions)
+
+        except Exception as e:
+            print(f"[{self.agent_id}] Erreur lecture positions: {e}")
+            return 0
+
     def can_trade(self) -> bool:
-        """Verifie si l'agent peut trader (cooldown respecte)."""
+        """
+        Verifie si l'agent peut trader.
+        Controle: enabled + cooldown + max_positions
+        """
         if not self.is_enabled():
             return False
 
+        # Controle max_positions
+        max_pos = self.config.get("max_positions", 5)
+        current_pos = self.get_open_positions_count()
+        if current_pos >= max_pos:
+            print(f"[{self.agent_id}] BLOQUE: {current_pos}/{max_pos} positions (max atteint)")
+            return False
+
+        # Controle cooldown
         if self.last_trade_time is None:
             return True
 
@@ -92,7 +127,6 @@ class BaseAgent(ABC):
 
         Returns:
             dict avec direction et parametres si trade, None sinon
-            Exemple: {"direction": "BUY", "sl": 2900, "tp": 2950}
         """
         pass
 
@@ -117,6 +151,8 @@ class BaseAgent(ABC):
             "name": self.config.get("name", self.agent_id),
             "enabled": self.is_enabled(),
             "can_trade": self.can_trade(),
+            "open_positions": self.get_open_positions_count(),
+            "max_positions": self.config.get("max_positions", 5),
             "is_running": self.is_running,
             "config": self.config
         }

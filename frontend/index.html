@@ -3408,14 +3408,16 @@
                 }
             });
 
-            // Initialisation
+            // Initialisation unique
             document.addEventListener('DOMContentLoaded', () => {
                 refreshData();
                 startAutoRefresh();
                 loadAllConfigs();
                 loadAgentAccounts();
-                loadApiKeys();  // Charger les cles API
-                loadChartHistory(); // Charger l'historique des graphiques
+                loadApiKeys();
+                loadSessionInfo();
+                loadStrategistInsights();
+                loadChartHistory(); // Restaurer graphiques depuis l'historique persiste
                 // Initialiser les graphiques
                 setTimeout(drawAllCharts, 100);
                 // Redessiner on resize
@@ -3427,32 +3429,34 @@
                     const response = await fetch(`${API_URL}/api/session/performance`);
                     const data = await response.json();
 
-                    if (data.performance) {
-                        console.log('[History] Chargement historique performance...');
-                        Object.keys(data.performance).forEach(agentId => {
-                            const history = data.performance[agentId];
-                            if (history && history.length > 0) {
-                                // Initialiser l'objet agentCharts pour cet agent
-                                agentCharts[agentId] = {
-                                    closed: [],
-                                    open: [],
-                                    timestamps: [],
-                                    sessionStart: new Date(history[0].timestamp)
-                                };
+                    if (data.performance && Object.keys(data.performance).length > 0) {
+                        console.log('[Chart] Chargement historique performance...');
+
+                        // Reset charts data avant de charger l'historique
+                        ['fibo1', 'fibo2', 'fibo3', 'master'].forEach(agentId => {
+                            agentCharts[agentId] = { closed: [], open: [], timestamps: [], sessionStart: null };
+                        });
+
+                        // Charger l'historique pour chaque agent
+                        for (const [agentId, history] of Object.entries(data.performance)) {
+                            if (agentCharts[agentId] && Array.isArray(history) && history.length > 0) {
+                                agentCharts[agentId].sessionStart = new Date(history[0].timestamp);
 
                                 history.forEach(point => {
-                                    agentCharts[agentId].closed.push(point.closed_pnl);
-                                    agentCharts[agentId].open.push(point.closed_pnl + point.floating_pnl);
+                                    agentCharts[agentId].closed.push(point.closed_pnl || 0);
+                                    agentCharts[agentId].open.push((point.closed_pnl || 0) + (point.floating_pnl || 0));
                                     agentCharts[agentId].timestamps.push(new Date(point.timestamp));
                                 });
-
-                                console.log(`[History] ${agentId}: ${history.length} points charges`);
+                                console.log(`[Chart] ${agentId}: ${history.length} points restaures`);
+                                drawAgentChart(agentId);
                             }
-                        });
-                        drawAllCharts();
+                        }
+                        console.log("[Chart] Graphiques restaures depuis l'historique");
+                    } else {
+                        console.log("[Chart] Pas d'historique, graphiques vierges");
                     }
                 } catch (error) {
-                    console.error('[History] Erreur chargement historique:', error);
+                    console.error('[Chart] Erreur chargement historique:', error);
                 }
             }
 
@@ -3723,8 +3727,8 @@
                     totalCapitalEl.style.color = 'var(--text-primary)';
 
                     // Capital Depart = balance au debut de la session G13
-                    // Si pas de balance_start, utiliser l'equity actuelle (pas de session active)
-                    const balanceStart = data.g11_session?.balance_start || totalEquity;
+                    // Utilise data.session.balance_start (sauvegarde lors du start trading)
+                    const balanceStart = data.session?.balance_start || totalEquity;
                     startCapitalEl.textContent = `${balanceStart.toFixed(2)} EUR`;
 
                     console.log(`[Capital] Balance Start (session): ${balanceStart.toFixed(2)} EUR, Equity: ${totalEquity.toFixed(2)} EUR`);
@@ -5591,49 +5595,7 @@
                 }, 3000);
             }
 
-            // Charger l'historique des graphiques
-            async function loadChartHistory() {
-                try {
-                    const response = await fetch(`${API_URL}/api/session/performance`);
-                    const data = await response.json();
-
-                    if (data.performance) {
-                        // Reset charts data avec sessionStart null (sera defini au premier point)
-                        ['fibo1', 'fibo2', 'fibo3', 'master'].forEach(agentId => {
-                            agentCharts[agentId] = { closed: [], open: [], timestamps: [], sessionStart: null };
-                        });
-
-                        // Populate with history
-                        for (const [agentId, history] of Object.entries(data.performance)) {
-                            if (agentCharts[agentId] && Array.isArray(history) && history.length > 0) {
-                                // sessionStart = premier timestamp de l'historique
-                                agentCharts[agentId].sessionStart = new Date(history[0].timestamp);
-
-                                history.forEach(point => {
-                                    agentCharts[agentId].closed.push(point.closed_pnl || 0);
-                                    agentCharts[agentId].open.push((point.closed_pnl || 0) + (point.floating_pnl || 0));
-                                    agentCharts[agentId].timestamps.push(new Date(point.timestamp));
-                                });
-                                console.log(`[Chart] ${agentId}: ${history.length} points charges, sessionStart=${agentCharts[agentId].sessionStart}`);
-                                // Dessiner
-                                drawAgentChart(agentId);
-                            }
-                        }
-                        console.log("Graphiques restaures avec succes");
-                    }
-                } catch (error) {
-                    console.error("Erreur chargement historique graphiques:", error);
-                }
-            }
-
-            // Charger les configs au demarrage
-            document.addEventListener('DOMContentLoaded', () => {
-                loadAllConfigs();
-                loadAgentAccounts();
-                loadSessionInfo();
-                loadStrategistInsights();
-                loadChartHistory();
-            });
+            // (loadChartHistory defini plus haut - definition unique)
         </script>
         <style>
             @keyframes slideIn {

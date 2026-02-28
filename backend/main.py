@@ -43,29 +43,20 @@ app.include_router(compat_router)  # Routes compatibilite G12
 
 
 @app.on_event("startup")
-async def auto_resume_trading():
+async def on_startup():
     """
-    Auto-resume: si une session etait active avant le reload,
-    relancer la trading loop automatiquement.
+    G13 demarre TOUJOURS a l'arret.
+    La session reste en memoire (pour restaurer les graphiques),
+    mais le trading ne demarre PAS automatiquement.
+    L'utilisateur doit cliquer sur 'Start Trading' manuellement.
     """
-    try:
-        from actions.session import get_session_info
-        from core import get_trading_loop
-
-        session = get_session_info()
-        session_data = session.get("session", {})
-
-        if session_data.get("status") == "active":
-            loop = get_trading_loop()
-            if not loop.is_running:
-                loop.start()
-                print(f"[AutoResume] Trading loop relancee (session {session_data.get('id', '?')[:8]})")
-            else:
-                print(f"[AutoResume] Trading loop deja active")
-        else:
-            print(f"[AutoResume] Pas de session active, trading loop non demarree")
-    except Exception as e:
-        print(f"[AutoResume] Erreur: {e}")
+    from actions.session import get_session_info
+    session = get_session_info()
+    session_data = session.get("session", {})
+    session_id = session_data.get("id", "aucune")
+    status = session_data.get("status", "stopped")
+    print(f"[Startup] G13 demarre - Session: {session_id} (status: {status})")
+    print(f"[Startup] Trading loop NON demarree (par defaut). Cliquer 'Start Trading' pour lancer.")
 
 
 @app.get("/")
