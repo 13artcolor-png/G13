@@ -126,8 +126,15 @@ class FiboAgent(BaseAgent):
         # L'IA a decide BUY ou SELL -> construire le signal
         direction = action  # "BUY" ou "SELL"
 
-        # Calculer SL/TP en % du capital (comme CLAUDE.md l'exige)
-        sl, tp = self._calculate_sl_tp_pct(price, direction)
+        # SL/TP structurels (basees sur les swings)
+        swing_high = market_data.get("swing_high", 0)
+        swing_low = market_data.get("swing_low", 0)
+
+        if swing_high and swing_low and swing_high != swing_low:
+            sl, tp = self._calculate_sl_tp_structural(price, direction, swing_high, swing_low)
+        else:
+            # Fallback % si pas de swings
+            sl, tp = self._calculate_sl_tp_pct(price, direction)
 
         return {
             "symbol": market_data.get("symbol", "BTCUSD"),
@@ -140,14 +147,32 @@ class FiboAgent(BaseAgent):
             "ai_decision": decision
         }
 
+    def _calculate_sl_tp_structural(self, entry_price: float, direction: str,
+                                     swing_high: float, swing_low: float) -> tuple:
+        """
+        SL/TP bases sur la structure (swing high/low).
+        BUY: SL sous le dernier plus bas, TP au dernier plus haut
+        SELL: SL au-dessus du dernier plus haut, TP au dernier plus bas
+        """
+        # Buffer de 0.05% pour ne pas etre pile sur le niveau
+        buffer = entry_price * 0.0005
+
+        if direction == "BUY":
+            sl = swing_low - buffer
+            tp = swing_high + buffer
+        else:
+            sl = swing_high + buffer
+            tp = swing_low - buffer
+
+        return round(sl, 2), round(tp, 2)
+
     def _calculate_sl_tp_pct(self, entry_price: float, direction: str) -> tuple:
         """
-        Calcule SL/TP en % du prix (bases sur tpsl_config).
-        Utilise les % du capital definis dans agents.json.
+        Fallback: SL/TP en % du prix (si pas de swings disponibles).
         """
         tpsl = self.config.get("tpsl_config", {})
-        sl_pct = tpsl.get("sl_pct", 0.5) / 100  # 0.5% -> 0.005
-        tp_pct = tpsl.get("tp_pct", 0.3) / 100  # 0.3% -> 0.003
+        sl_pct = tpsl.get("sl_pct", 0.5) / 100
+        tp_pct = tpsl.get("tp_pct", 0.3) / 100
 
         if direction == "BUY":
             sl = entry_price * (1 - sl_pct)

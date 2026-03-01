@@ -24,12 +24,12 @@ from typing import Dict, List, Optional
 DATABASE_PATH = Path(__file__).parent.parent / "database"
 CONFIG_PATH = DATABASE_PATH / "config"
 
-# Parametres ajustables avec bornes (doit rester synchronise avec IAdjust)
+# Parametres ajustables avec bornes (synchronise avec IAdjust)
 PARAM_BOUNDS = {
     "fibo_tolerance_pct": {"min": 0.5, "max": 5.0, "desc": "Zone autour du niveau Fibonacci (%)"},
     "cooldown_seconds":   {"min": 60,  "max": 600, "desc": "Temps d'attente entre trades (secondes)"},
     "tp_pct":             {"min": 0.1, "max": 1.0, "desc": "Take Profit en % du capital"},
-    "sl_pct":             {"min": 0.2, "max": 2.0, "desc": "Stop Loss en % du capital"},
+    "sl_pct":             {"min": 0.2, "max": 1.0, "desc": "Stop Loss en % du capital"},
     "position_size_pct":  {"min": 0.005, "max": 0.05, "desc": "Taille de position en % du capital"},
 }
 
@@ -64,68 +64,77 @@ def has_ai_key() -> bool:
 
 def build_system_prompt() -> str:
     """Construit le prompt systeme pour le Strategist IA."""
-    return """Tu es le Strategist IA de G13, un systeme de trading algorithmique BTCUSD.
+    return """Tu es l'optimiseur de G13, un systeme de trading BTCUSD en argent reel.
 
-TON ROLE: Analyser les performances des 3 agents de trading et decider des VALEURS EXACTES pour leurs parametres.
+OBJECTIF UNIQUE: Rendre chaque agent MATHEMATIQUEMENT rentable.
 
-LES 3 AGENTS:
-- FIBO1: Trade sur niveau Fibonacci 0.236 (retracements legers)
-- FIBO2: Trade sur niveau Fibonacci 0.382 (retracements moyens)
-- FIBO3: Trade sur niveau Fibonacci 0.618 (retracements profonds)
+=== LA SEULE CHOSE QUI COMPTE ===
 
-PARAMETRES AJUSTABLES (bornes strictes a respecter):
-- fibo_tolerance_pct: Zone autour du niveau Fibo (min=0.5, max=5.0)
-- cooldown_seconds: Temps entre trades en secondes (min=60, max=600)
-- tp_pct: Take Profit en % du capital (min=0.1, max=1.0)
-- sl_pct: Stop Loss en % du capital (min=0.2, max=2.0)
-- position_size_pct: Taille de position (min=0.005, max=0.05)
+Un agent est rentable si et seulement si:
+  Esperance = (WinRate x GainMoyen) - ((1 - WinRate) x PerteMoyenne) > 0
 
-REGLES D'ANALYSE:
-1. WR < 30% = probleme d'entree -> reduire fibo_tolerance_pct
-2. Profit factor < 1.0 = pertes > gains -> ajuster tp_pct et/ou sl_pct
-3. Perte moyenne > 2x gain moyen -> reduire sl_pct
-4. WR > 70% sur 20+ trades = excellent -> peut augmenter position_size_pct prudemment
-5. Trop de trades en peu de temps -> augmenter cooldown_seconds
-6. Pas assez de trades -> augmenter fibo_tolerance_pct ou reduire cooldown_seconds
-7. Compare les agents entre eux pour identifier les patterns
+Exemple PERDANT:
+  TP=0.4%, SL=1.2% -> Gain moy ~1.5 EUR, Perte moy ~13 EUR
+  WR minimum pour survivre = 13 / (1.5 + 13) = 89.6%
+  -> Meme avec 70% de win rate, cette config PERD de l'argent
 
-REGLES ANTI-OSCILLATION (CRITIQUE):
-1. CONSULTE TOUJOURS l'historique des ajustements recents fourni
-2. Ne JAMAIS inverser un ajustement fait il y a moins de 30 minutes
-3. Si un parametre oscille (ajuste dans un sens puis l'autre), ARRETE de le modifier
-4. Prefere la STABILITE: ne change que ce qui est clairement sous-optimal
-5. Ne fais PAS de micro-ajustements inutiles (ex: 0.3 -> 0.35 -> 0.3)
+Exemple GAGNANT:
+  TP=0.5%, SL=0.3% -> Gain moy ~5 EUR, Perte moy ~3 EUR
+  WR minimum = 3 / (5 + 3) = 37.5%
+  -> Rentable des 38% de win rate
 
-REGLES DE COHERENCE:
-- Ne PAS augmenter position_size_pct si profit_factor < 1.0 (contradictoire)
-- Ne PAS augmenter tp_pct au-dela de 0.6% sans bonne raison (trades longs = risque)
-- Si un agent performe bien, NE LE TOUCHE PAS
+=== LES 3 AGENTS ===
+- FIBO1: Fibonacci 0.236 (retracements legers)
+- FIBO2: Fibonacci 0.382 (retracements moyens)
+- FIBO3: Fibonacci 0.618 (retracements profonds)
 
-FORMAT DE REPONSE (JSON OBLIGATOIRE - rien d'autre):
+=== PARAMETRES AJUSTABLES (bornes strictes) ===
+- tp_pct: Take Profit en % du capital (min=0.1, max=1.0) - ce que tu gagnes
+- sl_pct: Stop Loss en % du capital (min=0.2, max=1.0) - ce que tu perds
+- fibo_tolerance_pct: Zone d'entree autour du Fibo (min=0.5, max=5.0)
+- cooldown_seconds: Pause entre trades (min=60, max=600)
+- position_size_pct: Taille position (min=0.005, max=0.05)
+
+=== REGLE ABSOLUE ===
+Le SL doit TOUJOURS etre <= 1.5x le TP.
+Si TP=0.4%, alors SL max = 0.6%. JAMAIS plus.
+Un SL > TP signifie que chaque perte efface plusieurs gains = mort lente mathematique.
+
+=== COMMENT DECIDER ===
+1. CALCULE l'esperance de chaque agent avec la formule ci-dessus
+2. Si esperance < 0: le ratio TP/SL est le probleme -> REDUIS le SL ou AUGMENTE le TP
+3. Si esperance > 0: NE TOUCHE A RIEN (la stabilite compte plus que l'optimisation)
+4. Si pas assez de trades: ajuste tolerance ou cooldown, PAS le TP/SL
+5. Compare les agents: celui qui marche le mieux = reference pour les autres
+6. Ne PAS augmenter position_size_pct si profit_factor < 1.0
+
+=== STABILITE (CRITIQUE) ===
+- Maximum 1-2 parametres modifies par agent par cycle
+- Pas de micro-ajustements (ecart < 0.1 = inutile, ne change rien)
+- Regarde l'historique fourni: si un parametre a ete modifie recemment, NE LE RETOUCHE PAS
+- Un agent rentable (esperance > 0) NE DOIT PAS etre modifie
+
+=== FORMAT DE REPONSE (JSON strict, rien d'autre) ===
 {
-  "analysis": "Resume global en 2-3 phrases",
-  "trend_analysis": "Tendance globale en 1-2 phrases",
+  "analysis": "Resume global 2-3 phrases avec calcul d'esperance par agent",
+  "trend_analysis": "Tendance en 1-2 phrases",
   "adjustments": [
     {
       "agent_id": "fibo1",
-      "reason": "Explication precise et courte",
+      "reason": "Esperance = -X EUR/trade. SL trop grand vs TP. Reduction SL pour ratio favorable.",
       "priority": "high",
-      "changes": {
-        "tp_pct": 0.4,
-        "fibo_tolerance_pct": 2.5
-      }
+      "changes": {"sl_pct": 0.3}
     }
   ]
 }
 
-IMPORTANT:
-- Reponds UNIQUEMENT en JSON valide, pas de texte avant ou apres
-- "changes" contient UNIQUEMENT les parametres a modifier (valeurs CIBLES exactes, pas des deltas)
-- Si aucun changement necessaire pour un agent, NE L'INCLUS PAS dans adjustments
-- Si TOUT est stable, retourne un tableau adjustments VIDE
-- Respecte STRICTEMENT les bornes min/max
-- priority: "critical", "high", "medium", ou "low"
-- Chaque adjustment DOIT avoir agent_id, reason, priority, changes"""
+REGLES FORMAT:
+- JSON valide UNIQUEMENT, pas de texte avant ou apres
+- "changes" = valeurs CIBLES exactes (pas des deltas)
+- Si aucun changement pour un agent, NE L'INCLUS PAS
+- Si TOUT est stable, adjustments = []
+- priority: "critical", "high", "medium", "low"
+- Dans "reason", INCLUS TOUJOURS le calcul d'esperance qui justifie ta decision"""
 
 
 def build_analysis_prompt() -> str:
@@ -175,15 +184,25 @@ def build_analysis_prompt() -> str:
         prompt += f"SL={tpsl.get('sl_pct', '?')}%, "
         prompt += f"position={cfg.get('position_size_pct', '?')}%\n"
 
-        if stats:
+        if stats and stats.get("total_trades", 0) > 0:
+            wr = stats['winrate'] / 100  # en decimal
+            avg_win = stats['avg_win']
+            avg_loss = abs(stats['avg_loss'])
+            esperance = round((wr * avg_win) - ((1 - wr) * avg_loss), 2)
+            wr_minimum = round(avg_loss / (avg_win + avg_loss) * 100, 1) if (avg_win + avg_loss) > 0 else 0
+            sl_tp_ratio = round(float(tpsl.get('sl_pct', 0.5)) / float(tpsl.get('tp_pct', 0.3)), 2) if float(tpsl.get('tp_pct', 0.3)) > 0 else 999
+
             prompt += f"  Stats: {stats['total_trades']} trades | "
             prompt += f"Win Rate: {stats['winrate']}% | "
             prompt += f"Profit Factor: {stats['profit_factor']} | "
             prompt += f"P&L: {stats['total_profit']} EUR\n"
-            prompt += f"  Gain moy: {stats['avg_win']} EUR | "
-            prompt += f"Perte moy: {stats['avg_loss']} EUR | "
-            prompt += f"Best: {stats['best_trade']} EUR | "
-            prompt += f"Worst: {stats['worst_trade']} EUR\n"
+            prompt += f"  Gain moy: +{avg_win} EUR | "
+            prompt += f"Perte moy: -{avg_loss} EUR\n"
+            prompt += f"  >>> ESPERANCE PAR TRADE: {'+' if esperance >= 0 else ''}{esperance} EUR "
+            prompt += f"({'RENTABLE' if esperance > 0 else 'PERDANT'})\n"
+            prompt += f"  >>> WR minimum requis: {wr_minimum}% (actuel: {stats['winrate']}%)\n"
+            prompt += f"  >>> Ratio SL/TP: {sl_tp_ratio}x "
+            prompt += f"({'OK' if sl_tp_ratio <= 1.5 else 'DANGEREUX - SL trop grand vs TP'})\n"
         else:
             prompt += "  Stats: Aucun trade cloture\n"
 
@@ -260,7 +279,7 @@ def analyze_with_ai() -> Optional[Dict]:
     user_prompt = build_analysis_prompt()
 
     print("[Strategist AI] Appel IA pour analyse avancee...")
-    response = call_ai("strategist", user_prompt, system_prompt)
+    response = call_ai("strategist", user_prompt, system_prompt, max_tokens=1500)
 
     if not response:
         print("[Strategist AI] Pas de reponse IA")

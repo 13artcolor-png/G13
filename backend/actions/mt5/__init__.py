@@ -8,7 +8,7 @@ from .read_positions import read_positions
 from .read_history import read_history
 from .open_trade import open_trade
 from .close_trade import close_trade, close_all_positions
-from .market_data import get_market_data, get_current_price, get_ohlc, calculate_fibonacci_levels, get_full_market_data
+from .market_data import get_market_data, get_current_price, get_ohlc, calculate_fibonacci_levels, get_full_market_data, find_last_swings
 from .modify_trade import modify_trade_sl_tp, get_symbol_info
 
 __all__ = [

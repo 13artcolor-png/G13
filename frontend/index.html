@@ -17,6 +17,7 @@
             box-sizing: border-box;
         }
 
+        /* === MODE SOMBRE (defaut) === */
         :root {
             --bg-dark: #0f172a;
             --bg-card: #1e293b;
@@ -32,6 +33,33 @@
             --border: #475569;
         }
 
+        /* === MODE CLAIR (choix utilisateur) === */
+        body.theme-light {
+            --bg-dark: #e2e8f0;
+            --bg-card: #f8fafc;
+            --bg-input: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border: #cbd5e1;
+        }
+        body.theme-light .header {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* === INDICATEUR TRADING INACTIF (teinte verte = standby, gris = actif) === */
+        body:not(.theme-light).trading-on {
+            --bg-dark: #0a1f14;
+            --bg-card: #162e22;
+            --bg-input: #1e3a2c;
+            --border: #2d5a40;
+        }
+        body.theme-light.trading-on {
+            --bg-dark: #c5e0cc;
+            --bg-card: #ddf0e2;
+            --bg-input: #c5e0cc;
+            --border: #8bc49e;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 18px;
@@ -39,6 +67,7 @@
             color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.5;
+            transition: background 0.5s ease;
         }
 
         /* Header */
@@ -1084,6 +1113,10 @@
     <header class="header">
         <h1>G13 - BTCUSD Trading Bot</h1>
         <div class="header-info">
+            <button id="theme-toggle" onclick="toggleTheme()" title="Basculer mode clair/sombre"
+                style="background: none; border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 20px; color: var(--text-primary); line-height: 1;">
+                <span id="theme-icon">L</span>
+            </button>
             <span id="session-badge" class="session-badge">Session: --</span>
             <span id="mt5-status" class="status-badge disconnected">MT5: Deconnecte</span>
             <div id="trading-status" class="trading-indicator trading-stopped">
@@ -2232,7 +2265,7 @@
                         <div class="config-row" style="margin-bottom: 8px;">
                             <label style="font-size: 18px;">Max Spread <span class="tooltip-icon"
                                     title="Spread max pour ouvrir une position. Au dela, on attend.">?</span></label>
-                            <input type="number" id="cfg-spread-max_spread_points" step="100" value="2000"
+                            <input type="number" id="cfg-spread-max_spread_points" step="10" value="50"
                                 style="width: 80px; font-size: 18px;" onchange="saveSpreadConfig()">
                             <span style="font-size: 18px; color: var(--text-secondary);">pts</span>
                         </div>
@@ -2289,7 +2322,7 @@
                         <div class="config-row" style="margin-bottom: 8px;">
                             <label style="font-size: 18px;">Trailing Start <span class="tooltip-icon"
                                     title="Activer trailing apres ce % de profit">?</span></label>
-                            <input type="number" id="cfg-spread-trailing_start_pct" step="0.05" value="0.2"
+                            <input type="number" id="cfg-spread-trailing_start_pct" step="0.05" value="0.3"
                                 style="width: 80px; font-size: 18px;" onchange="saveSpreadConfig()">
                             <span style="font-size: 18px; color: var(--text-secondary);">%</span>
                         </div>
@@ -2311,7 +2344,7 @@
                             <div class="config-row">
                                 <label style="font-size: 18px;">BE Activation <span class="tooltip-icon"
                                         title="Passer en break even apres ce % de profit">?</span></label>
-                                <input type="number" id="cfg-spread-break_even_pct" step="0.05" value="0.15"
+                                <input type="number" id="cfg-spread-break_even_pct" step="0.05" value="0.2"
                                     style="width: 80px; font-size: 18px;" onchange="saveSpreadConfig()">
                                 <span style="font-size: 18px; color: var(--text-secondary);">%</span>
                             </div>
@@ -2424,22 +2457,28 @@
                 <!-- LIGNE 2: Actions Rapides -->
                 <div style="margin-top: 16px;">
                     <div class="card"
-                        style="padding: 16px; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(139, 92, 246, 0.1) 100%);">
-                        <div class="card-title" style="font-size: 18px; margin-bottom: 12px;">Actions Rapides</div>
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                            <button class="btn btn-secondary" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="loadAllConfigs()">Recharger Configs <span title="Relit les configs depuis le serveur et met a jour l'affichage" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
-                            <button class="btn btn-secondary" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="resetToDefaults()">Reset Defaut <span title="Remet tous les reglages a leurs valeurs d'origine et sauvegarde" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
-                            <button class="btn btn-danger" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="exportLogsAndSettings()">Exporter Logs et Reglages <span title="Telecharge un fichier JSON avec tous les trades, performances et reglages" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
-                            <button class="btn btn-success" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="document.getElementById('import-json-input').click()">Importer Reglages <span title="Charge les reglages depuis un fichier JSON exporte precedemment" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
+                        style="padding: 20px; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(139, 92, 246, 0.05) 100%);">
+                        <div class="card-title" style="font-size: 18px; margin-bottom: 16px;">Actions Rapides</div>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                            <!-- Ligne 1 : Configuration -->
+                            <button class="btn" style="font-size: 18px; padding: 12px 16px; background: #374151; color: #e5e7eb; border: 1px solid #4b5563; border-radius: 8px; width: 100%;"
+                                onclick="loadAllConfigs()">Recharger Configs <span title="Relit les configs depuis le serveur et met a jour l'affichage" style="cursor:help; opacity:0.5; font-size:14px;">(?)</span></button>
+                            <button class="btn" style="font-size: 18px; padding: 12px 16px; background: #374151; color: #e5e7eb; border: 1px solid #4b5563; border-radius: 8px; width: 100%;"
+                                onclick="resetToDefaults()">Reset Defaut <span title="Remet tous les reglages a leurs valeurs d'origine et sauvegarde" style="cursor:help; opacity:0.5; font-size:14px;">(?)</span></button>
+                            <button class="btn" style="font-size: 18px; padding: 12px 16px; background: #dc2626; color: white; border: none; border-radius: 8px; width: 100%;"
+                                onclick="exportLogsAndSettings()">Exporter Logs <span title="Telecharge un fichier JSON avec tous les trades, performances et reglages" style="cursor:help; opacity:0.5; font-size:14px;">(?)</span></button>
+                            <button class="btn" style="font-size: 18px; padding: 12px 16px; background: #16a34a; color: white; border: none; border-radius: 8px; width: 100%;"
+                                onclick="document.getElementById('import-json-input').click()">Importer Reglages <span title="Charge les reglages depuis un fichier JSON exporte precedemment" style="cursor:help; opacity:0.5; font-size:14px;">(?)</span></button>
                             <input type="file" id="import-json-input" accept=".json" style="display:none;" onchange="importSettings(this)">
-                            <button class="btn btn-primary" style="font-size: 18px; padding: 10px 16px; background: #6366f1;"
-                                onclick="syncMT5Trades()">Sync MT5 <span title="Synchronise les positions et trades fermes depuis MetaTrader 5" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
-                            <button class="btn btn-warning" style="font-size: 18px; padding: 10px 16px;"
-                                onclick="validatePositions()">Valider Positions <span title="Verifie que les positions affichees existent dans MT5, supprime les fantomes" style="cursor:help; opacity:0.6; font-size:14px;">(?)</span></button>
+                            <!-- Ligne 2 : MT5 & Systeme -->
+                            <button class="btn" style="font-size: 18px; padding: 12px 16px; background: #4f46e5; color: white; border: none; border-radius: 8px; width: 100%;"
+                                onclick="syncMT5Trades()">Sync MT5 <span title="Synchronise les positions et trades fermes depuis MetaTrader 5" style="cursor:help; opacity:0.5; font-size:14px;">(?)</span></button>
+                            <button class="btn" style="font-size: 18px; padding: 12px 16px; background: #d97706; color: white; border: none; border-radius: 8px; width: 100%;"
+                                onclick="validatePositions()">Valider Positions <span title="Verifie que les positions affichees existent dans MT5, supprime les fantomes" style="cursor:help; opacity:0.5; font-size:14px;">(?)</span></button>
+                            <button class="btn" style="font-size: 18px; padding: 12px 16px; background: #7c3aed; color: white; border: none; border-radius: 8px; width: 100%;"
+                                onclick="openHistoryFolder()">Historique Sessions <span title="Ouvre le dossier contenant les logs de cloture de session" style="cursor:help; opacity:0.5; font-size:14px;">(?)</span></button>
+                            <button class="btn" style="font-size: 18px; padding: 12px 16px; background: #b91c1c; color: white; border: none; border-radius: 8px; width: 100%;"
+                                onclick="restartBackend()">Redemarrer Backend <span title="Redemarre le serveur backend G13 (arrete puis relance uvicorn)" style="cursor:help; opacity:0.5; font-size:14px;">(?)</span></button>
                         </div>
                     </div>
                 </div>
@@ -3525,7 +3564,32 @@
             });
 
             // Initialisation unique
+            // === THEME CLAIR/SOMBRE ===
+            function initTheme() {
+                const saved = localStorage.getItem('g13-theme');
+                if (saved === 'light') {
+                    document.body.classList.add('theme-light');
+                }
+                updateThemeIcon();
+            }
+
+            function toggleTheme() {
+                document.body.classList.toggle('theme-light');
+                const isLight = document.body.classList.contains('theme-light');
+                localStorage.setItem('g13-theme', isLight ? 'light' : 'dark');
+                updateThemeIcon();
+            }
+
+            function updateThemeIcon() {
+                const icon = document.getElementById('theme-icon');
+                if (!icon) return;
+                const isLight = document.body.classList.contains('theme-light');
+                icon.textContent = isLight ? 'S' : 'L';
+                document.getElementById('theme-toggle').title = isLight ? 'Passer en mode sombre' : 'Passer en mode clair';
+            }
+
             document.addEventListener('DOMContentLoaded', () => {
+                initTheme();
                 refreshData();
                 startAutoRefresh();
                 loadAllConfigs();
@@ -3628,15 +3692,17 @@
                     mt5Status.textContent = 'MT5: Deconnecte';
                 }
 
-                // Trading Status
+                // Trading Status -> teinte de fond uniquement (pas le theme complet)
                 const tradingStatus = document.getElementById('trading-status');
                 const tradingText = tradingStatus.querySelector('.indicator-text');
                 if (data.loops?.trading?.running) {
                     tradingStatus.className = 'trading-indicator trading-active';
                     tradingText.textContent = 'TRADING ACTIF';
+                    document.body.classList.remove('trading-on');
                 } else {
                     tradingStatus.className = 'trading-indicator trading-stopped';
                     tradingText.textContent = 'TRADING ARRETE';
+                    document.body.classList.add('trading-on');
                 }
 
                 // Session
@@ -4590,10 +4656,10 @@
                 document.getElementById('cfg-spread-spread_check_enabled').checked = true;
                 document.getElementById('cfg-spread-trailing_enabled').checked = true;
                 document.getElementById('cfg-spread-break_even_enabled').checked = true;
-                document.getElementById('cfg-spread-max_spread_points').value = 2000;
-                document.getElementById('cfg-spread-trailing_start_pct').value = 0.2;
+                document.getElementById('cfg-spread-max_spread_points').value = 50;
+                document.getElementById('cfg-spread-trailing_start_pct').value = 0.3;
                 document.getElementById('cfg-spread-trailing_distance_pct').value = 0.1;
-                document.getElementById('cfg-spread-break_even_pct').value = 0.15;
+                document.getElementById('cfg-spread-break_even_pct').value = 0.2;
 
                 // Sauvegarder au backend
                 await saveAgentConfig('fibo1');
@@ -5789,6 +5855,49 @@
                     }
                 } catch (error) {
                     showNotification('Erreur validation: ' + error.message, 'error');
+                }
+            }
+
+            async function openHistoryFolder() {
+                try {
+                    const response = await fetch(`${API_URL}/api/open-history-folder`, { method: 'POST' });
+                    const data = await response.json();
+                    if (data.success) {
+                        showNotification('Dossier historique ouvert', 'success');
+                    } else {
+                        showNotification('Erreur: ' + data.message, 'error');
+                    }
+                } catch (error) {
+                    showNotification('Erreur: ' + error.message, 'error');
+                }
+            }
+
+            async function restartBackend() {
+                if (!confirm('Redemarrer le backend G13 ?\nLe serveur va s\'arreter puis se relancer automatiquement.\nLa page se reconnectera dans quelques secondes.')) return;
+                try {
+                    showNotification('Redemarrage du backend en cours...', 'info');
+                    await fetch(`${API_URL}/api/restart-backend`, { method: 'POST' }).catch(() => {});
+                    // Le serveur va mourir, attendre puis recharger
+                    let attempts = 0;
+                    const maxAttempts = 20;
+                    const checkInterval = setInterval(async () => {
+                        attempts++;
+                        try {
+                            const resp = await fetch(`${API_URL}/api/status`, { signal: AbortSignal.timeout(2000) });
+                            if (resp.ok) {
+                                clearInterval(checkInterval);
+                                showNotification('Backend redemarre avec succes !', 'success');
+                                setTimeout(() => window.location.reload(), 500);
+                            }
+                        } catch (e) {
+                            if (attempts >= maxAttempts) {
+                                clearInterval(checkInterval);
+                                showNotification('Le backend ne repond pas. Verifiez manuellement.', 'error');
+                            }
+                        }
+                    }, 3000);
+                } catch (error) {
+                    showNotification('Erreur: ' + error.message, 'error');
                 }
             }
 

@@ -140,6 +140,54 @@ class InstitutionalPatternDetector:
             "ll_count": ll_count
         }
 
+    def detect_bos_choch(self, structure: Dict) -> Dict:
+        """
+        Detecte BOS (Break of Structure) et CHOCH (Change of Character).
+
+        BOS: Continuation de la tendance (nouveau HH en bullish, nouveau LL en bearish)
+        CHOCH: Retournement potentiel (LL apres tendance bullish, HH apres tendance bearish)
+
+        Returns:
+            dict: {"bos": {...} ou None, "choch": {...} ou None}
+        """
+        result = {"bos": None, "choch": None}
+
+        structure_list = structure.get("structure", [])
+        if len(structure_list) < 3:
+            return result
+
+        # Trier par index chronologique
+        sorted_struct = sorted(structure_list, key=lambda x: x[1].index)
+
+        # Tendance des evenements precedents (avant le dernier)
+        prev_events = sorted_struct[:-1]
+        last_event = sorted_struct[-1]
+
+        prev_bullish = sum(1 for s in prev_events[-3:] if s[0] in ("HH", "HL"))
+        prev_bearish = sum(1 for s in prev_events[-3:] if s[0] in ("LH", "LL"))
+
+        last_type = last_event[0]
+        last_price = last_event[1].price
+
+        if prev_bullish > prev_bearish:
+            # Tendance precedente BULLISH
+            if last_type == "HH":
+                result["bos"] = {"direction": "BULLISH", "level": last_price,
+                                 "description": f"BOS haussier a {last_price:.2f} - continuation haussiere confirmee"}
+            elif last_type == "LL":
+                result["choch"] = {"direction": "BEARISH", "level": last_price,
+                                   "description": f"CHOCH baissier a {last_price:.2f} - retournement potentiel vers baisse"}
+        elif prev_bearish > prev_bullish:
+            # Tendance precedente BEARISH
+            if last_type == "LL":
+                result["bos"] = {"direction": "BEARISH", "level": last_price,
+                                 "description": f"BOS baissier a {last_price:.2f} - continuation baissiere confirmee"}
+            elif last_type == "HH":
+                result["choch"] = {"direction": "BULLISH", "level": last_price,
+                                   "description": f"CHOCH haussier a {last_price:.2f} - retournement potentiel vers hausse"}
+
+        return result
+
     def detect_quasimodo(self, swings: List[SwingPoint],
                          current_price: float) -> Optional[Pattern]:
         """
@@ -411,6 +459,9 @@ class InstitutionalPatternDetector:
         # Zones de liquidite
         liquidity_zones = self.find_liquidity_zones(swings, current_price)
 
+        # BOS / CHOCH
+        bos_choch = self.detect_bos_choch(structure)
+
         # Generer la recommandation
         recommendation = self._generate_recommendation(patterns, structure, liquidity_zones, current_price)
 
@@ -423,6 +474,8 @@ class InstitutionalPatternDetector:
                 "lh_count": structure["lh_count"],
                 "ll_count": structure["ll_count"]
             },
+            "bos": bos_choch.get("bos"),
+            "choch": bos_choch.get("choch"),
             "patterns_detected": [
                 {
                     "type": p.type.value,

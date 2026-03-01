@@ -136,50 +136,56 @@ def _reset_all_data():
     print(f"[Session] All data reset for new session")
 
 
-def start_session(initial_balance: float = None) -> dict:
+def start_session(initial_balance: float = None, force_new: bool = False) -> dict:
     """
-    Start a new trading session.
+    Demarre ou reprend une session de trading.
 
-    If a session is already active AND has no balance yet, update it.
-    If a session is already active WITH balance, end it first then create new.
-    If no session active, create a fresh one with full data reset.
+    REGLE ABSOLUE: Une session persiste jusqu'a ce que l'utilisateur clique sur "Nouvelle Session".
+    - force_new=False (defaut) : REPREND la session existante (meme si status=stopped)
+    - force_new=True : Cree une NOUVELLE session avec reset des donnees (uniquement via "Nouvelle Session")
 
     Args:
-        initial_balance: Starting balance (optional, can be fetched from MT5)
+        initial_balance: Balance de depart (optionnel, recupere de MT5)
+        force_new: Si True, force la creation d'une nouvelle session (uniquement "Nouvelle Session")
 
     Returns:
-        dict: {
-            "success": bool,
-            "message": str,
-            "session": dict
-        }
+        dict: {"success": bool, "message": str, "session": dict}
     """
     try:
-        # Check if session already active
         current = get_session_raw()
 
-        if current.get("status") == "active":
-            # Si balance fournie et session sans balance, mettre a jour
-            if initial_balance and not current.get("balance_start"):
-                current["balance_start"] = initial_balance
-                with open(SESSION_FILE, "w") as f:
-                    json.dump(current, f, indent=2)
+        # === MODE REPRISE (defaut) : reprendre la session existante ===
+        if not force_new:
+            if current.get("id"):
+                # Session existe -> la reprendre
+                changed = False
+
+                # Remettre en active si elle etait stopped
+                if current.get("status") != "active":
+                    current["status"] = "active"
+                    changed = True
+
+                # Mettre a jour la balance si fournie et absente
+                if initial_balance and not current.get("balance_start"):
+                    current["balance_start"] = initial_balance
+                    changed = True
+
+                if changed:
+                    with open(SESSION_FILE, "w") as f:
+                        json.dump(current, f, indent=2)
+
+                session_id = current.get("id")
+                print(f"[Session] Session {session_id} reprise (status: active)")
                 return {
                     "success": True,
-                    "message": f"Session {current.get('id')} updated with balance",
+                    "message": f"Session {session_id} reprise",
                     "session": current
                 }
-            return {
-                "success": True,
-                "message": "Session already active",
-                "session": current
-            }
+            # Pas de session existante -> en creer une (premier lancement)
 
-        # === NEW SESSION ===
-        # Reset all historical data
+        # === MODE NOUVELLE SESSION : reset complet ===
         _reset_all_data()
 
-        # Create new session
         session_id = str(uuid.uuid4())[:8]
         session = {
             "id": session_id,
@@ -188,11 +194,10 @@ def start_session(initial_balance: float = None) -> dict:
             "status": "active"
         }
 
-        # Write to file
         with open(SESSION_FILE, "w") as f:
             json.dump(session, f, indent=2)
 
-        print(f"[Session] New session {session_id} started (data reset)")
+        print(f"[Session] Nouvelle session {session_id} (data reset)")
 
         return {
             "success": True,

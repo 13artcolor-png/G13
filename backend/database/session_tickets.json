@@ -1,2394 +1,266 @@
 [
   {
-    "ticket": 264473253,
+    "ticket": 264634647,
     "agent_id": "fibo1",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T13:35:15.847569",
-    "status": "closed"
-  },
-  {
-    "ticket": 264483799,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T16:56:17.434275",
-    "status": "closed"
-  },
-  {
-    "ticket": 264492255,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:34:13.738787",
-    "status": "closed"
-  },
-  {
-    "ticket": 264492419,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:38:31.150865",
-    "status": "closed"
-  },
-  {
-    "ticket": 264492519,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:41:24.159896",
-    "status": "closed"
-  },
-  {
-    "ticket": 264492789,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:45:14.139827",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493053,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:48:29.015388",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493388,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:51:03.008555",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493406,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:51:41.760429",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493489,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:53:49.941140",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493529,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:54:57.509408",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493554,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:55:54.851882",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493612,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:57:50.993866",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493872,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:58:51.063812",
-    "status": "closed"
-  },
-  {
-    "ticket": 264493949,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:59:27.955915",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494001,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T18:59:57.821791",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494125,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:00:44.813519",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494259,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:02:00.872892",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494331,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:02:31.881974",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494493,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:03:51.591829",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494516,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:04:07.774088",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494538,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:04:24.835020",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494657,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:06:09.839153",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494712,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:06:45.625663",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494847,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:08:14.086543",
-    "status": "closed"
-  },
-  {
-    "ticket": 264494878,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:08:40.822260",
-    "status": "closed"
-  },
-  {
-    "ticket": 264495132,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:13:01.811561",
-    "status": "closed"
-  },
-  {
-    "ticket": 264495474,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:17:19.758629",
-    "status": "closed"
-  },
-  {
-    "ticket": 264497246,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:33:01.799319",
-    "status": "closed"
-  },
-  {
-    "ticket": 264497842,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:36:02.508173",
-    "status": "closed"
-  },
-  {
-    "ticket": 264498426,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:38:03.018167",
-    "status": "closed"
-  },
-  {
-    "ticket": 264498492,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T19:38:17.976639",
-    "status": "closed"
-  },
-  {
-    "ticket": 264498903,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:40:09.004513",
-    "status": "closed"
-  },
-  {
-    "ticket": 264498953,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:40:27.201094",
-    "status": "closed"
-  },
-  {
-    "ticket": 264499261,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:42:05.834346",
-    "status": "closed"
-  },
-  {
-    "ticket": 264499320,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:42:23.927300",
-    "status": "closed"
-  },
-  {
-    "ticket": 264499387,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:42:45.458357",
-    "status": "closed"
-  },
-  {
-    "ticket": 264499597,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:44:07.566847",
-    "status": "closed"
-  },
-  {
-    "ticket": 264499633,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:44:25.811837",
-    "status": "closed"
-  },
-  {
-    "ticket": 264499916,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:46:06.509220",
-    "status": "closed"
-  },
-  {
-    "ticket": 264499975,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:46:25.029134",
-    "status": "closed"
-  },
-  {
-    "ticket": 264500119,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:47:04.486690",
-    "status": "closed"
-  },
-  {
-    "ticket": 264500298,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:48:08.553105",
-    "status": "closed"
-  },
-  {
-    "ticket": 264500357,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:48:25.463292",
-    "status": "closed"
-  },
-  {
-    "ticket": 264500623,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:50:04.723455",
-    "status": "closed"
-  },
-  {
-    "ticket": 264500756,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:50:40.725187",
-    "status": "closed"
-  },
-  {
-    "ticket": 264500897,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:51:23.695751",
-    "status": "closed"
-  },
-  {
-    "ticket": 264501024,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:52:13.732017",
-    "status": "closed"
-  },
-  {
-    "ticket": 264501081,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:52:33.720643",
-    "status": "closed"
-  },
-  {
-    "ticket": 264501496,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:54:19.703814",
-    "status": "closed"
-  },
-  {
-    "ticket": 264501519,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:54:25.714575",
-    "status": "closed"
-  },
-  {
-    "ticket": 264502251,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:55:54.765029",
-    "status": "closed"
-  },
-  {
-    "ticket": 264502345,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:56:11.434715",
-    "status": "closed"
-  },
-  {
-    "ticket": 264502439,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:56:31.982348",
-    "status": "closed"
-  },
-  {
-    "ticket": 264502750,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:57:59.736389",
-    "status": "closed"
-  },
-  {
-    "ticket": 264502883,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:58:32.769972",
-    "status": "closed"
-  },
-  {
-    "ticket": 264503245,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T19:59:47.727114",
-    "status": "closed"
-  },
-  {
-    "ticket": 264503461,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:00:26.685073",
-    "status": "closed"
-  },
-  {
-    "ticket": 264503520,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:00:43.742414",
-    "status": "closed"
-  },
-  {
-    "ticket": 264503711,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:01:42.709484",
-    "status": "closed"
-  },
-  {
-    "ticket": 264503920,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:02:44.003599",
-    "status": "closed"
-  },
-  {
-    "ticket": 264504087,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:03:29.798864",
-    "status": "closed"
-  },
-  {
-    "ticket": 264504306,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:04:43.833469",
-    "status": "closed"
-  },
-  {
-    "ticket": 264504337,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:04:51.702034",
-    "status": "closed"
-  },
-  {
-    "ticket": 264504464,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:05:22.787920",
-    "status": "closed"
-  },
-  {
-    "ticket": 264504679,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:06:39.708587",
-    "status": "closed"
-  },
-  {
-    "ticket": 264505088,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:09:12.576110",
-    "status": "closed"
-  },
-  {
-    "ticket": 264505110,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:09:20.280768",
-    "status": "closed"
-  },
-  {
-    "ticket": 264505272,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:10:15.335502",
-    "status": "closed"
-  },
-  {
-    "ticket": 264505638,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:12:08.549033",
-    "status": "closed"
-  },
-  {
-    "ticket": 264506174,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:13:51.076554",
-    "status": "closed"
-  },
-  {
-    "ticket": 264506218,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:14:07.576973",
-    "status": "closed"
-  },
-  {
-    "ticket": 264506236,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:14:13.591956",
-    "status": "closed"
-  },
-  {
-    "ticket": 264506627,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:16:02.447021",
-    "status": "closed"
-  },
-  {
-    "ticket": 264506764,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:16:20.927761",
-    "status": "closed"
-  },
-  {
-    "ticket": 264507125,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:18:09.539751",
-    "status": "closed"
-  },
-  {
-    "ticket": 264507156,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:18:18.196802",
-    "status": "closed"
-  },
-  {
-    "ticket": 264507208,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:18:34.354774",
-    "status": "closed"
-  },
-  {
-    "ticket": 264507607,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T20:20:53.406029",
-    "status": "closed"
-  },
-  {
-    "ticket": 264507900,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T20:22:52.773464",
-    "status": "closed"
-  },
-  {
-    "ticket": 264508545,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T20:27:26.097576",
-    "status": "closed"
-  },
-  {
-    "ticket": 264510719,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:35:44.651822",
-    "status": "closed"
-  },
-  {
-    "ticket": 264510746,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:35:50.284270",
-    "status": "closed"
-  },
-  {
-    "ticket": 264510822,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:36:15.938097",
-    "status": "closed"
-  },
-  {
-    "ticket": 264511133,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:37:40.224467",
-    "status": "closed"
-  },
-  {
-    "ticket": 264511154,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:37:46.155991",
-    "status": "closed"
-  },
-  {
-    "ticket": 264511610,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:39:28.599036",
-    "status": "closed"
-  },
-  {
-    "ticket": 264511764,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:39:50.147908",
-    "status": "closed"
-  },
-  {
-    "ticket": 264511933,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:40:12.816630",
-    "status": "closed"
-  },
-  {
-    "ticket": 264511986,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:40:19.107267",
-    "status": "closed"
-  },
-  {
-    "ticket": 264512067,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:40:27.779317",
-    "status": "closed"
-  },
-  {
-    "ticket": 264512419,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:41:59.810374",
-    "status": "closed"
-  },
-  {
-    "ticket": 264512483,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:42:20.809355",
-    "status": "closed"
-  },
-  {
-    "ticket": 264512776,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:43:47.812259",
-    "status": "closed"
-  },
-  {
-    "ticket": 264512872,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:44:20.805526",
-    "status": "closed"
-  },
-  {
-    "ticket": 264512940,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:44:45.986824",
-    "status": "closed"
-  },
-  {
-    "ticket": 264513103,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:45:43.412343",
-    "status": "closed"
-  },
-  {
-    "ticket": 264513220,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:46:19.336052",
-    "status": "closed"
-  },
-  {
-    "ticket": 264513447,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:47:31.802100",
-    "status": "closed"
-  },
-  {
-    "ticket": 264513637,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:48:18.851339",
-    "status": "closed"
-  },
-  {
-    "ticket": 264513751,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:49:09.789663",
-    "status": "closed"
-  },
-  {
-    "ticket": 264513796,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:49:25.649148",
-    "status": "closed"
-  },
-  {
-    "ticket": 264514013,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:50:27.512372",
-    "status": "closed"
-  },
-  {
-    "ticket": 264514316,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:51:14.816245",
-    "status": "closed"
-  },
-  {
-    "ticket": 264514549,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:52:30.887831",
-    "status": "closed"
-  },
-  {
-    "ticket": 264514627,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:53:01.801545",
-    "status": "closed"
-  },
-  {
-    "ticket": 264514719,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:53:39.179794",
-    "status": "closed"
-  },
-  {
-    "ticket": 264514885,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:54:35.428730",
-    "status": "closed"
-  },
-  {
-    "ticket": 264514923,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:54:52.814688",
-    "status": "closed"
-  },
-  {
-    "ticket": 264515229,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:56:34.860517",
-    "status": "closed"
-  },
-  {
-    "ticket": 264515446,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T20:57:25.199517",
-    "status": "closed"
-  },
-  {
-    "ticket": 264515464,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:57:31.354609",
-    "status": "closed"
-  },
-  {
-    "ticket": 264515737,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T20:59:27.378578",
-    "status": "closed"
-  },
-  {
-    "ticket": 264515792,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T20:59:50.861995",
-    "status": "closed"
-  },
-  {
-    "ticket": 264516128,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:01:48.042587",
-    "status": "closed"
-  },
-  {
-    "ticket": 264516160,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:01:56.839417",
-    "status": "closed"
-  },
-  {
-    "ticket": 264516295,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:02:48.960678",
-    "status": "closed"
-  },
-  {
-    "ticket": 264516458,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:03:46.024095",
-    "status": "closed"
-  },
-  {
-    "ticket": 264516614,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:04:45.460305",
-    "status": "closed"
-  },
-  {
-    "ticket": 264516790,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:05:48.077532",
-    "status": "closed"
-  },
-  {
-    "ticket": 264516939,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:06:45.331163",
-    "status": "closed"
-  },
-  {
-    "ticket": 264516966,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:06:57.069059",
-    "status": "closed"
-  },
-  {
-    "ticket": 264517074,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:07:43.123954",
-    "status": "closed"
-  },
-  {
-    "ticket": 264517359,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:08:39.045954",
-    "status": "closed"
-  },
-  {
-    "ticket": 264517525,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:09:41.352930",
-    "status": "closed"
-  },
-  {
-    "ticket": 264517752,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:10:29.051367",
-    "status": "closed"
-  },
-  {
-    "ticket": 264517943,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:11:21.532746",
-    "status": "closed"
-  },
-  {
-    "ticket": 264518075,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:11:37.934801",
-    "status": "closed"
-  },
-  {
-    "ticket": 264518203,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:12:23.260351",
-    "status": "closed"
-  },
-  {
-    "ticket": 264518398,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:13:35.025143",
-    "status": "closed"
-  },
-  {
-    "ticket": 264518624,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:14:22.237101",
-    "status": "closed"
-  },
-  {
-    "ticket": 264518650,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:14:28.485364",
-    "status": "closed"
-  },
-  {
-    "ticket": 264518776,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:15:05.040893",
-    "status": "closed"
-  },
-  {
-    "ticket": 264518992,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:16:21.139971",
-    "status": "closed"
-  },
-  {
-    "ticket": 264519010,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:16:26.298592",
-    "status": "closed"
-  },
-  {
-    "ticket": 264519448,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:18:09.879207",
-    "status": "closed"
-  },
-  {
-    "ticket": 264519499,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:18:29.801421",
-    "status": "closed"
-  },
-  {
-    "ticket": 264519587,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:19:04.120457",
-    "status": "closed"
-  },
-  {
-    "ticket": 264519783,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:20:14.082175",
-    "status": "closed"
-  },
-  {
-    "ticket": 264519924,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:20:34.632052",
-    "status": "closed"
-  },
-  {
-    "ticket": 264520574,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:22:07.825706",
-    "status": "closed"
-  },
-  {
-    "ticket": 264520780,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:22:39.954973",
-    "status": "closed"
-  },
-  {
-    "ticket": 264520882,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:23:02.724348",
-    "status": "closed"
-  },
-  {
-    "ticket": 264521301,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:24:40.284269",
-    "status": "closed"
-  },
-  {
-    "ticket": 264521379,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:25:01.821761",
-    "status": "closed"
-  },
-  {
-    "ticket": 264521688,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:26:53.253625",
-    "status": "closed"
-  },
-  {
-    "ticket": 264521758,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:27:09.819473",
-    "status": "closed"
-  },
-  {
-    "ticket": 264521766,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:27:16.294549",
-    "status": "closed"
-  },
-  {
-    "ticket": 264522036,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:29:00.382337",
-    "status": "closed"
-  },
-  {
-    "ticket": 264522083,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:29:19.824000",
-    "status": "closed"
-  },
-  {
-    "ticket": 264522470,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:30:45.795765",
-    "status": "closed"
-  },
-  {
-    "ticket": 264522551,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:31:02.604382",
-    "status": "closed"
-  },
-  {
-    "ticket": 264522707,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:31:20.940987",
-    "status": "closed"
-  },
-  {
-    "ticket": 264523050,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:32:48.670906",
-    "status": "closed"
-  },
-  {
-    "ticket": 264523265,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:33:23.662064",
-    "status": "closed"
-  },
-  {
-    "ticket": 264523513,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:34:43.382188",
-    "status": "closed"
-  },
-  {
-    "ticket": 264523590,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:35:23.940598",
-    "status": "closed"
-  },
-  {
-    "ticket": 264523766,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:36:25.991056",
-    "status": "closed"
-  },
-  {
-    "ticket": 264523895,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:37:27.821306",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524093,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:38:42.327876",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524188,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:39:18.824408",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524199,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:39:25.847092",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524367,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:41:05.826811",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524414,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:41:24.201534",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524476,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:42:43.808538",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524485,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:43:00.140706",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524491,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:43:20.470079",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524556,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:44:47.635019",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524616,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:45:19.782492",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524729,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:46:33.125279",
-    "status": "closed"
-  },
-  {
-    "ticket": 264524879,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:47:15.805857",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525336,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:49:30.686435",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525364,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T21:49:40.370152",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525425,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:50:05.058988",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525521,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:51:33.293413",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525540,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:51:51.428573",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525709,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:53:34.598865",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525715,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:53:41.778495",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525758,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:53:58.383950",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525946,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:55:34.495625",
-    "status": "closed"
-  },
-  {
-    "ticket": 264525987,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:55:51.382895",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526234,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:57:36.475399",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526253,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:57:59.499731",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526274,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:58:15.943742",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526390,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T21:59:31.659547",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526568,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:01:17.491243",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526592,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:01:34.311608",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526605,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T22:01:39.491873",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526844,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T22:03:42.528095",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526904,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:04:18.498908",
-    "status": "closed"
-  },
-  {
-    "ticket": 264526963,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:04:44.532280",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527040,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:05:57.563382",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527055,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:06:15.489026",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527137,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:07:33.999098",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527170,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:08:04.264901",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527175,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:08:09.689420",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527278,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:09:54.218741",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527298,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:10:15.212305",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527303,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:10:22.481333",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527369,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:11:43.981708",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527407,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:12:34.258186",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527412,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:12:43.196170",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527473,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:13:41.211192",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527578,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:14:41.198968",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527600,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:15:05.183194",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527625,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:15:36.242062",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527684,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:16:45.467153",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527740,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:17:32.220216",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527749,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:17:41.960739",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527810,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:18:41.219614",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527901,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:19:25.211686",
-    "status": "closed"
-  },
-  {
-    "ticket": 264527967,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:20:01.661777",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528016,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:20:45.310728",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528041,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:21:11.195545",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528113,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:22:31.734368",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528139,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:23:04.169946",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528142,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:23:10.414207",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528263,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:24:55.215838",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528274,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:25:04.105795",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528298,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:25:21.218296",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528365,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T22:26:41.234215",
+    "opened_at": "2026-03-01T13:49:24.016378",
     "status": "closed"
   },
   {
-    "ticket": 264528397,
+    "ticket": 264634652,
     "agent_id": "fibo2",
     "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:27:27.318840",
+    "direction": "BUY",
+    "opened_at": "2026-03-01T13:49:31.119553",
     "status": "closed"
   },
   {
-    "ticket": 264528401,
+    "ticket": 264634659,
     "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:27:34.464133",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528430,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:28:33.209378",
+    "direction": "BUY",
+    "opened_at": "2026-03-01T13:49:42.232426",
     "status": "closed"
   },
   {
-    "ticket": 264528493,
+    "ticket": 264634723,
     "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:29:49.256881",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528496,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:29:57.144100",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528529,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T22:30:27.217639",
+    "opened_at": "2026-03-01T13:51:07.911542",
     "status": "closed"
   },
   {
-    "ticket": 264528626,
+    "ticket": 264634768,
     "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:32:15.271458",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528635,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:32:32.213432",
+    "direction": "BUY",
+    "opened_at": "2026-03-01T13:51:59.243677",
     "status": "closed"
   },
   {
-    "ticket": 264528670,
+    "ticket": 264634805,
     "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:33:17.948744",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528750,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:34:35.797770",
+    "direction": "BUY",
+    "opened_at": "2026-03-01T13:52:45.272596",
     "status": "closed"
   },
   {
-    "ticket": 264528759,
+    "ticket": 264634885,
     "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:34:45.184708",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528779,
-    "agent_id": "fibo2",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T22:35:15.662291",
+    "opened_at": "2026-03-01T13:54:12.267900",
     "status": "closed"
   },
   {
-    "ticket": 264528864,
+    "ticket": 264634942,
     "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:36:26.208553",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528919,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:37:04.049012",
-    "status": "closed"
-  },
-  {
-    "ticket": 264528949,
-    "agent_id": "fibo2",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T22:37:21.345472",
+    "opened_at": "2026-03-01T13:55:29.672413",
     "status": "closed"
   },
   {
-    "ticket": 264529310,
+    "ticket": 264635032,
     "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:38:38.973613",
-    "status": "closed"
-  },
-  {
-    "ticket": 264529403,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:39:27.678722",
-    "status": "closed"
-  },
-  {
-    "ticket": 264529411,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:39:37.242674",
-    "status": "closed"
-  },
-  {
-    "ticket": 264529543,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:41:31.217883",
-    "status": "closed"
-  },
-  {
-    "ticket": 264529625,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:42:24.097460",
-    "status": "closed"
-  },
-  {
-    "ticket": 264529639,
-    "agent_id": "fibo3",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T22:42:33.079647",
+    "opened_at": "2026-03-01T13:58:16.881930",
     "status": "closed"
   },
   {
-    "ticket": 264529703,
+    "ticket": 264635179,
     "agent_id": "fibo1",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T22:43:00.196790",
+    "opened_at": "2026-03-01T14:01:05.983176",
     "status": "closed"
   },
   {
-    "ticket": 264529780,
+    "ticket": 264635319,
     "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:44:30.146715",
-    "status": "closed"
-  },
-  {
-    "ticket": 264529820,
-    "agent_id": "fibo3",
     "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:44:55.576349",
+    "direction": "BUY",
+    "opened_at": "2026-03-01T14:03:19.360768",
     "status": "closed"
   },
   {
-    "ticket": 264529988,
+    "ticket": 264635460,
     "agent_id": "fibo2",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T22:46:29.092760",
+    "opened_at": "2026-03-01T14:04:59.260336",
     "status": "closed"
   },
   {
-    "ticket": 264530147,
+    "ticket": 264635492,
     "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:47:36.894186",
-    "status": "closed"
-  },
-  {
-    "ticket": 264530225,
-    "agent_id": "fibo2",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T22:48:25.101821",
+    "opened_at": "2026-03-01T14:05:09.793237",
     "status": "closed"
   },
   {
-    "ticket": 264530340,
+    "ticket": 264635582,
     "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:49:56.519889",
-    "status": "closed"
-  },
-  {
-    "ticket": 264530350,
-    "agent_id": "fibo3",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T22:50:08.080271",
+    "opened_at": "2026-03-01T14:06:17.260677",
     "status": "closed"
   },
   {
-    "ticket": 264530391,
+    "ticket": 264635600,
     "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T22:50:42.276938",
-    "status": "closed"
-  },
-  {
-    "ticket": 264530486,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T22:51:43.114318",
+    "opened_at": "2026-03-01T14:06:26.264656",
     "status": "closed"
   },
   {
-    "ticket": 264530574,
+    "ticket": 264635662,
     "agent_id": "fibo3",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T22:52:38.071531",
+    "opened_at": "2026-03-01T14:07:20.013823",
     "status": "closed"
   },
   {
-    "ticket": 264530606,
+    "ticket": 264635694,
     "agent_id": "fibo2",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T22:53:06.095952",
+    "opened_at": "2026-03-01T14:08:06.266497",
     "status": "closed"
   },
   {
-    "ticket": 264530647,
+    "ticket": 264635743,
     "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T22:54:08.108449",
-    "status": "closed"
-  },
-  {
-    "ticket": 264530685,
-    "agent_id": "fibo3",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T22:55:00.132967",
-    "status": "closed"
-  },
-  {
-    "ticket": 264530697,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T22:55:18.253638",
-    "status": "closed"
-  },
-  {
-    "ticket": 264530773,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T22:56:35.112927",
-    "status": "closed"
-  },
-  {
-    "ticket": 264530828,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T22:57:22.289443",
+    "opened_at": "2026-03-01T14:08:45.059586",
     "status": "closed"
   },
   {
-    "ticket": 264530848,
+    "ticket": 264635789,
     "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T22:57:30.182327",
-    "status": "closed"
-  },
-  {
-    "ticket": 264530954,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T22:58:54.108219",
+    "opened_at": "2026-03-01T14:09:27.262274",
     "status": "closed"
   },
   {
-    "ticket": 264530966,
+    "ticket": 264635811,
     "agent_id": "fibo2",
     "symbol": "BTCUSD",
     "direction": "BUY",
-    "opened_at": "2026-02-28T23:02:08.147376",
+    "opened_at": "2026-03-01T14:09:49.301748",
     "status": "closed"
   },
   {
-    "ticket": 264530967,
-    "agent_id": "fibo3",
+    "ticket": 264635984,
+    "agent_id": "fibo2",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T23:02:20.874630",
+    "opened_at": "2026-03-01T14:13:23.044311",
     "status": "closed"
   },
   {
-    "ticket": 264530998,
+    "ticket": 264635990,
     "agent_id": "fibo3",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:05:00.767474",
+    "direction": "SELL",
+    "opened_at": "2026-03-01T14:13:33.246917",
     "status": "closed"
   },
   {
-    "ticket": 264531118,
+    "ticket": 264636108,
     "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:05:42.174330",
-    "status": "closed"
-  },
-  {
-    "ticket": 264531158,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:06:16.817807",
+    "direction": "SELL",
+    "opened_at": "2026-03-01T14:14:55.524840",
     "status": "closed"
   },
   {
-    "ticket": 264531186,
+    "ticket": 264636366,
     "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:07:22.644469",
-    "status": "closed"
-  },
-  {
-    "ticket": 264531191,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:07:38.979326",
-    "status": "closed"
-  },
-  {
-    "ticket": 264531204,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:08:10.108238",
+    "direction": "SELL",
+    "opened_at": "2026-03-01T14:17:42.804987",
     "status": "closed"
   },
   {
-    "ticket": 264531224,
+    "ticket": 264636518,
     "agent_id": "fibo2",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:09:46.888212",
+    "direction": "SELL",
+    "opened_at": "2026-03-01T14:19:47.265183",
     "status": "closed"
   },
   {
-    "ticket": 264531235,
+    "ticket": 264636527,
     "agent_id": "fibo3",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T23:09:55.299877",
-    "status": "closed"
-  },
-  {
-    "ticket": 264531280,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:10:12.105329",
+    "opened_at": "2026-03-01T14:19:56.263011",
     "status": "closed"
   },
   {
-    "ticket": 264531370,
+    "ticket": 264637097,
     "agent_id": "fibo2",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:11:44.837656",
+    "direction": "SELL",
+    "opened_at": "2026-03-01T14:24:15.482057",
     "status": "closed"
   },
   {
-    "ticket": 264531445,
+    "ticket": 264637108,
     "agent_id": "fibo3",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T23:12:32.076203",
-    "status": "closed"
-  },
-  {
-    "ticket": 264531491,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:12:48.957398",
+    "opened_at": "2026-03-01T14:24:26.234036",
     "status": "closed"
   },
   {
-    "ticket": 264531624,
+    "ticket": 264637176,
     "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:13:50.104394",
-    "status": "closed"
-  },
-  {
-    "ticket": 264531772,
-    "agent_id": "fibo1",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:14:46.324421",
+    "direction": "SELL",
+    "opened_at": "2026-03-01T14:25:46.286861",
     "status": "closed"
   },
   {
-    "ticket": 264531796,
+    "ticket": 264637239,
     "agent_id": "fibo3",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:14:55.074320",
+    "direction": "SELL",
+    "opened_at": "2026-03-01T14:26:34.266110",
     "status": "closed"
   },
   {
-    "ticket": 264532011,
+    "ticket": 264637481,
     "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:15:50.557892",
-    "status": "closed"
-  },
-  {
-    "ticket": 264532176,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:16:35.102481",
-    "status": "closed"
-  },
-  {
-    "ticket": 264532331,
-    "agent_id": "fibo3",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T23:17:14.075669",
+    "opened_at": "2026-03-01T14:27:16.726287",
     "status": "open"
   },
   {
-    "ticket": 264532419,
+    "ticket": 264637559,
     "agent_id": "fibo2",
     "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:17:45.099491",
-    "status": "closed"
-  },
-  {
-    "ticket": 264532563,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:18:32.086700",
-    "status": "closed"
-  },
-  {
-    "ticket": 264532870,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:19:42.665018",
-    "status": "closed"
-  },
-  {
-    "ticket": 264532901,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:19:59.103949",
-    "status": "closed"
-  },
-  {
-    "ticket": 264532982,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:20:17.082568",
-    "status": "closed"
-  },
-  {
-    "ticket": 264533505,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:21:56.946296",
-    "status": "closed"
-  },
-  {
-    "ticket": 264533557,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:22:04.344060",
-    "status": "closed"
-  },
-  {
-    "ticket": 264533849,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:22:37.270367",
+    "direction": "SELL",
+    "opened_at": "2026-03-01T14:28:50.258528",
     "status": "open"
   },
   {
-    "ticket": 264534175,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:24:30.176191",
-    "status": "open"
-  },
-  {
-    "ticket": 264534191,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:24:35.359783",
-    "status": "open"
-  },
-  {
-    "ticket": 264534208,
+    "ticket": 264637566,
     "agent_id": "fibo3",
     "symbol": "BTCUSD",
     "direction": "SELL",
-    "opened_at": "2026-02-28T23:24:43.287766",
-    "status": "closed"
-  },
-  {
-    "ticket": 264534455,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:26:15.562887",
-    "status": "closed"
-  },
-  {
-    "ticket": 264534507,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:26:35.753927",
-    "status": "open"
-  },
-  {
-    "ticket": 264534659,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T23:27:14.028361",
-    "status": "closed"
-  },
-  {
-    "ticket": 264534887,
-    "agent_id": "fibo1",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:28:31.287249",
-    "status": "open"
-  },
-  {
-    "ticket": 264534919,
-    "agent_id": "fibo2",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:28:37.420083",
-    "status": "open"
-  },
-  {
-    "ticket": 264535068,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "SELL",
-    "opened_at": "2026-02-28T23:29:32.850467",
-    "status": "open"
-  },
-  {
-    "ticket": 264535443,
-    "agent_id": "fibo3",
-    "symbol": "BTCUSD",
-    "direction": "BUY",
-    "opened_at": "2026-02-28T23:31:52.210965",
+    "opened_at": "2026-03-01T14:29:00.032658",
     "status": "open"
   }
 ]

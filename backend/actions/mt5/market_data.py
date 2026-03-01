@@ -158,32 +158,105 @@ def calculate_fibonacci_levels(high: float, low: float) -> dict:
 
 def detect_trend(candles: List[dict]) -> str:
     """
-    Detecte la tendance basee sur les dernieres bougies.
+    Detecte la tendance avec EMA 20 vs EMA 50 (methode robuste).
 
     Args:
-        candles: Liste des bougies OHLC
+        candles: Liste des bougies OHLC (minimum 50 pour fiabilite)
 
     Returns:
         str: "bullish", "bearish", ou "neutral"
     """
-    if len(candles) < 10:
+    if len(candles) < 50:
         return "neutral"
 
-    # Comparer les 5 dernieres bougies avec les 5 precedentes
-    recent = candles[-5:]
-    previous = candles[-10:-5]
+    closes = [c['close'] for c in candles]
 
-    recent_avg = sum(c['close'] for c in recent) / 5
-    previous_avg = sum(c['close'] for c in previous) / 5
+    # Calculer EMA 20 et EMA 50
+    ema20 = _calculate_ema(closes, 20)
+    ema50 = _calculate_ema(closes, 50)
 
-    diff_pct = ((recent_avg - previous_avg) / previous_avg) * 100
+    if ema50 == 0:
+        return "neutral"
 
-    if diff_pct > 0.1:
+    # Ecart en % entre EMA 20 et EMA 50
+    diff_pct = ((ema20 - ema50) / ema50) * 100
+
+    # Seuil 0.05% pour eviter le bruit (EMA lisse deja beaucoup)
+    if diff_pct > 0.05:
         return "bullish"
-    elif diff_pct < -0.1:
+    elif diff_pct < -0.05:
         return "bearish"
     else:
         return "neutral"
+
+
+def _calculate_ema(values: List[float], period: int) -> float:
+    """Calcule l'EMA (Exponential Moving Average) sur une serie de valeurs."""
+    if len(values) < period:
+        return 0.0
+
+    multiplier = 2.0 / (period + 1)
+    # SMA initiale
+    sma_sum = 0.0
+    for i in range(period):
+        sma_sum += values[i]
+    ema = sma_sum / period
+
+    for i in range(period, len(values)):
+        ema = (values[i] - ema) * multiplier + ema
+
+    return ema
+
+
+def find_last_swings(candles: List[dict], lookback: int = 3) -> dict:
+    """
+    Trouve le dernier swing high et le dernier swing low sur les bougies.
+
+    Un swing high = bougie dont le high est superieur aux N bougies avant et apres.
+    Un swing low = bougie dont le low est inferieur aux N bougies avant et apres.
+
+    Args:
+        candles: Bougies OHLC
+        lookback: Nombre de bougies pour confirmer un swing (defaut 3)
+
+    Returns:
+        dict: {"swing_high": float, "swing_low": float}
+    """
+    n = len(candles)
+    if n < lookback * 2 + 1:
+        # Pas assez de bougies, utiliser max/min bruts
+        return {
+            "swing_high": max(c["high"] for c in candles),
+            "swing_low": min(c["low"] for c in candles)
+        }
+
+    swing_highs = []
+    swing_lows = []
+
+    for i in range(lookback, n - lookback):
+        # Swing high: plus haut que les N voisins de chaque cote
+        is_high = True
+        for j in range(1, lookback + 1):
+            if candles[i]["high"] <= candles[i - j]["high"] or candles[i]["high"] <= candles[i + j]["high"]:
+                is_high = False
+                break
+        if is_high:
+            swing_highs.append(candles[i]["high"])
+
+        # Swing low: plus bas que les N voisins de chaque cote
+        is_low = True
+        for j in range(1, lookback + 1):
+            if candles[i]["low"] >= candles[i - j]["low"] or candles[i]["low"] >= candles[i + j]["low"]:
+                is_low = False
+                break
+        if is_low:
+            swing_lows.append(candles[i]["low"])
+
+    # Prendre le dernier swing detecte (le plus recent)
+    sh = swing_highs[-1] if swing_highs else max(c["high"] for c in candles)
+    sl = swing_lows[-1] if swing_lows else min(c["low"] for c in candles)
+
+    return {"swing_high": sh, "swing_low": sl}
 
 
 def calculate_momentum(candles: List[dict], periods: int = 5) -> float:

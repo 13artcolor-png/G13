@@ -1,802 +1,245 @@
 [
   {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.65,
-    "new_value": 0.7,
-    "timestamp": "2026-02-28T23:23:45.067284",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.3,
-    "new_value": 0.25,
-    "timestamp": "2026-02-28T23:23:45.067280",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.9,
-    "new_value": 3.4,
-    "timestamp": "2026-02-28T23:23:45.065031",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.7,
-    "new_value": 0.75,
-    "timestamp": "2026-02-28T23:23:45.062490",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.6,
-    "new_value": 0.65,
-    "timestamp": "2026-02-28T23:18:41.530238",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.35,
-    "new_value": 0.3,
-    "timestamp": "2026-02-28T23:18:41.530233",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.65,
-    "new_value": 0.7,
-    "timestamp": "2026-02-28T23:18:41.527585",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.55,
-    "new_value": 0.6,
-    "timestamp": "2026-02-28T23:13:30.936251",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.4,
-    "new_value": 0.35,
-    "timestamp": "2026-02-28T23:13:30.936246",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 2.8,
-    "new_value": 2.3,
-    "timestamp": "2026-02-28T23:13:30.933229",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.6,
-    "new_value": 0.65,
-    "timestamp": "2026-02-28T23:13:30.933223",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3,
-    "new_value": 2.5,
-    "timestamp": "2026-02-28T23:08:19.348853",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.45,
-    "new_value": 0.4,
-    "timestamp": "2026-02-28T23:08:19.348846",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.55,
-    "new_value": 0.6,
-    "timestamp": "2026-02-28T23:08:19.346040",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.5,
-    "new_value": 0.55,
-    "timestamp": "2026-02-28T23:03:05.770570",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.5,
-    "new_value": 0.45,
-    "timestamp": "2026-02-28T23:03:05.770564",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.3,
-    "new_value": 2.8,
-    "timestamp": "2026-02-28T23:03:05.767748",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.5,
-    "new_value": 0.55,
-    "timestamp": "2026-02-28T23:03:05.767739",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.9,
-    "new_value": 3.4,
-    "timestamp": "2026-02-28T22:57:52.238463",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 2.5,
-    "new_value": 2.0,
-    "timestamp": "2026-02-28T22:52:47.024196",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_COOLDOWN",
-    "field": "cooldown_seconds",
-    "old_value": 100,
-    "new_value": 130,
-    "timestamp": "2026-02-28T22:52:47.021561",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.0,
-    "new_value": 2.5,
-    "timestamp": "2026-02-28T22:42:42.076545",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 2.5,
-    "new_value": 3.0,
-    "timestamp": "2026-02-28T22:41:10.372434",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.95,
-    "new_value": 1.0,
-    "timestamp": "2026-02-28T22:41:10.369732",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.0,
-    "new_value": 2.5,
-    "timestamp": "2026-02-28T22:36:09.853030",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.9,
-    "new_value": 0.95,
-    "timestamp": "2026-02-28T22:36:09.850669",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "INCREASE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 2.5,
-    "new_value": 3.0,
-    "timestamp": "2026-02-28T22:31:06.304776",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.85,
-    "new_value": 0.9,
-    "timestamp": "2026-02-28T22:31:06.301434",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.0,
-    "new_value": 2.5,
-    "timestamp": "2026-02-28T22:25:58.147438",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.8,
-    "new_value": 0.85,
-    "timestamp": "2026-02-28T22:25:58.144956",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "INCREASE_RISK",
+    "type": "EXACT_VALUE",
     "field": "position_size_pct",
-    "old_value": 0.04,
-    "new_value": 0.045,
-    "timestamp": "2026-02-28T22:15:47.744906",
+    "old_value": 0.025,
+    "new_value": 0.0125,
+    "reason": "Esp\u00e9rance = -2.04 EUR/trade. Perte moyenne 5.23 EUR vs gain 1.16 EUR = ratio 4.5x. WR 50% vs 81.8% requis. R\u00e9duction position pour r\u00e9\u00e9quilibrer.",
+    "timestamp": "2026-03-01T14:23:20.007285",
     "agent_id": "fibo3"
   },
   {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.8,
-    "new_value": 3.3,
-    "timestamp": "2026-02-28T22:15:47.742044",
+    "type": "EXACT_VALUE",
+    "field": "position_size_pct",
+    "old_value": 0.025,
+    "new_value": 0.0125,
+    "reason": "Esp\u00e9rance = -2.42 EUR/trade. Pire performance avec WR 44.4% vs 86.2% requis. Perte moyenne 5 EUR vs gain 0.8 EUR = ratio 6.25x. R\u00e9duction position critique.",
+    "timestamp": "2026-03-01T14:23:20.004869",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "position_size_pct",
+    "old_value": 0.05,
+    "new_value": 0.035,
+    "reason": "Esp\u00e9rance = -0.63 EUR/trade. Perte moyenne 5.4 EUR vs gain 0.56 EUR. Augmentation position pour capitaliser sur le meilleur WR (80%) du syst\u00e8me.",
+    "timestamp": "2026-03-01T14:17:52.725750",
     "agent_id": "fibo1"
   },
   {
-    "type": "REDUCE_COOLDOWN",
-    "field": "cooldown_seconds",
-    "old_value": 160,
-    "new_value": 130,
-    "timestamp": "2026-02-28T22:10:30.722905",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
+    "type": "EXACT_VALUE",
     "field": "tpsl_config.tp_pct",
-    "old_value": 0.95,
-    "new_value": 1.0,
-    "timestamp": "2026-02-28T22:10:30.722901",
+    "old_value": 0.4,
+    "new_value": 0.6,
+    "reason": "Esp\u00e9rance = -3.36 EUR/trade. WR de 33% catastrophique avec ratio perte/gain de 13:1. Augmentation TP maximale n\u00e9cessaire.",
+    "timestamp": "2026-03-01T14:11:53.801693",
     "agent_id": "fibo3"
   },
   {
-    "type": "ADJUST_TPSL",
+    "type": "EXACT_VALUE",
     "field": "tpsl_config.tp_pct",
-    "old_value": 0.75,
-    "new_value": 0.8,
-    "timestamp": "2026-02-28T22:10:30.720458",
-    "agent_id": "fibo1"
+    "old_value": 0.4,
+    "new_value": 0.6,
+    "reason": "Esp\u00e9rance = -3.57 EUR/trade. WR de 40% insuffisant face aux pertes 11x sup\u00e9rieures aux gains. Augmentation TP critique pour survie.",
+    "timestamp": "2026-03-01T14:11:53.799242",
+    "agent_id": "fibo2"
   },
   {
-    "type": "REDUCE_COOLDOWN",
-    "field": "cooldown_seconds",
-    "old_value": 190,
-    "new_value": 160,
-    "timestamp": "2026-02-28T22:05:08.645798",
+    "type": "EXACT_VALUE",
+    "field": "position_size_pct",
+    "old_value": 0.05,
+    "new_value": 0.025,
+    "reason": "Esperance = -6.39 EUR/trade. 0% win rate avec pertes 6.39 EUR/trade. Reduction position size critique pour survie.",
+    "timestamp": "2026-03-01T14:05:57.592336",
     "agent_id": "fibo3"
   },
   {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.9,
-    "new_value": 0.95,
-    "timestamp": "2026-02-28T22:05:08.645789",
-    "agent_id": "fibo3"
+    "type": "EXACT_VALUE",
+    "field": "position_size_pct",
+    "old_value": 0.05,
+    "new_value": 0.025,
+    "reason": "Esperance = -4.61 EUR/trade. Pertes reelles 6.33 EUR vs gains 0.56 EUR. Reduction drastique position size pour limiter degats en attendant correction execution.",
+    "timestamp": "2026-03-01T14:05:57.590258",
+    "agent_id": "fibo2"
   },
   {
-    "type": "REDUCE_COOLDOWN",
-    "field": "cooldown_seconds",
-    "old_value": 220,
-    "new_value": 190,
-    "timestamp": "2026-02-28T21:59:57.194890",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.85,
-    "new_value": 0.9,
-    "timestamp": "2026-02-28T21:59:57.194883",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_TOLERANCE",
+    "type": "EXACT_VALUE",
     "field": "fibo_tolerance_pct",
     "old_value": 2.5,
-    "new_value": 3.0,
-    "timestamp": "2026-02-28T21:54:49.999346",
+    "new_value": 3.75,
+    "reason": "Aucun trade avec tolerance=2.5%. Niveau 0.618 plus profond n\u00e9cessite tolerance plus large. Augmentation pour capturer les retracements profonds.",
+    "timestamp": "2026-03-01T13:49:51.482749",
     "agent_id": "fibo3"
   },
   {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.8,
-    "new_value": 0.85,
-    "timestamp": "2026-02-28T21:54:49.999338",
-    "agent_id": "fibo3"
+    "type": "EXACT_VALUE",
+    "field": "cooldown_seconds",
+    "old_value": 110,
+    "new_value": 80,
+    "reason": "Aucun trade malgr\u00e9 tolerance=2.5%. Historique montre derni\u00e8re modification tolerance \u00e0 3.5% puis aucun suivi. R\u00e9duction cooldown pour plus de r\u00e9activit\u00e9.",
+    "timestamp": "2026-03-01T13:49:51.481032",
+    "agent_id": "fibo2"
   },
   {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.0,
-    "new_value": 2.5,
-    "timestamp": "2026-02-28T21:49:48.577393",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.75,
-    "new_value": 0.8,
-    "timestamp": "2026-02-28T21:49:48.577386",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_TOLERANCE",
+    "type": "EXACT_VALUE",
     "field": "fibo_tolerance_pct",
     "old_value": 2.5,
-    "new_value": 3.0,
-    "timestamp": "2026-02-28T21:45:43.318408",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.7,
-    "new_value": 0.75,
-    "timestamp": "2026-02-28T21:45:43.318395",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 4.3,
-    "new_value": 3.8,
-    "timestamp": "2026-02-28T21:45:43.313882",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.65,
-    "new_value": 0.7,
-    "timestamp": "2026-02-28T21:40:35.385337",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.0,
-    "new_value": 2.5,
-    "timestamp": "2026-02-28T21:35:32.757531",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.7,
-    "new_value": 0.75,
-    "timestamp": "2026-02-28T21:35:32.754007",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 3.5,
-    "new_value": 3.0,
-    "timestamp": "2026-02-28T21:30:24.501993",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.65,
-    "new_value": 0.7,
-    "timestamp": "2026-02-28T21:30:24.499562",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 4.0,
     "new_value": 3.5,
-    "timestamp": "2026-02-28T21:25:13.898131",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.6,
-    "new_value": 0.65,
-    "timestamp": "2026-02-28T21:25:13.898123",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 4.5,
-    "new_value": 4.0,
-    "timestamp": "2026-02-28T21:19:56.301950",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.55,
-    "new_value": 0.6,
-    "timestamp": "2026-02-28T21:19:56.301943",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.6,
-    "new_value": 0.65,
-    "timestamp": "2026-02-28T21:19:56.299309",
+    "reason": "Aucun trade = aucune donn\u00e9e pour calculer esp\u00e9rance. Cooldown r\u00e9duit r\u00e9cemment mais tolerance jamais ajust\u00e9e. Augmentation tolerance pour plus d'opportunit\u00e9s.",
+    "timestamp": "2026-03-01T13:49:51.478772",
     "agent_id": "fibo1"
   },
   {
-    "type": "ADJUST_TPSL",
+    "type": "EXACT_VALUE",
     "field": "tpsl_config.tp_pct",
     "old_value": 0.5,
-    "new_value": 0.55,
-    "timestamp": "2026-02-28T21:14:42.963044",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.55,
-    "new_value": 0.6,
-    "timestamp": "2026-02-28T21:14:42.960258",
+    "new_value": 0.4,
+    "reason": "Esp\u00e9rance = -1.44 EUR/trade. Avec SL=0.2%, augmentation TP \u00e0 0.4% pour am\u00e9liorer ratio gain/perte tout en respectant SL <= 1.5x TP.",
+    "timestamp": "2026-03-01T11:58:55.254663",
     "agent_id": "fibo1"
   },
   {
-    "type": "REDUCE_COOLDOWN",
+    "type": "EXACT_VALUE",
+    "field": "position_size_pct",
+    "old_value": 0.05,
+    "new_value": 0.025,
+    "reason": "Esp\u00e9rance = -1.24 EUR/trade. Gains moyens les plus faibles (0.9 EUR). R\u00e9duction position size critique pour survie.",
+    "timestamp": "2026-03-01T11:43:11.679703",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "position_size_pct",
+    "old_value": 0.05,
+    "new_value": 0.025,
+    "reason": "Esp\u00e9rance = -0.97 EUR/trade. Meilleur des 3 agents mais toujours perdant. R\u00e9duction position size pour pr\u00e9server capital.",
+    "timestamp": "2026-03-01T11:43:11.677542",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "position_size_pct",
+    "old_value": 0.05,
+    "new_value": 0.025,
+    "reason": "Esp\u00e9rance = -1.51 EUR/trade. Gains moyens trop faibles (1.06 EUR) vs pertes (8.25 EUR). R\u00e9duction position size pour limiter impact des pertes en attendant am\u00e9lioration du syst\u00e8me.",
+    "timestamp": "2026-03-01T11:43:11.675091",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.25,
+    "new_value": 0.2,
+    "reason": "Esp\u00e9rance = -1.78 EUR/trade avec le pire win rate (66.7%). Perte moyenne 7.61 EUR vs gain 1.13 EUR. R\u00e9duction SL pour am\u00e9liorer l'esp\u00e9rance math\u00e9matique.",
+    "timestamp": "2026-03-01T10:54:11.776923",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.25,
+    "new_value": 0.2,
+    "reason": "Esp\u00e9rance = -1.95 EUR/trade. Perte moyenne 12.16 EUR vs gain 1.45 EUR inacceptable. R\u00e9duction SL pour limiter les pertes et am\u00e9liorer le ratio risque/rendement.",
+    "timestamp": "2026-03-01T10:54:11.773907",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.4,
+    "new_value": 0.25,
+    "reason": "Esp\u00e9rance = -1.95 EUR/trade. Perte moyenne -7.67 EUR vs gain +1.27 EUR. R\u00e9duction SL pour \u00e9quilibrer le ratio risque/rendement.",
+    "timestamp": "2026-03-01T10:44:48.311573",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.4,
+    "new_value": 0.25,
+    "reason": "Esp\u00e9rance = -2.46 EUR/trade. Perte moyenne -12.16 EUR vs gain +1.7 EUR = ratio catastrophique. R\u00e9duction drastique SL pour limiter les pertes.",
+    "timestamp": "2026-03-01T10:44:48.309129",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 2.5,
+    "new_value": 3.0,
+    "reason": "Esp\u00e9rance = -2.43 EUR/trade avec win rate le plus faible (57.1%). Augmentation tol\u00e9rance pour am\u00e9liorer qualit\u00e9 des entr\u00e9es sur retracements profonds.",
+    "timestamp": "2026-03-01T10:23:40.778186",
+    "agent_id": "fibo3"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "fibo_tolerance_pct",
+    "old_value": 3.0,
+    "new_value": 3.5,
+    "reason": "Esp\u00e9rance = -1.4 EUR/trade, meilleur des 3 agents. 32 trades donnent une base statistique correcte. L\u00e9g\u00e8re augmentation tol\u00e9rance pour am\u00e9liorer timing d'entr\u00e9e.",
+    "timestamp": "2026-03-01T10:23:40.776476",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "EXACT_VALUE",
     "field": "cooldown_seconds",
-    "old_value": 250,
-    "new_value": 220,
-    "timestamp": "2026-02-28T21:13:17.834946",
-    "agent_id": "fibo3"
+    "old_value": 110,
+    "new_value": 80,
+    "reason": "Esp\u00e9rance = -2.46 EUR/trade. Seulement 10 trades, besoin de plus de volume pour validation statistique. R\u00e9duction cooldown pour augmenter fr\u00e9quence.",
+    "timestamp": "2026-03-01T10:23:40.774840",
+    "agent_id": "fibo1"
   },
   {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 5,
-    "new_value": 4.5,
-    "timestamp": "2026-02-28T21:13:17.834922",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.035,
-    "new_value": 0.04,
-    "timestamp": "2026-02-28T21:08:08.430496",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
+    "type": "EXACT_VALUE",
     "field": "tpsl_config.tp_pct",
-    "old_value": 0.45,
-    "new_value": 0.5,
-    "timestamp": "2026-02-28T21:08:08.430490",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 4.4,
-    "new_value": 3.9000000000000004,
-    "timestamp": "2026-02-28T21:08:08.427462",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.03,
-    "new_value": 0.035,
-    "timestamp": "2026-02-28T21:03:00.040366",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.4,
-    "new_value": 0.45,
-    "timestamp": "2026-02-28T21:03:00.040360",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 4.9,
-    "new_value": 4.4,
-    "timestamp": "2026-02-28T21:03:00.038651",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "REDUCE_TOLERANCE",
-    "field": "fibo_tolerance_pct",
-    "old_value": 4.8,
-    "new_value": 4.3,
-    "timestamp": "2026-02-28T21:03:00.036476",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.025,
-    "new_value": 0.03,
-    "timestamp": "2026-02-28T20:57:47.474525",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.02,
-    "new_value": 0.025,
-    "timestamp": "2026-02-28T20:56:02.665243",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.015,
-    "new_value": 0.02,
-    "timestamp": "2026-02-28T20:50:57.016360",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.01,
-    "new_value": 0.015,
-    "timestamp": "2026-02-28T20:45:47.618049",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.25,
-    "new_value": 0.2,
-    "timestamp": "2026-02-28T20:28:01.330604",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.25,
-    "new_value": 0.2,
-    "timestamp": "2026-02-28T20:28:01.328823",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.045,
-    "new_value": 0.05,
-    "timestamp": "2026-02-28T20:28:01.326733",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.25,
-    "new_value": 0.2,
-    "timestamp": "2026-02-28T20:28:01.326727",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.3,
-    "new_value": 0.25,
-    "timestamp": "2026-02-28T20:22:52.790727",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.3,
-    "new_value": 0.25,
-    "timestamp": "2026-02-28T20:22:52.789013",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.04,
-    "new_value": 0.045,
-    "timestamp": "2026-02-28T20:22:52.786769",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.3,
-    "new_value": 0.25,
-    "timestamp": "2026-02-28T20:22:52.786763",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.35,
+    "old_value": 0.5,
     "new_value": 0.3,
-    "timestamp": "2026-02-28T20:21:10.941775",
+    "reason": "Esperance = -3.53 EUR/trade. Pertes 9x superieures aux gains. Meme strategie: limiter pertes et reduire TP pour executions plus rapides.",
+    "timestamp": "2026-03-01T09:51:06.040571",
     "agent_id": "fibo3"
   },
   {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.35,
-    "new_value": 0.3,
-    "timestamp": "2026-02-28T20:21:10.939080",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.035,
-    "new_value": 0.04,
-    "timestamp": "2026-02-28T20:21:10.936217",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.35,
-    "new_value": 0.3,
-    "timestamp": "2026-02-28T20:21:10.936213",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
+    "type": "EXACT_VALUE",
     "field": "tpsl_config.sl_pct",
     "old_value": 0.4,
-    "new_value": 0.35,
-    "timestamp": "2026-02-28T20:16:04.472531",
+    "new_value": 0.2,
+    "reason": "Esperance = -3.53 EUR/trade. Pertes 9x superieures aux gains. Meme strategie: limiter pertes et reduire TP pour executions plus rapides.",
+    "timestamp": "2026-03-01T09:51:06.040481",
     "agent_id": "fibo3"
   },
   {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.4,
-    "new_value": 0.35,
-    "timestamp": "2026-02-28T20:16:04.470695",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.03,
-    "new_value": 0.035,
-    "timestamp": "2026-02-28T20:16:04.468605",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.4,
-    "new_value": 0.35,
-    "timestamp": "2026-02-28T20:16:04.468600",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.45,
-    "new_value": 0.4,
-    "timestamp": "2026-02-28T20:10:56.406097",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.045,
-    "new_value": 0.05,
-    "timestamp": "2026-02-28T20:10:56.404340",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.45,
-    "new_value": 0.4,
-    "timestamp": "2026-02-28T20:10:56.404336",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.025,
-    "new_value": 0.03,
-    "timestamp": "2026-02-28T20:10:56.402444",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.45,
-    "new_value": 0.4,
-    "timestamp": "2026-02-28T20:10:56.402440",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.5,
-    "new_value": 0.45,
-    "timestamp": "2026-02-28T20:05:53.603748",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.04,
-    "new_value": 0.045,
-    "timestamp": "2026-02-28T20:05:53.601949",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.5,
-    "new_value": 0.45,
-    "timestamp": "2026-02-28T20:05:53.601946",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.02,
-    "new_value": 0.025,
-    "timestamp": "2026-02-28T20:05:53.600009",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "RISK_MANAGEMENT",
-    "field": "tpsl_config.sl_pct",
-    "old_value": 0.5,
-    "new_value": 0.45,
-    "timestamp": "2026-02-28T20:05:53.600004",
-    "agent_id": "fibo1"
-  },
-  {
-    "type": "ADJUST_TPSL",
-    "field": "tpsl_config.tp_pct",
-    "old_value": 0.35,
-    "new_value": 0.4,
-    "timestamp": "2026-02-28T20:00:45.756550",
-    "agent_id": "fibo3"
-  },
-  {
-    "type": "INCREASE_RISK",
-    "field": "position_size_pct",
-    "old_value": 0.035,
-    "new_value": 0.04,
-    "timestamp": "2026-02-28T20:00:45.754954",
-    "agent_id": "fibo2"
-  },
-  {
-    "type": "ADJUST_TPSL",
+    "type": "EXACT_VALUE",
     "field": "tpsl_config.tp_pct",
     "old_value": 0.5,
-    "new_value": 0.55,
-    "timestamp": "2026-02-28T20:00:45.754950",
+    "new_value": 0.3,
+    "reason": "Esperance = -1.76 EUR/trade. Meilleur agent mais toujours perdant. Pertes 5.5x superieures aux gains. Reduction SL prioritaire.",
+    "timestamp": "2026-03-01T09:51:06.038947",
     "agent_id": "fibo2"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.4,
+    "new_value": 0.2,
+    "reason": "Esperance = -1.76 EUR/trade. Meilleur agent mais toujours perdant. Pertes 5.5x superieures aux gains. Reduction SL prioritaire.",
+    "timestamp": "2026-03-01T09:51:06.038860",
+    "agent_id": "fibo2"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "tpsl_config.tp_pct",
+    "old_value": 0.5,
+    "new_value": 0.3,
+    "reason": "Esperance = -4.2 EUR/trade. Pertes moyennes 21x superieures aux gains. Reduction drastique SL pour limiter degats et augmentation TP pour equilibrer ratio.",
+    "timestamp": "2026-03-01T09:51:06.036942",
+    "agent_id": "fibo1"
+  },
+  {
+    "type": "EXACT_VALUE",
+    "field": "tpsl_config.sl_pct",
+    "old_value": 0.4,
+    "new_value": 0.2,
+    "reason": "Esperance = -4.2 EUR/trade. Pertes moyennes 21x superieures aux gains. Reduction drastique SL pour limiter degats et augmentation TP pour equilibrer ratio.",
+    "timestamp": "2026-03-01T09:51:06.036823",
+    "agent_id": "fibo1"
   }
 ]

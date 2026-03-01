@@ -48,10 +48,15 @@ class IAdjust:
     TP_MAX = 1.0              # Maximum TP (%)
 
     SL_MIN = 0.2              # Minimum SL (%)
-    SL_MAX = 2.0              # Maximum SL (%)
+    SL_MAX = 1.0              # Maximum SL (%) - JAMAIS plus que TP_MAX
 
     POSITION_SIZE_MIN = 0.005   # Minimum position size
     POSITION_SIZE_MAX = 0.05    # Maximum position size
+
+    # ===== GARDE-FOUS DURS =====
+    MAX_SL_TP_RATIO = 1.5        # SL ne peut JAMAIS depasser 1.5x le TP
+    MAX_CHANGE_PCT = 50           # Changement max = 50% de la valeur actuelle par ajustement
+    DIRECTION_LOCK_SECONDS = 14400  # 4 heures avant de pouvoir inverser la direction d'un changement
 
     # ===== RATE LIMITING =====
     MIN_ADJUSTMENT_INTERVAL = 900   # 15 min minimum entre ajustements par agent
@@ -127,19 +132,31 @@ class IAdjust:
             "sl_pct":             {"path": "tpsl", "min": self.SL_MIN, "max": self.SL_MAX, "round": 3},
         }
 
+        # Collecter les valeurs demandees (pour appliquer les garde-fous apres)
+        requested_changes = {}
         for param, new_value in changes.items():
             if param not in PARAM_MAP:
                 print(f"[IA Adjust] {agent_id}: parametre inconnu ignore: {param}")
                 continue
-
-            spec = PARAM_MAP[param]
-
-            # Convertir en nombre
             try:
-                new_value = float(new_value)
+                requested_changes[param] = float(new_value)
             except (ValueError, TypeError):
                 print(f"[IA Adjust] {agent_id}: valeur invalide pour {param}: {new_value}")
-                continue
+
+        # === GARDE-FOU A : Ratio TP/SL obligatoire ===
+        # SL ne peut JAMAIS depasser MAX_SL_TP_RATIO x TP
+        tpsl_config = config.get("tpsl_config", {})
+        final_tp = requested_changes.get("tp_pct", tpsl_config.get("tp_pct", 0.3))
+        final_sl = requested_changes.get("sl_pct", tpsl_config.get("sl_pct", 0.5))
+        if final_sl > final_tp * self.MAX_SL_TP_RATIO:
+            old_sl = final_sl
+            final_sl = round(final_tp * self.MAX_SL_TP_RATIO, 3)
+            if "sl_pct" in requested_changes:
+                requested_changes["sl_pct"] = final_sl
+            print(f"[IA Adjust] {agent_id}: GARDE-FOU ratio TP/SL - SL {old_sl} -> {final_sl} (max {self.MAX_SL_TP_RATIO}x TP={final_tp})")
+
+        for param, new_value in requested_changes.items():
+            spec = PARAM_MAP[param]
 
             # Clamp aux bornes
             clamped = max(spec["min"], min(spec["max"], new_value))
@@ -158,6 +175,31 @@ class IAdjust:
                 current = config.get(param, 0)
 
             # Skip si pas de changement
+            if clamped == current:
+                continue
+
+            # === GARDE-FOU B : Amplitude max de changement ===
+            # Limite le changement a MAX_CHANGE_PCT % de la valeur actuelle
+            if current > 0:
+                max_delta = current * self.MAX_CHANGE_PCT / 100
+                if abs(clamped - current) > max_delta:
+                    old_clamped = clamped
+                    if clamped > current:
+                        clamped = round(current + max_delta, spec["round"]) if spec["round"] > 0 else int(current + max_delta)
+                    else:
+                        clamped = round(current - max_delta, spec["round"]) if spec["round"] > 0 else int(current - max_delta)
+                    # Re-clamp aux bornes apres ajustement
+                    clamped = max(spec["min"], min(spec["max"], clamped))
+                    print(f"[IA Adjust] {agent_id}: GARDE-FOU amplitude - {param} {old_clamped} -> {clamped} (max {self.MAX_CHANGE_PCT}% de {current})")
+
+            # === GARDE-FOU C : Verrouillage de direction ===
+            # Si un parametre a ete change dans un sens recemment, interdire l'inversion
+            direction_blocked = self._is_direction_locked(agent_id, param, current, clamped)
+            if direction_blocked:
+                print(f"[IA Adjust] {agent_id}: GARDE-FOU direction - {param} {current} -> {clamped} BLOQUE (inversion trop recente)")
+                continue
+
+            # Skip si pas de changement apres garde-fous
             if clamped == current:
                 continue
 
@@ -298,6 +340,57 @@ class IAdjust:
     # ================================================================
     #  RATE LIMITING
     # ================================================================
+
+    def _is_direction_locked(self, agent_id: str, param: str, current: float, new_value: float) -> bool:
+        """
+        Verifie si la direction d'un changement est verrouillee.
+        Si un parametre a ete modifie dans un sens recemment (< DIRECTION_LOCK_SECONDS),
+        on interdit l'inversion de direction.
+        Ex: Si SL a baisse de 0.6 -> 0.3 il y a 2h, on ne peut pas le remonter avant 4h.
+        """
+        if current == 0:
+            return False
+
+        new_direction = "up" if new_value > current else "down"
+
+        # Chercher le dernier ajustement de ce parametre pour cet agent
+        recent = self.get_recent_adjustments(50)
+        lock_threshold = datetime.now().timestamp() - self.DIRECTION_LOCK_SECONDS
+
+        # Trouver le champ dans les logs (peut etre "tpsl_config.tp_pct" ou "tp_pct")
+        field_variants = [param, f"tpsl_config.{param}"]
+
+        for adj in recent:
+            if adj.get("agent_id") != agent_id:
+                continue
+            if adj.get("field") not in field_variants:
+                continue
+
+            try:
+                ts = datetime.fromisoformat(adj.get("timestamp", "2000-01-01")).timestamp()
+            except (ValueError, TypeError):
+                continue
+
+            # Trop ancien, pas de verrouillage
+            if ts < lock_threshold:
+                break
+
+            # Determiner la direction du dernier ajustement
+            old = adj.get("old_value", 0)
+            new = adj.get("new_value", 0)
+            try:
+                last_direction = "up" if float(new) > float(old) else "down"
+            except (ValueError, TypeError):
+                continue
+
+            # Si la direction actuelle est l'inverse de la derniere, bloquer
+            if new_direction != last_direction:
+                return True
+
+            # Meme direction = ok
+            return False
+
+        return False
 
     def _can_adjust(self, agent_id: str) -> bool:
         """Verifie si l'agent peut etre ajuste (rate limiting)."""

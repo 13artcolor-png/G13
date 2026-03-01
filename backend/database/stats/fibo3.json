@@ -1,13 +1,13 @@
 {
   "agent_id": "fibo3",
-  "total_trades": 71,
-  "wins": 46,
-  "losses": 25,
+  "total_trades": 11,
+  "wins": 5,
+  "losses": 6,
   "breakeven": 0,
-  "winrate": 64.79,
-  "total_profit": -56.25,
-  "avg_win": 1.18,
-  "avg_loss": -4.42,
-  "risk_reward": 0.27,
-  "updated_at": "2026-02-28T23:30:58.082846"
+  "winrate": 45.45,
+  "total_profit": -19.36,
+  "avg_win": 0.98,
+  "avg_loss": -4.04,
+  "risk_reward": 0.24,
+  "updated_at": "2026-03-01T14:29:00.036754"
 }

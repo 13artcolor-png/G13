@@ -58,7 +58,7 @@ def _load_api_config(agent_id: str) -> Dict:
         return {}
 
 
-def call_ai(agent_id: str, prompt: str, system_prompt: str = None) -> Optional[str]:
+def call_ai(agent_id: str, prompt: str, system_prompt: str = None, max_tokens: int = 500) -> Optional[str]:
     """
     Appelle l'IA via Requesty.
 
@@ -66,6 +66,7 @@ def call_ai(agent_id: str, prompt: str, system_prompt: str = None) -> Optional[s
         agent_id: ID de l'agent (fibo1, fibo2, fibo3)
         prompt: Prompt utilisateur (contexte marche + question)
         system_prompt: Prompt systeme (role de l'agent)
+        max_tokens: Nombre max de tokens en sortie (500 pour agents, 1500 pour strategist)
 
     Returns:
         str: Reponse brute de l'IA, ou None si erreur
@@ -105,7 +106,7 @@ def call_ai(agent_id: str, prompt: str, system_prompt: str = None) -> Optional[s
     payload = {
         "model": model,
         "messages": messages,
-        "max_tokens": 500,
+        "max_tokens": max_tokens,
         "temperature": 0.3
     }
 

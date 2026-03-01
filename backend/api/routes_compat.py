@@ -451,7 +451,8 @@ async def get_session_performance():
 @router.get("/session/start")
 @router.post("/session/start")
 async def api_session_start():
-    """Demarrer session (compatibilite G12)."""
+    """Creer une NOUVELLE session (appele uniquement par 'Nouvelle Session').
+    force_new=True : reset les donnees et cree une session fraiche."""
     # Recuperer balance MT5 pour la nouvelle session
     total_balance = 0
     for agent_id in ["fibo1", "fibo2", "fibo3"]:
@@ -465,8 +466,8 @@ async def api_session_start():
             pass
 
     initial_balance = total_balance if total_balance > 0 else None
-    print(f"[Session Start] Balance MT5 capturee: {total_balance}")
-    return start_session(initial_balance=initial_balance)
+    print(f"[Nouvelle Session] Balance MT5 capturee: {total_balance}")
+    return start_session(initial_balance=initial_balance, force_new=True)
 
 
 @router.get("/session/end")
@@ -582,16 +583,17 @@ async def trading_start():
 
 @router.post("/trading/stop")
 async def trading_stop():
-    """Arreter le trading (compatibilite G12)."""
+    """Arreter le trading SANS terminer la session.
+    La session persiste jusqu'a ce que l'utilisateur clique sur 'Nouvelle Session'.
+    Cela permet de relancer start.bat et reprendre la meme session."""
     from core import get_trading_loop
 
-    # Arreter la trading loop
+    # Arreter la trading loop uniquement
     loop = get_trading_loop()
     loop.stop()
 
-    # Terminer la session
-    result = end_session()
-    return {"success": result["success"], "message": result.get("message", "")}
+    # NE PAS appeler end_session() - la session reste active
+    return {"success": True, "message": "Trading arrete. Session conservee."}
 
 
 @router.post("/trading/close-all")
@@ -850,6 +852,59 @@ async def api_validate_positions():
             results[agent_id] = {"valid": False, "removed": 0, "error": str(e)}
 
     return {"success": True, "results": results}
+
+
+@router.post("/open-history-folder")
+async def open_history_folder():
+    """Ouvre le dossier history/ dans l'explorateur de fichiers."""
+    import subprocess
+    history_path = DATABASE_PATH / "history"
+    history_path.mkdir(exist_ok=True)
+    try:
+        subprocess.Popen(["explorer", str(history_path.resolve())])
+        return {"success": True, "message": "Dossier ouvert"}
+    except Exception as e:
+        return {"success": False, "message": str(e)}
+
+
+@router.post("/restart-backend")
+async def restart_backend():
+    """Redemarre le serveur backend G13.
+    Cree un script .bat temporaire, le lance dans une nouvelle fenetre,
+    puis arrete le processus actuel proprement."""
+    import threading
+    import os
+
+    backend_dir = Path(__file__).parent.parent
+
+    def _do_restart():
+        import time
+        time.sleep(0.5)  # Laisser la reponse HTTP partir
+
+        # Creer un script de redemarrage temporaire
+        restart_bat = backend_dir / "_restart.bat"
+        with open(restart_bat, "w") as f:
+            f.write("@echo off\n")
+            f.write("title G13 Backend\n")
+            f.write("echo ========================================\n")
+            f.write("echo       G13 Backend - Redemarrage\n")
+            f.write("echo ========================================\n")
+            f.write("echo.\n")
+            f.write("echo Attente arret ancien processus...\n")
+            f.write("timeout /t 3 /nobreak >nul\n")
+            f.write(f'cd /d "{backend_dir}"\n')
+            f.write("echo Demarrage uvicorn...\n")
+            f.write("python -m uvicorn main:app --host 0.0.0.0 --port 8000\n")
+            f.write("pause\n")
+
+        # Lancer le script dans une nouvelle fenetre (aucun probleme de guillemets)
+        os.startfile(str(restart_bat))
+
+        # Arreter le processus actuel
+        os._exit(0)
+
+    threading.Thread(target=_do_restart, daemon=True).start()
+    return {"success": True, "message": "Redemarrage en cours..."}
 
 
 # ===================== KEYS API =====================
@@ -1219,22 +1274,29 @@ async def update_spread_config(config: Dict[str, Any]):
                 agents[agent_id]["tpsl_config"] = {}
 
             tpsl = agents[agent_id]["tpsl_config"]
+            tp_pct = tpsl.get("tp_pct", 0.3)
 
-            # Spread
+            # Spread - clamp max_spread_points a 100
             if "max_spread_points" in config:
-                tpsl["max_spread_points"] = float(config["max_spread_points"])
+                val = float(config["max_spread_points"])
+                tpsl["max_spread_points"] = min(val, 100.0)
             if "spread_check_enabled" in config:
                 tpsl["spread_check_enabled"] = bool(config["spread_check_enabled"])
             # Trailing
-            if "trailing_start_pct" in config:
-                tpsl["trailing_start_pct"] = float(config["trailing_start_pct"])
             if "trailing_distance_pct" in config:
                 tpsl["trailing_distance_pct"] = float(config["trailing_distance_pct"])
+            trail_dist = tpsl.get("trailing_distance_pct", 0.1)
+            if "trailing_start_pct" in config:
+                val = float(config["trailing_start_pct"])
+                # Garde-fou: trailing_start >= tp - distance
+                min_start = round(tp_pct - trail_dist, 4)
+                tpsl["trailing_start_pct"] = max(val, min_start)
             if "trailing_enabled" in config:
                 tpsl["trailing_enabled"] = bool(config["trailing_enabled"])
-            # Break Even
+            # Break Even - clamp a tp_pct max
             if "break_even_pct" in config:
-                tpsl["break_even_pct"] = float(config["break_even_pct"])
+                val = float(config["break_even_pct"])
+                tpsl["break_even_pct"] = min(val, tp_pct)
             if "break_even_enabled" in config:
                 tpsl["break_even_enabled"] = bool(config["break_even_enabled"])
 

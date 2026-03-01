@@ -25,7 +25,7 @@ import time
 
 # Imports des actions
 from actions.mt5 import connect_mt5, disconnect_mt5, read_positions, open_trade, close_trade, get_market_data, modify_trade_sl_tp, get_ohlc
-from actions.mt5.market_data import calculate_momentum, calculate_volatility
+from actions.mt5.market_data import calculate_momentum, calculate_volatility, detect_trend, calculate_fibonacci_levels, find_last_swings
 from actions.sync import sync_positions, sync_closed_trades
 from actions.session import get_session_info, is_session_active
 from actions.session.session_tickets import save_ticket
@@ -156,17 +156,44 @@ class TradingLoop:
             return {}
 
     def _get_tpsl_config(self, agent_config: Dict) -> Dict:
-        """Recupere la config TPSL d'un agent (avec fallback sur defaut)."""
+        """
+        Recupere la config TPSL d'un agent (avec fallback sur defaut).
+        GARDE-FOU: trailing_start >= tp - trailing_distance (sinon le TP n'est jamais atteint)
+        GARDE-FOU: break_even entre 0.01% et tp_pct (pas de valeurs absurdes)
+        """
         tpsl = agent_config.get("tpsl_config", {})
+        tp_pct = tpsl.get("tp_pct", DEFAULT_TPSL["tp_pct"])
+        trail_dist = tpsl.get("trailing_distance_pct", DEFAULT_TPSL["trailing_distance_pct"])
+        trail_start = tpsl.get("trailing_start_pct", DEFAULT_TPSL["trailing_start_pct"])
+        be_pct = tpsl.get("break_even_pct", DEFAULT_TPSL["break_even_pct"])
+
+        # Garde-fou trailing: doit demarrer au minimum a tp - distance
+        min_trail_start = round(tp_pct - trail_dist, 4)
+        if trail_start < min_trail_start:
+            print(f"[TPSL Guard] trailing_start {trail_start} < min {min_trail_start} -> corrige a {min_trail_start}")
+            trail_start = min_trail_start
+
+        # Garde-fou break_even: entre 0.01% et tp_pct (pas de 25% ou 0.95%)
+        if be_pct > tp_pct:
+            corrected_be = round(tp_pct * 0.5, 4)
+            print(f"[TPSL Guard] break_even {be_pct} > tp {tp_pct} -> corrige a {corrected_be}")
+            be_pct = corrected_be
+
+        # Garde-fou max_spread: pas plus de 100 points (500 = absurde)
+        max_spread = tpsl.get("max_spread_points", DEFAULT_TPSL["max_spread_points"])
+        if max_spread > 100:
+            print(f"[TPSL Guard] max_spread {max_spread} > 100 -> corrige a {DEFAULT_TPSL['max_spread_points']}")
+            max_spread = DEFAULT_TPSL["max_spread_points"]
+
         return {
-            "tp_pct": tpsl.get("tp_pct", DEFAULT_TPSL["tp_pct"]),
+            "tp_pct": tp_pct,
             "sl_pct": tpsl.get("sl_pct", DEFAULT_TPSL["sl_pct"]),
-            "trailing_start_pct": tpsl.get("trailing_start_pct", DEFAULT_TPSL["trailing_start_pct"]),
-            "trailing_distance_pct": tpsl.get("trailing_distance_pct", DEFAULT_TPSL["trailing_distance_pct"]),
-            "trailing_enabled": tpsl.get("trailing_enabled", True),
-            "break_even_pct": tpsl.get("break_even_pct", DEFAULT_TPSL["break_even_pct"]),
+            "trailing_start_pct": trail_start,
+            "trailing_distance_pct": trail_dist,
+            "trailing_enabled": True,  # Toujours actif - le trailing protege les gains
+            "break_even_pct": be_pct,
             "break_even_enabled": tpsl.get("break_even_enabled", True),
-            "max_spread_points": tpsl.get("max_spread_points", DEFAULT_TPSL["max_spread_points"]),
+            "max_spread_points": max_spread,
         }
 
     # ===== RISQUE GLOBAL =====
@@ -446,7 +473,8 @@ class TradingLoop:
         price = market_data.get("price", 0)
         fibo_levels = market_data.get("fibo_levels", {})
         trend = market_data.get("trend", "neutral")
-        print(f"[TradingLoop] {agent_id} - Prix: {price}, Trend: {trend}, Fibo: {list(fibo_levels.keys())}")
+        macro_trend = market_data.get("macro_trend", "neutral")
+        print(f"[TradingLoop] {agent_id} - Prix: {price}, Macro: {macro_trend}, Trend: {trend}")
 
         # Enrichir avec donnees externes (pas besoin MT5)
         self._enrich_market_data(market_data)
@@ -588,14 +616,35 @@ class TradingLoop:
             if ohlc_result.get("success") and ohlc_result.get("candles"):
                 market_data["candles"] = ohlc_result["candles"]
 
-            ohlc_m1 = get_ohlc(symbol, "M1", 20)
+            # Fibonacci sur M1 : dernier swing high/low (pas max/min bruts)
+            ohlc_m1 = get_ohlc(symbol, "M1", 100)
             if ohlc_m1.get("success") and ohlc_m1.get("candles"):
-                market_data["momentum_1m"] = calculate_momentum(ohlc_m1["candles"], 5)
+                m1_candles = ohlc_m1["candles"]
+                market_data["momentum_1m"] = calculate_momentum(m1_candles, 5)
+                # Trouver les derniers swings (pivots reels)
+                swings = find_last_swings(m1_candles, lookback=3)
+                sh = swings["swing_high"]
+                sl = swings["swing_low"]
+                market_data["fibo_levels"] = calculate_fibonacci_levels(sh, sl)
+                market_data["high"] = sh
+                market_data["low"] = sl
+                market_data["swing_high"] = sh
+                market_data["swing_low"] = sl
+                # Bougies M1 pour analyse institutionnelle
+                market_data["candles"] = m1_candles
 
             ohlc_m5 = get_ohlc(symbol, "M5", 50)
             if ohlc_m5.get("success") and ohlc_m5.get("candles"):
                 market_data["momentum_5m"] = calculate_momentum(ohlc_m5["candles"], 5)
                 market_data["volatility_pct"] = calculate_volatility(ohlc_m5["candles"], 20)
+
+            # Biais principal = M5 EMA 20/50 (deja dans market_data["trend"] via get_market_data)
+            # Macro H1 = confirmation secondaire
+            ohlc_h1 = get_ohlc(symbol, "H1", 60)
+            if ohlc_h1.get("success") and ohlc_h1.get("candles"):
+                market_data["macro_trend"] = detect_trend(ohlc_h1["candles"])
+            else:
+                market_data["macro_trend"] = "neutral"
 
             market_data["spread_points"] = market_data.get("spread", 0)
 
@@ -622,10 +671,16 @@ class TradingLoop:
             binance = BinanceData()
             funding = binance.get_funding_rate()
             ls_ratio = binance.get_long_short_ratio()
-            if funding or ls_ratio:
+            oi = binance.get_open_interest()
+            orderbook = binance.get_orderbook_imbalance()
+            if funding or ls_ratio or oi or orderbook:
                 market_data["futures"] = {
                     "funding_rate": funding.get("funding_rate", "N/A") if funding else "N/A",
-                    "long_short_ratio": ls_ratio.get("ratio", "N/A") if ls_ratio else "N/A"
+                    "long_short_ratio": ls_ratio.get("long_short_ratio", "N/A") if ls_ratio else "N/A",
+                    "open_interest": oi.get("open_interest", "N/A") if oi else "N/A",
+                    "oi_change_1h_pct": oi.get("change_1h_pct", "N/A") if oi else "N/A",
+                    "orderbook_imbalance_pct": orderbook.get("imbalance_pct", "N/A") if orderbook else "N/A",
+                    "orderbook_bias": orderbook.get("bias", "N/A") if orderbook else "N/A"
                 }
         except:
             pass
